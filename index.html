@@ -1,0 +1,3323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CalculatorHub - Fast, free and easy-to-use calculators for finance, work, health, time, math, and everyday life.">
+  <link rel="canonical" href="https://calculatorhub.com/">
+  <meta property="og:title" content="CalculatorHub – Simple Calculators for Everyday Life">
+  <meta property="og:description" content="Fast, free and easy-to-use calculators for finance, work, health, time, math, and everyday life.">
+  <meta property="og:url" content="https://calculatorhub.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculatorHub">
+  <title>CalculatorHub – Simple Calculators for Everyday Life</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CalculatorHub",
+    "url": "https://calculatorhub.com/",
+    "description": "Fast, free and easy-to-use calculators for finance, work, health, time, math, and everyday life.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://calculatorhub.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style data-purpose="core-styles">
+/* ==========================================================================
+   CalculatorHub - Modern, Responsive Stylesheet
+   Design Direction: Clean light background, professional, spacious, subtle borders
+   ========================================================================== */
+
+/* --- CSS Variables & Design Tokens --- */
+:root {
+  /* Brand Colors */
+  --primary: #2563eb;          /* Vibrant, trustworthy primary blue */
+  --primary-hover: #1d4ed8;    /* Darker blue for hover states */
+  --primary-light: #eff6ff;    /* Soft blue tint for icons and badges */
+  --primary-ring: rgba(37, 99, 235, 0.25);
+
+  /* Neutrals & Surfaces */
+  --bg-page: #f8fafc;          /* Slate 50 - clean light page background */
+  --bg-surface: #ffffff;       /* Pure white card and container surface */
+  --bg-subtle: #f1f5f9;        /* Slate 100 - subtle background for tags/inputs */
+  --bg-hover: #f8fafc;
+
+  /* Typography Colors */
+  --text-main: #0f172a;        /* Slate 900 - high contrast headline text */
+  --text-body: #334155;        /* Slate 700 - readable body text */
+  --text-muted: #64748b;       /* Slate 500 - descriptions, labels, hints */
+  --text-subtle: #94a3b8;      /* Slate 400 - placeholders, borders */
+
+  /* Borders & Dividers */
+  --border-color: #e2e8f0;     /* Slate 200 - clean subtle borders */
+  --border-focus: #2563eb;
+
+  /* Accents & Status */
+  --accent-green: #10b981;
+  --accent-green-light: #ecfdf5;
+  --accent-amber: #f59e0b;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 12px 20px -3px rgba(37, 99, 235, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --- Base & Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-body);
+  background-color: var(--bg-page);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-body);
+  background-color: var(--bg-page);
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --- Layout Container --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* --- Section Spacing --- */
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.875rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 1.625rem;
+  }
+}
+
+.section-description {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.25rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-main);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-icon-wrapper {
+  width: 2.375rem;
+  height: 2.375rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  flex-shrink: 0;
+}
+
+.brand-icon-wrapper svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.brand-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand-name {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.brand-name span {
+  color: var(--primary);
+}
+
+.brand-tagline-sub {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.nav-menu {
+  display: none;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-body);
+  padding: 0.5rem 0.25rem;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--primary);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.25rem;
+  right: 0.25rem;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+.nav-actions {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn:focus-visible {
+  background-color: var(--bg-subtle);
+  border-color: var(--text-subtle);
+}
+
+.mobile-menu-btn[aria-expanded="true"] {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: #bfdbfe;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav {
+  display: none;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem;
+}
+
+.mobile-nav.is-open {
+  display: block;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-body);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.mobile-nav-link.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Hide brand tagline in sticky header on mobile screens to keep [Logo] [☰] clean and prevent overflow */
+@media (max-width: 640px) {
+  .site-header .brand-tagline-sub {
+    display: none !important;
+  }
+}
+
+/* Ultra-compact screens (320px - 360px) */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+  .site-header .brand-logo {
+    gap: 0.5rem;
+    font-size: 1.125rem;
+  }
+  .site-header .brand-icon-wrapper {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+}
+
+/* Mobile & Tablet nav display (< 992px) */
+@media (max-width: 991px) {
+  .nav-menu {
+    display: none !important;
+  }
+  .nav-actions {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}
+
+/* Desktop navigation display (>= 992px) */
+@media (min-width: 992px) {
+  .nav-menu {
+    display: flex;
+    gap: 1.25rem;
+  }
+  .nav-actions {
+    display: flex;
+  }
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
+/* Tablet landscape & compact desktop (992px - 1100px) */
+@media (min-width: 992px) and (max-width: 1100px) {
+  .site-header .brand-tagline-sub {
+    display: none;
+  }
+  .nav-menu {
+    gap: 1rem;
+  }
+  .nav-link {
+    font-size: 0.875rem;
+  }
+}
+
+/* Wide Desktop (>= 1120px) */
+@media (min-width: 1120px) {
+  .nav-menu {
+    gap: 1.75rem;
+  }
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+  background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  text-align: center;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: 3rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.hero-pill-badge {
+  background-color: var(--accent-green-light);
+  color: var(--accent-green);
+  font-size: 0.6875rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.125rem;
+  }
+}
+
+.hero-title .highlight {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-description {
+  font-size: 1.1875rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 2.25rem auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+/* Search Box Container */
+.search-container {
+  max-width: 640px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 0.35rem 0.5rem 0.35rem 1.25rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-ring), var(--shadow-lg);
+}
+
+.search-icon {
+  color: var(--text-subtle);
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.0625rem;
+  color: var(--text-main);
+  outline: none;
+  padding: 0.5rem 0;
+}
+
+.search-input::placeholder {
+  color: var(--text-subtle);
+}
+
+.search-clear-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  background-color: var(--bg-subtle);
+  margin-right: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.search-clear-btn:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.search-clear-btn.is-active {
+  display: flex;
+}
+
+.search-submit-btn {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.search-submit-btn:hover,
+.search-submit-btn:focus-visible {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.search-submit-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .search-submit-btn {
+    padding: 0.65rem 0.85rem;
+  }
+  .search-submit-btn span {
+    display: none;
+  }
+}
+
+/* Popular Suggestions */
+.search-suggestions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.suggestions-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.suggestion-chip {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-body);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.suggestion-chip:hover,
+.suggestion-chip:focus-visible {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+/* Search Status / Empty State */
+.search-results-feedback {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--bg-surface);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.search-results-feedback.is-visible {
+  display: block;
+}
+
+.search-results-feedback strong {
+  color: var(--text-main);
+}
+
+/* --- Cards Grid: Popular Calculators --- */
+.calculators-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .calculators-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .calculators-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+/* Reusable Calculator Card */
+.calc-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.625rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+}
+
+.calc-card:hover,
+.calc-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.calc-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.125rem;
+}
+
+.calc-icon-box {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.calc-card:hover .calc-icon-box {
+  background-color: var(--primary);
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.calc-icon-box svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.calc-category-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background-color: var(--bg-subtle);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.calc-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.calc-card-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.calc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.calc-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap var(--transition-fast);
+}
+
+.calc-card:hover .calc-card-action {
+  gap: 0.65rem;
+}
+
+.calc-card-action svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--transition-fast);
+}
+
+.calc-card:hover .calc-card-action svg {
+  transform: translateX(3px);
+}
+
+/* --- Featured Calculator Preview Section --- */
+.featured-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.featured-wrapper {
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-page) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.featured-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.featured-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.featured-label {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.featured-calc-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.featured-meta {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.featured-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+@media (min-width: 860px) {
+  .featured-body {
+    grid-template-columns: 1.1fr 0.9fr;
+    padding: 2.5rem;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .featured-header {
+    padding: 1.25rem;
+  }
+  .featured-body {
+    padding: 1.25rem;
+    gap: 1.75rem;
+  }
+}
+
+/* Form Preview Side */
+.featured-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-value-badge {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.input-with-affix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-prefix,
+.input-suffix {
+  position: absolute;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.input-prefix {
+  left: 1rem;
+}
+
+.input-suffix {
+  right: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.input-has-prefix {
+  padding-left: 2.25rem;
+}
+
+.input-has-suffix {
+  padding-right: 2.75rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-ring);
+}
+
+/* Range Slider */
+.form-range {
+  width: 100%;
+  height: 6px;
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.form-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.range-min-max {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin-top: 0.25rem;
+}
+
+/* Prominent Calculate Button */
+.btn-calculate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all var(--transition-fast);
+  margin-top: 0.5rem;
+}
+
+.btn-calculate:hover,
+.btn-calculate:focus-visible {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.btn-calculate:active {
+  transform: translateY(0);
+}
+
+.btn-calculate svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Result Preview Side */
+.featured-results {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+}
+
+.results-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.results-heading-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.results-heading {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.results-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-green);
+  background-color: var(--accent-green-light);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+}
+
+.main-result-box {
+  background-color: var(--primary-light);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.main-result-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.main-result-amount {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.main-result-period {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Result Rows */
+.result-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--border-color);
+  font-size: 0.9375rem;
+}
+
+.result-stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stat-label {
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Ratio Bar */
+.breakdown-bar-wrapper {
+  margin-top: 0.5rem;
+}
+
+.breakdown-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.legend-dot.principal {
+  background-color: var(--primary);
+}
+
+.legend-dot.interest {
+  background-color: #93c5fd;
+}
+
+.breakdown-bar {
+  display: flex;
+  height: 8px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+}
+
+.bar-segment.principal {
+  width: 48%;
+  background-color: var(--primary);
+}
+
+.bar-segment.interest {
+  width: 52%;
+  background-color: #93c5fd;
+}
+
+.results-footer-note {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+/* --- Browse by Category Section --- */
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+/* Reusable Category Card */
+.category-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.category-card:hover,
+.category-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.category-icon-box {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.category-card:hover .category-icon-box {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.category-icon-box svg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.category-count {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.category-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.category-link-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: gap var(--transition-fast);
+}
+
+.category-card:hover .category-link-text {
+  gap: 0.6rem;
+}
+
+.category-link-text svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* --- Why CalculatorHub Section --- */
+.why-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.feature-card {
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+  background-color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon-wrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.feature-card:hover .feature-icon-wrapper {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.feature-icon-wrapper svg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.feature-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.feature-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --- FAQ Section --- */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.faq-item.is-expanded {
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+.faq-trigger {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background-color: transparent;
+  transition: background-color var(--transition-fast);
+}
+
+.faq-trigger:hover,
+.faq-trigger:focus-visible {
+  background-color: var(--bg-page);
+  color: var(--primary);
+}
+
+.faq-chevron {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-normal), color var(--transition-fast);
+}
+
+.faq-item.is-expanded .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+  padding: 0 1.5rem;
+}
+
+.faq-item.is-expanded .faq-content {
+  max-height: 500px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.faq-body {
+  padding-bottom: 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+/* --- Call To Action Banner --- */
+.cta-banner {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.35);
+}
+
+@media (max-width: 640px) {
+  .cta-banner {
+    padding: 2.25rem 1.25rem;
+  }
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+  .cta-title {
+    font-size: 1.625rem;
+  }
+}
+
+.cta-desc {
+  font-size: 1.0625rem;
+  color: #dbeafe;
+  max-width: 580px;
+  margin: 0 auto 1.75rem auto;
+  line-height: 1.6;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+}
+
+.cta-button:hover,
+.cta-button:focus-visible {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- Footer --- */
+.site-footer {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+  padding-top: 4rem;
+  padding-bottom: 2.5rem;
+  margin-top: auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  }
+}
+
+.footer-brand {
+  max-width: 340px;
+}
+
+.footer-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-trust-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-body);
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.footer-heading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--primary);
+  padding-left: 0.25rem;
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 640px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-legal-links a:hover {
+  color: var(--primary);
+}
+
+/* --- Accessibility & Focus Rings --- */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="#popular" class="nav-link">Popular</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#featured" class="nav-link">Featured Tool</a>
+        <a href="#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#featured" class="mobile-nav-link">Featured: EMI Calculator</a></li>
+        <li><a href="#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero Section
+         ========================================================================= -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <!-- Hero Tagline Badge -->
+        <div class="hero-pill">
+          <span class="hero-pill-badge">Free</span>
+          <span>100% Free · No Sign-up Required · Private & Fast</span>
+        </div>
+
+        <!-- Headline & Description -->
+        <h1 class="hero-title">
+          Simple Calculators for <span class="highlight">Everyday Life</span>
+        </h1>
+        <p class="hero-description">
+          Fast, free and easy-to-use calculators for finance, work, health, time and more.
+        </p>
+
+        <!-- Search Calculator Field -->
+        <div class="search-container">
+          <form class="search-bar-wrapper" id="calculator-search-form" role="search" onsubmit="event.preventDefault();">
+            <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="calculator-search-input" 
+              placeholder="Search for a calculator..." 
+              autocomplete="off"
+              aria-label="Search for a calculator"
+            >
+            <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="Clear search input">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <button type="submit" class="search-submit-btn" aria-label="Search">
+              <span>Find</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </form>
+
+          <!-- Popular Search Suggestions -->
+          <div class="search-suggestions" aria-label="Popular search suggestions">
+            <span class="suggestions-label">Popular:</span>
+            <button type="button" class="suggestion-chip" data-search="EMI">EMI</button>
+            <button type="button" class="suggestion-chip" data-search="GST">GST</button>
+            <button type="button" class="suggestion-chip" data-search="SIP">SIP</button>
+            <button type="button" class="suggestion-chip" data-search="Salary">Salary</button>
+            <button type="button" class="suggestion-chip" data-search="Age">Age</button>
+            <button type="button" class="suggestion-chip" data-search="Percentage">Percentage</button>
+          </div>
+
+          <!-- Feedback message for search filtering -->
+          <div class="search-results-feedback" id="search-feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Popular Calculators Section
+         ========================================================================= -->
+    <section class="section" id="popular">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Most Used Tools
+          </span>
+          <h2 class="section-title">Popular Calculators</h2>
+          <p class="section-description">
+            Quick, accurate, and everyday calculators used by thousands of people to make smart decisions.
+          </p>
+        </div>
+
+        <!-- Calculators Grid -->
+        <div class="calculators-grid" id="popular-calculators-grid">
+
+          <!-- 1. EMI Calculator -->
+          <a href="calculators/emi/index.html" class="calc-card" data-calc-name="EMI Calculator" data-keywords="emi loan interest mortgage home car finance">
+            <div class="calc-card-top">
+              <div class="calc-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21h18"></path>
+                  <path d="M3 10h18"></path>
+                  <path d="M5 6l7-3 7 3"></path>
+                  <path d="M4 10v11"></path>
+                  <path d="M20 10v11"></path>
+                  <path d="M8 14v4"></path>
+                  <path d="M12 14v4"></path>
+                  <path d="M16 14v4"></path>
+                </svg>
+              </div>
+              <span class="calc-category-tag">Finance</span>
+            </div>
+            <h3 class="calc-card-title">EMI Calculator</h3>
+            <p class="calc-card-desc">
+              Calculate equated monthly installments, total interest, and complete repayment schedules for home, car, or personal loans.
+            </p>
+            <div class="calc-card-footer">
+              <span class="calc-card-action">
+                Open Calculator
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 2. GST Calculator -->
+          <a href="calculators/gst/index.html" class="calc-card" data-calc-name="GST Calculator" data-keywords="gst tax vat invoice sales finance business">
+            <div class="calc-card-top">
+              <div class="calc-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <line x1="2" y1="10" x2="22" y2="10"></line>
+                  <line x1="7" y1="15" x2="7.01" y2="15"></line>
+                  <line x1="11" y1="15" x2="13" y2="15"></line>
+                </svg>
+              </div>
+              <span class="calc-category-tag">Finance</span>
+            </div>
+            <h3 class="calc-card-title">GST Calculator</h3>
+            <p class="calc-card-desc">
+              Quickly calculate GST inclusive and exclusive pricing with standard 5%, 12%, 18%, and 28% tax rate slabs.
+            </p>
+            <div class="calc-card-footer">
+              <span class="calc-card-action">
+                Open Calculator
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 3. SIP Calculator -->
+          <a href="calculators/sip/index.html" class="calc-card" data-calc-name="SIP Calculator" data-keywords="sip mutual fund investment wealth compound interest returns">
+            <div class="calc-card-top">
+              <div class="calc-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+              <span class="calc-category-tag">Finance</span>
+            </div>
+            <h3 class="calc-card-title">SIP Calculator</h3>
+            <p class="calc-card-desc">
+              Estimate future maturity wealth and total returns on systematic mutual fund investments over your target horizon.
+            </p>
+            <div class="calc-card-footer">
+              <span class="calc-card-action">
+                Open Calculator
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 4. Salary Calculator -->
+          <article class="calc-card" data-calc-name="Salary Calculator" data-keywords="salary ctc take home pay tax deductions income work">
+            <div class="calc-card-top">
+              <div class="calc-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <span class="calc-category-tag">Work & Freelance</span>
+            </div>
+            <h3 class="calc-card-title">Salary Calculator</h3>
+            <p class="calc-card-desc">
+              Break down annual CTC into monthly in-hand take-home salary, standard deductions, PF contributions, and taxes.
+            </p>
+            <div class="calc-card-footer">
+              <span class="calc-card-action">
+                Open Calculator
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </article>
+
+          <!-- 5. Percentage Calculator -->
+          <a href="calculators/percentage/index.html" class="calc-card" data-calc-name="Percentage Calculator" data-keywords="percentage percent math discount proportion increase decrease">
+            <div class="calc-card-top">
+              <div class="calc-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="5" x2="5" y2="19"></line>
+                  <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                  <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                </svg>
+              </div>
+              <span class="calc-category-tag">Math</span>
+            </div>
+            <h3 class="calc-card-title">Percentage Calculator</h3>
+            <p class="calc-card-desc">
+              Instantly solve percentage changes, percentage increases/decreases, sales discounts, and proportional ratios.
+            </p>
+            <div class="calc-card-footer">
+              <span class="calc-card-action">
+                Open Calculator
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 6. Age Calculator -->
+          <a href="calculators/age/index.html" class="calc-card" data-calc-name="Age Calculator" data-keywords="age date birthday time years months days days between">
+            <div class="calc-card-top">
+              <div class="calc-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <span class="calc-category-tag">Math</span>
+            </div>
+            <h3 class="calc-card-title">Age Calculator</h3>
+            <p class="calc-card-desc">
+              Calculate exact chronological age down to years, months, weeks, and days, plus days remaining until next birthday.
+            </p>
+            <div class="calc-card-footer">
+              <span class="calc-card-action">
+                Open Calculator
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Featured Calculator Visual Preview Section
+         ========================================================================= -->
+    <section class="section featured-section" id="featured">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            Live Tool Preview
+          </span>
+          <h2 class="section-title">Featured: EMI Calculator</h2>
+          <p class="section-description">
+            Experience our clean, distraction-free calculation interface designed for clarity and speed.
+          </p>
+        </div>
+
+        <!-- Featured Card Wrapper -->
+        <div class="featured-wrapper">
+          <!-- Card Header Bar -->
+          <div class="featured-header">
+            <div class="featured-badge-group">
+              <span class="featured-label">Featured Calculator</span>
+              <span class="featured-calc-name">EMI Calculator</span>
+            </div>
+            <div class="featured-meta">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Bank Standard Formula · 100% Private</span>
+            </div>
+          </div>
+
+          <!-- Card Body: Form + Results -->
+          <div class="featured-body">
+
+            <!-- Left: Inputs Preview Form -->
+            <div class="featured-form">
+              <!-- Loan Amount -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label for="emi-loan-amount" class="form-label">Loan Amount</label>
+                  <span class="form-value-badge" id="preview-amount-val">₹10,00,000</span>
+                </div>
+                <div class="input-with-affix">
+                  <span class="input-prefix">₹</span>
+                  <input 
+                    type="text" 
+                    id="emi-loan-amount" 
+                    class="form-input input-has-prefix" 
+                    value="10,00,000" 
+                    aria-label="Loan Amount in Rupees"
+                  >
+                </div>
+                <input 
+                  type="range" 
+                  class="form-range" 
+                  id="emi-range-amount" 
+                  min="100000" 
+                  max="10000000" 
+                  step="50000" 
+                  value="1000000"
+                  aria-label="Loan Amount Slider"
+                >
+                <div class="range-min-max">
+                  <span>₹1 Lakh</span>
+                  <span>₹1 Crore</span>
+                </div>
+              </div>
+
+              <!-- Interest Rate -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label for="emi-interest-rate" class="form-label">Interest Rate (% P.A.)</label>
+                  <span class="form-value-badge" id="preview-rate-val">8.5%</span>
+                </div>
+                <div class="input-with-affix">
+                  <input 
+                    type="text" 
+                    id="emi-interest-rate" 
+                    class="form-input input-has-suffix" 
+                    value="8.5" 
+                    aria-label="Annual Interest Rate Percentage"
+                  >
+                  <span class="input-suffix">%</span>
+                </div>
+                <input 
+                  type="range" 
+                  class="form-range" 
+                  id="emi-range-rate" 
+                  min="4" 
+                  max="20" 
+                  step="0.1" 
+                  value="8.5"
+                  aria-label="Interest Rate Slider"
+                >
+                <div class="range-min-max">
+                  <span>4%</span>
+                  <span>20%</span>
+                </div>
+              </div>
+
+              <!-- Loan Tenure -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label for="emi-loan-tenure" class="form-label">Loan Tenure</label>
+                  <span class="form-value-badge" id="preview-tenure-val">20 Years</span>
+                </div>
+                <div class="input-with-affix">
+                  <input 
+                    type="text" 
+                    id="emi-loan-tenure" 
+                    class="form-input input-has-suffix" 
+                    value="20" 
+                    aria-label="Loan Tenure in Years"
+                  >
+                  <span class="input-suffix">Years</span>
+                </div>
+                <input 
+                  type="range" 
+                  class="form-range" 
+                  id="emi-range-tenure" 
+                  min="1" 
+                  max="30" 
+                  step="1" 
+                  value="20"
+                  aria-label="Loan Tenure Slider"
+                >
+                <div class="range-min-max">
+                  <span>1 Year</span>
+                  <span>30 Years</span>
+                </div>
+              </div>
+
+              <!-- Prominent Button -->
+              <button type="button" class="btn-calculate" id="btn-demo-calculate">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                  <line x1="8" y1="6" x2="16" y2="6"></line>
+                  <line x1="16" y1="14" x2="16" y2="18"></line>
+                  <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+                </svg>
+                <span>Calculate EMI</span>
+              </button>
+            </div>
+
+            <!-- Right: Visual Result Preview -->
+            <div class="featured-results" aria-label="EMI Calculation Result Preview">
+              <div class="results-top">
+                <div class="results-heading-row">
+                  <span class="results-heading">Calculation Summary</span>
+                  <span class="results-badge-live">
+                    <span class="pulse-dot"></span>
+                    UI Preview Mode
+                  </span>
+                </div>
+
+                <!-- Main Highlight: Monthly EMI -->
+                <div class="main-result-box">
+                  <div class="main-result-label">Monthly EMI Amount</div>
+                  <div class="main-result-amount" id="result-emi-amount">₹8,678</div>
+                  <div class="main-result-period">per month for 240 months</div>
+                </div>
+
+                <!-- Breakdown Stats -->
+                <div class="result-stats-list">
+                  <div class="result-stat-row">
+                    <span class="stat-label">Principal Loan Amount</span>
+                    <span class="stat-value" id="result-principal">₹10,00,000</span>
+                  </div>
+                  <div class="result-stat-row">
+                    <span class="stat-label">Total Interest Payable</span>
+                    <span class="stat-value" id="result-interest">₹10,82,760</span>
+                  </div>
+                  <div class="result-stat-row">
+                    <span class="stat-label">Total Amount (Principal + Interest)</span>
+                    <span class="stat-value" id="result-total">₹20,82,760</span>
+                  </div>
+                </div>
+
+                <!-- Ratio Bar -->
+                <div class="breakdown-bar-wrapper">
+                  <div class="breakdown-legend">
+                    <span class="legend-item">
+                      <span class="legend-dot principal"></span>
+                      <span>Principal (<span id="pct-principal">48%</span>)</span>
+                    </span>
+                    <span class="legend-item">
+                      <span class="legend-dot interest"></span>
+                      <span>Interest (<span id="pct-interest">52%</span>)</span>
+                    </span>
+                  </div>
+                  <div class="breakdown-bar" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100">
+                    <div class="bar-segment principal" id="bar-principal" style="width: 48%;"></div>
+                    <div class="bar-segment interest" id="bar-interest" style="width: 52%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Visual Sub-note & Link to Dedicated Page -->
+              <div class="results-footer-note" style="flex-direction: column; gap: 0.75rem;">
+                <a href="calculators/emi/index.html" class="btn-calculate" style="width: 100%; text-decoration: none; padding: 0.75rem 1rem; font-size: 0.9375rem; justify-content: center; gap: 0.5rem;">
+                  <span>Open Dedicated EMI Calculator (with Amortization)</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.35rem;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Interactive preview. Click above for full amortization schedule and PDF-ready table.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Browse by Category Section
+         ========================================================================= -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            Explore Categories
+          </span>
+          <h2 class="section-title">Browse by Category</h2>
+          <p class="section-description">
+            Organized collections of specialized calculators for personal, academic, and professional needs.
+          </p>
+        </div>
+
+        <!-- Category Cards Grid -->
+        <div class="category-grid">
+
+          <!-- 1. Finance -->
+          <article class="category-card">
+            <div class="category-header">
+              <div class="category-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <span class="category-count">14 Tools</span>
+            </div>
+            <h3 class="category-title">Finance</h3>
+            <p class="category-desc">
+              Loans, mortgages, interest rates, GST, compound interest, fixed deposits, and investment returns.
+            </p>
+            <span class="category-link-text">
+              Explore Finance Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </article>
+
+          <!-- 2. Work & Freelance -->
+          <article class="category-card">
+            <div class="category-header">
+              <div class="category-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <span class="category-count">8 Tools</span>
+            </div>
+            <h3 class="category-title">Work & Freelance</h3>
+            <p class="category-desc">
+              Hourly rates, freelance quotes, CTC to in-hand pay, overtime pay, and project profit margins.
+            </p>
+            <span class="category-link-text">
+              Explore Work Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </article>
+
+          <!-- 3. Health -->
+          <article class="category-card">
+            <div class="category-header">
+              <div class="category-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
+              <span class="category-count">6 Tools</span>
+            </div>
+            <h3 class="category-title">Health</h3>
+            <p class="category-desc">
+              Body Mass Index (BMI), daily calorie expenditure, ideal weight range, and target hydration trackers.
+            </p>
+            <span class="category-link-text">
+              Explore Health Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </article>
+
+          <!-- 4. Time & Date -->
+          <article class="category-card">
+            <div class="category-header">
+              <div class="category-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <span class="category-count">7 Tools</span>
+            </div>
+            <h3 class="category-title">Time & Date</h3>
+            <p class="category-desc">
+              Exact age calculations, date differences, working business days count, countdowns, and time zones.
+            </p>
+            <span class="category-link-text">
+              Explore Time Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </article>
+
+          <!-- 5. Math -->
+          <article class="category-card">
+            <div class="category-header">
+              <div class="category-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="5" x2="5" y2="19"></line>
+                  <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                  <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                </svg>
+              </div>
+              <span class="category-count">12 Tools</span>
+            </div>
+            <h3 class="category-title">Math</h3>
+            <p class="category-desc">
+              Percentage changes, fractions, ratios, statistical averages, probabilities, and scientific notation.
+            </p>
+            <span class="category-link-text">
+              Explore Math Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </article>
+
+          <!-- 6. Utilities -->
+          <article class="category-card">
+            <div class="category-header">
+              <div class="category-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              </div>
+              <span class="category-count">9 Tools</span>
+            </div>
+            <h3 class="category-title">Utilities</h3>
+            <p class="category-desc">
+              Unit converters (length, weight, temperature, storage), discount comparisons, and everyday helpers.
+            </p>
+            <span class="category-link-text">
+              Explore Utilities
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Why CalculatorHub Section
+         ========================================================================= -->
+    <section class="section why-section" id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Our Guarantee
+          </span>
+          <h2 class="section-title">Why CalculatorHub</h2>
+          <p class="section-description">
+            We built CalculatorHub with a single focus: making everyday numbers straightforward, private, and painless.
+          </p>
+        </div>
+
+        <!-- 5 Key Features Grid -->
+        <div class="features-grid">
+
+          <!-- 1. Free to Use -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Free to Use</h3>
+            <p class="feature-desc">
+              100% free with unlimited calculations. No subscriptions, hidden fees, or locked features.
+            </p>
+          </div>
+
+          <!-- 2. No Registration -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="feature-title">No Registration</h3>
+            <p class="feature-desc">
+              Start calculating immediately. No sign-up, passwords, or emails required to access tools.
+            </p>
+          </div>
+
+          <!-- 3. Fast Calculations -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="feature-title">Fast Calculations</h3>
+            <p class="feature-desc">
+              Instant results without waiting. Calculations compute immediately in your browser.
+            </p>
+          </div>
+
+          <!-- 4. Mobile Friendly -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Mobile Friendly</h3>
+            <p class="feature-desc">
+              Optimized for touchscreens, phones, tablets, and desktop displays with responsive clarity.
+            </p>
+          </div>
+
+          <!-- 5. Privacy Focused -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Privacy Focused</h3>
+            <p class="feature-desc">
+              All computations stay on your device. We do not store or transmit your sensitive numbers.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Clean Call to Action Banner -->
+        <div class="cta-banner">
+          <h3 class="cta-title">Ready to calculate with complete confidence?</h3>
+          <p class="cta-desc">
+            Bookmark CalculatorHub today for lightning-fast, ad-free, and private everyday calculations.
+          </p>
+          <a href="#popular" class="cta-button">
+            <span>Explore All Calculators</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FAQ Section
+         ========================================================================= -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            Got Questions?
+          </span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-description">
+            Find immediate answers about our calculators, data handling, and platform reliability.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-list">
+
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-1">
+                <span>Are these calculators free?</span>
+                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content" id="faq-ans-1">
+                <div class="faq-body">
+                  Yes, 100% free forever. There are no subscriptions, paywalls, or hidden charges. You can use all calculators as many times as you need without any restrictions.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-2">
+                <span>Do I need to create an account?</span>
+                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content" id="faq-ans-2">
+                <div class="faq-body">
+                  No account or registration is required. CalculatorHub is ready to use the moment you open it—no passwords, emails, or personal details are ever requested.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-3">
+                <span>How accurate are the calculations?</span>
+                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content" id="faq-ans-3">
+                <div class="faq-body">
+                  All calculators use standard, verified mathematical and financial formulas accepted by major institutions. While they provide highly reliable estimates for everyday planning, always consult professional financial advisors for legal or binding banking decisions.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-4">
+                <span>Does CalculatorHub store my data?</span>
+                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content" id="faq-ans-4">
+                <div class="faq-body">
+                  No. CalculatorHub respects your privacy completely. All computations are performed locally in your web browser. We never collect, transmit, or store your inputs or financial numbers on any server.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+
+        <!-- Column 1: Brand & About -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+            <div class="brand-icon-wrapper" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+              </svg>
+            </div>
+            <div class="brand-text-wrapper">
+              <span class="brand-name">Calculator<span>Hub</span></span>
+              <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Fast, clean, and reliable calculators designed for everyday clarity. No ads, no sign-ups, 100% private.
+          </p>
+          <div class="footer-badges">
+            <span class="footer-trust-badge">🔒 100% Client-Side</span>
+            <span class="footer-trust-badge">⚡ Instant Math</span>
+            <span class="footer-trust-badge">📱 Mobile First</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Popular Calculators -->
+        <div>
+          <h4 class="footer-heading">Calculators</h4>
+          <ul class="footer-links-list">
+            <li><a href="calculators/emi/index.html" class="footer-link">EMI Calculator</a></li>
+            <li><a href="calculators/gst/index.html" class="footer-link">GST Calculator</a></li>
+            <li><a href="calculators/sip/index.html" class="footer-link">SIP Calculator</a></li>
+            <li><a href="calculator.html" class="footer-link">Standard Calculator</a></li>
+            <li><a href="calculators/percentage/index.html" class="footer-link">Percentage Calculator</a></li>
+            <li><a href="calculators/age/index.html" class="footer-link">Age Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Categories -->
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="#categories" class="footer-link">Finance</a></li>
+            <li><a href="#categories" class="footer-link">Work & Freelance</a></li>
+            <li><a href="#categories" class="footer-link">Health</a></li>
+            <li><a href="#categories" class="footer-link">Time & Date</a></li>
+            <li><a href="#categories" class="footer-link">Math</a></li>
+            <li><a href="#categories" class="footer-link">Utilities</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: About & Legal -->
+        <div>
+          <h4 class="footer-heading">CalculatorHub</h4>
+          <ul class="footer-links-list">
+            <li><a href="#why-us" class="footer-link">About CalculatorHub</a></li>
+            <li><a href="#faq" class="footer-link">FAQ & Help</a></li>
+            <li><a href="#footer-contact" class="footer-link" id="footer-contact">Contact</a></li>
+            <li><a href="#footer-privacy" class="footer-link" id="footer-privacy">Privacy Policy</a></li>
+            <li><a href="#footer-terms" class="footer-link" id="footer-terms">Terms</a></li>
+            <li><a href="#footer-disclaimer" class="footer-link" id="footer-disclaimer">Disclaimer</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#footer-privacy">Privacy Policy</a>
+          <span>·</span>
+          <a href="#footer-terms">Terms of Service</a>
+          <span>·</span>
+          <a href="#footer-disclaimer">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/registry.js"></script>
+  <script src="js/main.js"></script>
+  <script data-purpose="embedded-core-logic">
+/**
+ * CalculatorHub - Calculator Registry & Metadata Catalog
+ * Centralized registry defining calculator tools, categories, keywords, and routing.
+ * Designed for client-side search, category filtering, and modular expansion.
+ */
+
+(function(root, factory) {
+  if (typeof module === 'object' && module.exports) {
+    module.exports = factory();
+  } else {
+    root.CalculatorRegistry = factory();
+  }
+})(typeof self !== 'undefined' ? self : this, function() {
+  'use strict';
+
+  // Category Definitions with Descriptions and Icon metadata
+  const CATEGORIES = {
+    'finance': {
+      id: 'finance',
+      name: 'Finance',
+      description: 'Loans, mortgages, interest rates, GST, compound interest, fixed deposits, and investment returns.',
+      count: 14,
+      icon: 'dollar-sign'
+    },
+    'work': {
+      id: 'work',
+      name: 'Work & Freelance',
+      description: 'Hourly rates, freelance quotes, CTC to in-hand pay, overtime pay, and project profit margins.',
+      count: 8,
+      icon: 'briefcase'
+    },
+    'health': {
+      id: 'health',
+      name: 'Health',
+      description: 'Body Mass Index (BMI), daily calorie expenditure, ideal weight range, and target hydration trackers.',
+      count: 6,
+      icon: 'heart'
+    },
+    'time': {
+      id: 'time',
+      name: 'Time & Date',
+      description: 'Exact age calculations, date differences, working business days count, countdowns, and time zones.',
+      count: 7,
+      icon: 'clock'
+    },
+    'math': {
+      id: 'math',
+      name: 'Math',
+      description: 'Percentage changes, fractions, ratios, statistical averages, probabilities, and scientific notation.',
+      count: 12,
+      icon: 'percent'
+    },
+    'utilities': {
+      id: 'utilities',
+      name: 'Utilities',
+      description: 'Unit converters (length, weight, temperature, storage), discount comparisons, and everyday helpers.',
+      count: 9,
+      icon: 'tool'
+    }
+  };
+
+  // Calculator Catalog
+  const CALCULATORS = [
+    {
+      id: 'standard',
+      name: 'Standard Calculator',
+      slug: 'standard-calculator',
+      category: 'math',
+      categoryName: 'Math',
+      description: 'Everyday standard arithmetic calculator with live calculation history, percentage calculation, and sign toggle.',
+      url: 'calculator.html',
+      isPopular: false,
+      isFeatured: false,
+      badge: 'Core Tool',
+      keywords: ['standard', 'basic', 'math', 'calculator', 'arithmetic', 'addition', 'multiplication', 'division', 'history']
+    },
+    {
+      id: 'emi',
+      name: 'EMI Calculator',
+      slug: 'emi-calculator',
+      category: 'finance',
+      categoryName: 'Finance',
+      description: 'Calculate equated monthly installments, total interest, and complete repayment schedules for home, car, or personal loans.',
+      url: 'calculators/emi/index.html',
+      fallbackUrl: 'calculator.html#featured',
+      isPopular: true,
+      isFeatured: true,
+      badge: 'Finance',
+      keywords: ['emi', 'loan', 'interest', 'mortgage', 'home loan', 'car loan', 'personal loan', 'bank', 'repayment']
+    },
+    {
+      id: 'gst',
+      name: 'GST Calculator',
+      slug: 'gst-calculator',
+      category: 'finance',
+      categoryName: 'Finance',
+      description: 'Quickly calculate GST inclusive and exclusive pricing with standard 5%, 12%, 18%, and 28% tax rate slabs.',
+      url: 'calculators/gst/index.html',
+      fallbackUrl: 'calculator.html',
+      isPopular: true,
+      isFeatured: false,
+      badge: 'Finance',
+      keywords: ['gst', 'tax', 'vat', 'invoice', 'sales tax', 'business', 'finance', 'inclusive', 'exclusive']
+    },
+    {
+      id: 'sip',
+      name: 'SIP Calculator',
+      slug: 'sip-calculator',
+      category: 'finance',
+      categoryName: 'Finance',
+      description: 'Estimate future maturity wealth and total returns on systematic mutual fund investments over your target horizon.',
+      url: 'calculators/sip/index.html',
+      fallbackUrl: 'calculator.html',
+      isPopular: true,
+      isFeatured: false,
+      badge: 'Finance',
+      keywords: ['sip', 'mutual fund', 'investment', 'wealth', 'compound interest', 'returns', 'savings', 'growth']
+    },
+    {
+      id: 'salary',
+      name: 'Salary Calculator',
+      slug: 'salary-calculator',
+      category: 'work',
+      categoryName: 'Work & Freelance',
+      description: 'Break down annual CTC into monthly in-hand take-home salary, standard deductions, PF contributions, and taxes.',
+      url: 'calculators/salary/index.html',
+      fallbackUrl: 'calculator.html',
+      isPopular: true,
+      isFeatured: false,
+      badge: 'Work & Freelance',
+      keywords: ['salary', 'ctc', 'take home', 'in-hand', 'pay', 'tax', 'deductions', 'income', 'pf', 'work', 'job']
+    },
+    {
+      id: 'percentage',
+      name: 'Percentage Calculator',
+      slug: 'percentage-calculator',
+      category: 'math',
+      categoryName: 'Math',
+      description: 'Instantly solve percentage changes, percentage increases/decreases, sales discounts, and proportional ratios.',
+      url: 'calculators/percentage/index.html',
+      fallbackUrl: 'calculator.html',
+      isPopular: true,
+      isFeatured: false,
+      badge: 'Math',
+      keywords: ['percentage', 'percent', 'discount', 'proportion', 'increase', 'decrease', 'fraction', 'ratio', 'math']
+    },
+    {
+      id: 'age',
+      name: 'Age Calculator',
+      slug: 'age-calculator',
+      category: 'time',
+      categoryName: 'Time & Date',
+      description: 'Calculate exact chronological age down to years, months, weeks, and days, plus days remaining until next birthday.',
+      url: 'calculators/age/index.html',
+      fallbackUrl: 'calculator.html',
+      isPopular: true,
+      isFeatured: false,
+      badge: 'Time & Date',
+      keywords: ['age', 'date', 'birthday', 'time', 'years', 'months', 'days', 'days between', 'calendar']
+    }
+  ];
+
+  // Public API methods
+  return {
+    /**
+     * Get all registered calculators
+     * @returns {Array} List of all calculators
+     */
+    getAll: function() {
+      return CALCULATORS.slice();
+    },
+
+    /**
+     * Find a calculator by its unique ID
+     * @param {string} id - Calculator ID (e.g. 'emi')
+     * @returns {Object|null}
+     */
+    getById: function(id) {
+      if (!id) return null;
+      const cleanId = id.trim().toLowerCase();
+      return CALCULATORS.find(c => c.id === cleanId) || null;
+    },
+
+    /**
+     * Find a calculator by its URL slug
+     * @param {string} slug - Calculator slug (e.g. 'emi-calculator')
+     * @returns {Object|null}
+     */
+    getBySlug: function(slug) {
+      if (!slug) return null;
+      const cleanSlug = slug.trim().toLowerCase();
+      return CALCULATORS.find(c => c.slug === cleanSlug) || null;
+    },
+
+    /**
+     * Get popular calculators (for homepage grid)
+     * @returns {Array}
+     */
+    getPopular: function() {
+      return CALCULATORS.filter(c => c.isPopular);
+    },
+
+    /**
+     * Get featured calculators
+     * @returns {Array}
+     */
+    getFeatured: function() {
+      return CALCULATORS.filter(c => c.isFeatured);
+    },
+
+    /**
+     * Get calculators by category ID
+     * @param {string} categoryId - e.g. 'finance', 'math'
+     * @returns {Array}
+     */
+    getByCategory: function(categoryId) {
+      if (!categoryId) return [];
+      const clean = categoryId.trim().toLowerCase();
+      return CALCULATORS.filter(c => c.category === clean);
+    },
+
+    /**
+     * Get all category metadata
+     * @returns {Object}
+     */
+    getCategories: function() {
+      return Object.assign({}, CATEGORIES);
+    },
+
+    /**
+     * Client-side search across name, description, category, and keywords
+     * @param {string} query - search query
+     * @returns {Array} Matching calculators
+     */
+    search: function(query) {
+      if (!query || typeof query !== 'string') {
+        return this.getAll();
+      }
+      const q = query.trim().toLowerCase();
+      if (!q) return this.getAll();
+
+      return CALCULATORS.filter(c => {
+        if (c.name.toLowerCase().includes(q)) return true;
+        if (c.categoryName.toLowerCase().includes(q)) return true;
+        if (c.description.toLowerCase().includes(q)) return true;
+        if (c.keywords.some(k => k.toLowerCase().includes(q))) return true;
+        return false;
+      });
+    },
+
+    /**
+     * Register a new calculator dynamically (for future extensions)
+     * @param {Object} calc - Calculator configuration
+     */
+    register: function(calc) {
+      if (!calc || !calc.id || !calc.name) {
+        throw new Error('CalculatorRegistry.register: id and name are required');
+      }
+      const existingIdx = CALCULATORS.findIndex(c => c.id === calc.id);
+      if (existingIdx >= 0) {
+        CALCULATORS[existingIdx] = Object.assign({}, CALCULATORS[existingIdx], calc);
+      } else {
+        CALCULATORS.push(calc);
+      }
+    }
+  };
+});
+
+
+/**
+ * CalculatorHub - Main JavaScript
+ * Handles navigation, interactive search filtering, accordion FAQs, and UI preview interactions.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNavigation();
+  initFaqAccordion();
+  initCalculatorSearch();
+  initEmiPreview();
+});
+
+/* ==========================================================================
+   1. Mobile Navigation Toggle
+   ========================================================================== */
+function initMobileNavigation() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const navDrawer = document.getElementById('mobile-nav-drawer');
+
+  if (!toggleBtn || !navDrawer) return;
+  if (toggleBtn.dataset.menuInitialized === 'true') return;
+  toggleBtn.dataset.menuInitialized = 'true';
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    const nextState = !isExpanded;
+
+    toggleBtn.setAttribute('aria-expanded', String(nextState));
+    if (nextState) {
+      navDrawer.removeAttribute('hidden');
+      navDrawer.classList.add('is-open');
+    } else {
+      navDrawer.setAttribute('hidden', '');
+      navDrawer.classList.remove('is-open');
+    }
+  });
+
+  // Close mobile drawer when clicking any link inside it
+  const mobileLinks = navDrawer.querySelectorAll('.mobile-nav-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      navDrawer.setAttribute('hidden', '');
+      navDrawer.classList.remove('is-open');
+    });
+  });
+}
+
+/* ==========================================================================
+   2. Expandable FAQ Accordion
+   ========================================================================== */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isCurrentlyExpanded = item.classList.contains('is-expanded');
+
+      // Optional: Close other FAQs for clean single-accordion experience
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item && otherItem.classList.contains('is-expanded')) {
+          otherItem.classList.remove('is-expanded');
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          if (otherTrigger) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      // Toggle clicked item
+      if (isCurrentlyExpanded) {
+        item.classList.remove('is-expanded');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-expanded');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   3. Search and Filter Functionality
+   ========================================================================== */
+function initCalculatorSearch() {
+  const searchInput = document.getElementById('calculator-search-input');
+  const clearBtn = document.getElementById('search-clear-btn');
+  const searchFeedback = document.getElementById('search-feedback');
+  const suggestionChips = document.querySelectorAll('.suggestion-chip');
+  const calcCards = document.querySelectorAll('#popular-calculators-grid .calc-card');
+
+  if (!searchInput || !calcCards.length) return;
+
+  function performFilter(term) {
+    const query = term.trim().toLowerCase();
+
+    // Toggle clear button
+    if (query.length > 0) {
+      clearBtn?.classList.add('is-active');
+    } else {
+      clearBtn?.classList.remove('is-active');
+    }
+
+    let matchCount = 0;
+    const registryResults = (typeof CalculatorRegistry !== 'undefined')
+      ? CalculatorRegistry.search(query).map(c => c.name.toLowerCase())
+      : [];
+
+    calcCards.forEach(card => {
+      const name = (card.getAttribute('data-calc-name') || '').toLowerCase();
+      const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+      const text = card.textContent?.toLowerCase() || '';
+
+      const isMatch = !query 
+        || registryResults.includes(name) 
+        || name.includes(query) 
+        || keywords.includes(query) 
+        || text.includes(query);
+
+      if (isMatch) {
+        card.style.display = 'flex';
+        matchCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Feedback message
+    if (query.length > 0) {
+      if (searchFeedback) {
+        searchFeedback.classList.add('is-visible');
+        if (matchCount > 0) {
+          searchFeedback.innerHTML = `Found <strong>${matchCount}</strong> calculator${matchCount > 1 ? 's' : ''} matching "<strong>${escapeHtml(query)}</strong>"`;
+        } else {
+          searchFeedback.innerHTML = `No calculators found matching "<strong>${escapeHtml(query)}</strong>". Showing all popular tools.`;
+          // Reset cards display so user is not left with blank space
+          calcCards.forEach(card => card.style.display = 'flex');
+        }
+      }
+    } else {
+      if (searchFeedback) {
+        searchFeedback.classList.remove('is-visible');
+        searchFeedback.innerHTML = '';
+      }
+    }
+  }
+
+  // Input event
+  searchInput.addEventListener('input', (e) => {
+    performFilter(e.target.value);
+  });
+
+  // Clear button click
+  clearBtn?.addEventListener('click', () => {
+    searchInput.value = '';
+    performFilter('');
+    searchInput.focus();
+  });
+
+  // Suggestion chip clicks
+  suggestionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const query = chip.getAttribute('data-search') || chip.textContent?.trim() || '';
+      searchInput.value = query;
+      performFilter(query);
+
+      // Scroll smoothly to popular section
+      const popularSection = document.getElementById('popular');
+      if (popularSection) {
+        popularSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag)
+  );
+}
+
+/* ==========================================================================
+   4. Featured EMI Calculator Interactive UI Preview
+   ========================================================================== */
+function initEmiPreview() {
+  const amountInput = document.getElementById('emi-loan-amount');
+  const amountRange = document.getElementById('emi-range-amount');
+  const amountBadge = document.getElementById('preview-amount-val');
+
+  const rateInput = document.getElementById('emi-interest-rate');
+  const rateRange = document.getElementById('emi-range-rate');
+  const rateBadge = document.getElementById('preview-rate-val');
+
+  const tenureInput = document.getElementById('emi-loan-tenure');
+  const tenureRange = document.getElementById('emi-range-tenure');
+  const tenureBadge = document.getElementById('preview-tenure-val');
+
+  const btnCalculate = document.getElementById('btn-demo-calculate');
+
+  const emiDisplay = document.getElementById('result-emi-amount');
+  const principalDisplay = document.getElementById('result-principal');
+  const interestDisplay = document.getElementById('result-interest');
+  const totalDisplay = document.getElementById('result-total');
+
+  const barPrincipal = document.getElementById('bar-principal');
+  const barInterest = document.getElementById('bar-interest');
+  const pctPrincipal = document.getElementById('pct-principal');
+  const pctInterest = document.getElementById('pct-interest');
+
+  // Format number into Indian currency style (e.g. 10,00,000)
+  function formatINR(val) {
+    const num = Math.round(val);
+    return '₹' + num.toLocaleString('en-IN');
+  }
+
+  // Standard EMI Formula: E = P * r * (1+r)^n / ((1+r)^n - 1)
+  function updateCalculations() {
+    let p = parseFloat((amountRange ? amountRange.value : amountInput?.value) || '1000000');
+    let annualRate = parseFloat((rateRange ? rateRange.value : rateInput?.value) || '8.5');
+    let years = parseFloat((tenureRange ? tenureRange.value : tenureInput?.value) || '20');
+
+    if (isNaN(p) || p <= 0) p = 1000000;
+    if (isNaN(annualRate) || annualRate <= 0) annualRate = 8.5;
+    if (isNaN(years) || years <= 0) years = 20;
+
+    const r = annualRate / (12 * 100); // monthly interest rate
+    const n = years * 12;             // total number of months
+
+    const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const totalPayment = emi * n;
+    const totalInterest = totalPayment - p;
+
+    const pPct = Math.round((p / totalPayment) * 100);
+    const iPct = 100 - pPct;
+
+    if (emiDisplay) emiDisplay.textContent = formatINR(emi);
+    if (principalDisplay) principalDisplay.textContent = formatINR(p);
+    if (interestDisplay) interestDisplay.textContent = formatINR(totalInterest);
+    if (totalDisplay) totalDisplay.textContent = formatINR(totalPayment);
+
+    if (barPrincipal) barPrincipal.style.width = `${pPct}%`;
+    if (barInterest) barInterest.style.width = `${iPct}%`;
+    if (pctPrincipal) pctPrincipal.textContent = `${pPct}%`;
+    if (pctInterest) pctInterest.textContent = `${iPct}%`;
+  }
+
+  // Slider & input sync for Amount
+  if (amountRange && amountInput) {
+    amountRange.addEventListener('input', () => {
+      const formatted = Number(amountRange.value).toLocaleString('en-IN');
+      amountInput.value = formatted;
+      if (amountBadge) amountBadge.textContent = '₹' + formatted;
+      updateCalculations();
+    });
+
+    amountInput.addEventListener('input', () => {
+      const clean = amountInput.value.replace(/[^0-9]/g, '');
+      const val = parseInt(clean, 10);
+      if (!isNaN(val)) {
+        amountRange.value = val;
+        if (amountBadge) amountBadge.textContent = '₹' + val.toLocaleString('en-IN');
+        updateCalculations();
+      }
+    });
+  }
+
+  // Slider & input sync for Rate
+  if (rateRange && rateInput) {
+    rateRange.addEventListener('input', () => {
+      rateInput.value = rateRange.value;
+      if (rateBadge) rateBadge.textContent = rateRange.value + '%';
+      updateCalculations();
+    });
+
+    rateInput.addEventListener('input', () => {
+      const val = parseFloat(rateInput.value);
+      if (!isNaN(val)) {
+        rateRange.value = val;
+        if (rateBadge) rateBadge.textContent = val + '%';
+        updateCalculations();
+      }
+    });
+  }
+
+  // Slider & input sync for Tenure
+  if (tenureRange && tenureInput) {
+    tenureRange.addEventListener('input', () => {
+      tenureInput.value = tenureRange.value;
+      if (tenureBadge) tenureBadge.textContent = tenureRange.value + ' Years';
+      updateCalculations();
+    });
+
+    tenureInput.addEventListener('input', () => {
+      const val = parseInt(tenureInput.value, 10);
+      if (!isNaN(val)) {
+        tenureRange.value = val;
+        if (tenureBadge) tenureBadge.textContent = val + ' Years';
+        updateCalculations();
+      }
+    });
+  }
+
+  // Prominent Calculate Button Click (visual feedback)
+  if (btnCalculate) {
+    btnCalculate.addEventListener('click', () => {
+      updateCalculations();
+      
+      // Button click animation
+      const originalHtml = btnCalculate.innerHTML;
+      btnCalculate.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Calculated!</span>
+      `;
+      btnCalculate.style.backgroundColor = 'var(--accent-green)';
+
+      setTimeout(() => {
+        btnCalculate.innerHTML = originalHtml;
+        btnCalculate.style.backgroundColor = '';
+      }, 1200);
+    });
+  }
+
+  // Initial calculation on load
+  updateCalculations();
+}
+
+  </script>
+</body>
+</html>

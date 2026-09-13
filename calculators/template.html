@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{CALCULATOR_DESCRIPTION}}">
+  <title>{{CALCULATOR_NAME}} | CalculatorHub</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/calculator.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header (Universal CalculatorHub Header)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../../index.html#popular" class="nav-link">Popular</a>
+        <a href="../../index.html#categories" class="nav-link">Categories</a>
+        <a href="#" class="nav-link active">{{CALCULATOR_NAME}}</a>
+        <a href="../../index.html#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="../../calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="../../calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="../../index.html#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="../../index.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#" class="mobile-nav-link active">{{CALCULATOR_NAME}}</a></li>
+        <li><a href="../../index.html#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Page Title Banner & Breadcrumbs
+         ========================================================================= -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-badge">
+          <span>{{CATEGORY_NAME}}</span>
+        </div>
+        <h1 class="page-title">{{CALCULATOR_NAME}}</h1>
+        <p class="page-description">
+          {{CALCULATOR_SUBTITLE}}
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Calculator Body
+         ========================================================================= -->
+    <section class="calculator-section">
+      <div class="container">
+        <div class="calculator-layout">
+
+          <!-- Left Column: Interactive Calculator Form & Inputs -->
+          <div class="calculator-unit-column">
+            <div class="calc-card-shell">
+              <!-- Calculator Form Placeholder -->
+              <div id="calculator-app">
+                <!-- Specific calculator input fields and controls render here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Results Summary & Educational Context -->
+          <div class="panels-column">
+            <div class="panel-card" id="results-panel">
+              <div class="panel-header">
+                <div class="panel-title-group">
+                  <h2 class="panel-title">Summary & Breakdown</h2>
+                </div>
+              </div>
+              <div id="results-display">
+                <!-- Calculated results and breakdown charts render here -->
+              </div>
+            </div>
+
+            <!-- How It Works Card -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div class="panel-title-group">
+                  <h2 class="panel-title">How It Works</h2>
+                </div>
+              </div>
+              <p class="panel-desc" style="margin-top: 0.85rem; font-size: 0.875rem; line-height: 1.6; color: var(--text-body);">
+                {{FORMULA_EXPLANATION}}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="../../index.html#footer-privacy">Privacy Policy</a>
+          <span>·</span>
+          <a href="../../index.html#footer-terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/registry.js"></script>
+</body>
+</html>

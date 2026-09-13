@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Percentage Calculator - Calculate percentages, percentage increases, decreases, differences, shopping discounts, markups, and reverse percentages.">
+  <link rel="canonical" href="https://calculatorhub.com/calculators/percentage/">
+  <meta property="og:title" content="Percentage Calculator – Percent, Discount & Change | CalculatorHub">
+  <meta property="og:description" content="Calculate percentages, percentage increases, decreases, differences, shopping discounts, markups, and reverse percentages.">
+  <meta property="og:url" content="https://calculatorhub.com/calculators/percentage/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculatorHub">
+  <title>Percentage Calculator – Percent, Discount & Change | CalculatorHub</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Percentage Calculator – Percent, Discount & Change",
+        "url": "https://calculatorhub.com/calculators/percentage/",
+        "description": "Calculate percentages, percentage increases, decreases, differences, shopping discounts, markups, and reverse percentages.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://calculatorhub.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Math",
+              "item": "https://calculatorhub.com/#categories"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Percentage Calculator",
+              "item": "https://calculatorhub.com/calculators/percentage/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I calculate a percentage of a number?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To find X% of Y, convert the percentage into a decimal by dividing it by 100, then multiply by the number: (X ÷ 100) × Y. For example, 20% of 500 is (20 ÷ 100) × 500 = 100."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate what percentage one number is of another?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide the part by the whole number and multiply the result by 100: (Part ÷ Whole) × 100. For example, if you scored 80 marks out of 400: (80 ÷ 400) × 100 = 20%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate percentage increase?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Subtract the original value from the new value, divide by the original value, and multiply by 100: ((New − Original) ÷ Original) × 100."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate percentage decrease?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Subtract the new value from the original, divide by the original, and multiply by 100: ((Original − New) ÷ Original) × 100."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is percentage difference and when is it used?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Percentage difference compares two numbers when neither is an initial or baseline value. It divides the absolute difference by the average of the two numbers: |A − B| ÷ ((A + B) ÷ 2) × 100."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate a discount during a sale?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Multiply the original price by the discount percentage divided by 100 to get the discount amount. Then subtract that discount from the original price to find the final price."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate the original price after a discount?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide the final discounted price by (1 − Discount% ÷ 100): Original Price = Final Price ÷ (1 − (Discount% ÷ 100))."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is markup percentage and how is it different from profit margin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Markup is the percentage added to the cost price to determine the retail selling price. Profit margin is the profit expressed as a percentage of the final selling price."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can percentages be greater than 100%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A percentage greater than 100% simply means the quantity exceeds the original baseline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this percentage calculator free and private?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% free and completely private. All calculations run locally in your web browser. No figures or personal data are stored, tracked, or sent to external servers."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/percentage.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header (Matches CalculatorHub Master Header)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../../index.html#popular" class="nav-link">Popular</a>
+        <a href="../../index.html#categories" class="nav-link">Categories</a>
+        <a href="#pct-calc-card" class="nav-link active">Percentage Calculator</a>
+        <a href="../../index.html#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="../../calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="../../calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="../../index.html#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="../../index.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#pct-calc-card" class="mobile-nav-link active">Featured: Percentage Calculator</a></li>
+        <li><a href="../../index.html#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero & Breadcrumbs
+         ========================================================================= -->
+    <section class="pct-hero">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="../../index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../index.html#categories" class="breadcrumb-link">Math</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" aria-current="page">Percentage Calculator</span>
+        </nav>
+
+        <div class="pct-badge">Math · Percentage</div>
+        <h1 class="pct-page-title">Percentage Calculator</h1>
+        <p class="pct-page-subtitle">
+          Calculate percentages, percentage changes, discounts, markups, and ratios quickly and accurately.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Primary Interactive Percentage Calculator
+         ========================================================================= -->
+    <section class="pct-calc-section" id="pct-calc-card">
+      <div class="container">
+
+        <!-- Mode Selector Tabs (5 Modes) -->
+        <div class="pct-mode-tabs-wrapper" role="tablist" aria-label="Percentage Calculation Modes">
+          <div class="pct-mode-tabs">
+            <button type="button" class="pct-mode-tab is-active" data-mode="pct-of" role="tab" aria-selected="true">
+              X% of Y
+            </button>
+            <button type="button" class="pct-mode-tab" data-mode="is-what" role="tab" aria-selected="false">
+              X is what %
+            </button>
+            <button type="button" class="pct-mode-tab" data-mode="increase" role="tab" aria-selected="false">
+              Increase %
+            </button>
+            <button type="button" class="pct-mode-tab" data-mode="decrease" role="tab" aria-selected="false">
+              Decrease %
+            </button>
+            <button type="button" class="pct-mode-tab" data-mode="difference" role="tab" aria-selected="false">
+              Difference %
+            </button>
+          </div>
+        </div>
+
+        <div class="pct-calc-grid">
+          <!-- Left Column: Primary Input Card -->
+          <div class="pct-card">
+            <div class="pct-card-header">
+              <h2 class="pct-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="19" y1="5" x2="5" y2="19"></line>
+                  <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                  <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                </svg>
+                Calculate Percentage
+              </h2>
+              <span class="pct-tag-badge">Live Math</span>
+            </div>
+
+            <form class="pct-form" onsubmit="return false;" novalidate>
+              <!-- Input A -->
+              <div class="pct-input-group">
+                <div class="pct-label-row">
+                  <label for="pct-input-a" class="pct-label" id="pct-label-a">Percentage (%)</label>
+                </div>
+                <div class="pct-input-wrapper">
+                  <input type="number" id="pct-input-a" class="pct-input-text has-suffix" value="20" step="any" inputmode="decimal" placeholder="e.g. 20" aria-label="First input value">
+                  <span class="pct-affix pct-suffix" id="pct-suffix-a">%</span>
+                </div>
+              </div>
+
+              <!-- Input B -->
+              <div class="pct-input-group">
+                <div class="pct-label-row">
+                  <label for="pct-input-b" class="pct-label" id="pct-label-b">Total Number (Y)</label>
+                </div>
+                <div class="pct-input-wrapper">
+                  <input type="number" id="pct-input-b" class="pct-input-text" value="500" step="any" inputmode="decimal" placeholder="e.g. 500" aria-label="Second input value">
+                  <span class="pct-affix pct-suffix" id="pct-suffix-b" style="display: none;">%</span>
+                </div>
+              </div>
+
+              <!-- Quick Examples Box -->
+              <div class="quick-examples-box">
+                <span class="quick-examples-title">Quick Test Examples:</span>
+                <div class="example-chips-row">
+                  <button type="button" class="example-chip" data-mode="pct-of" data-a="20" data-b="500" title="Calculate 20% of 500">
+                    20% of 500
+                  </button>
+                  <button type="button" class="example-chip" data-mode="pct-of" data-a="15" data-b="2000" title="Calculate 15% of 2,000">
+                    15% of 2,000
+                  </button>
+                  <button type="button" class="example-chip" data-mode="is-what" data-a="100" data-b="500" title="Calculate 100 is what % of 500">
+                    100 is what % of 500?
+                  </button>
+                  <button type="button" class="example-chip" data-mode="increase" data-a="500" data-b="600" title="Calculate increase from 500 to 600">
+                    500 → 600 (+20%)
+                  </button>
+                  <button type="button" class="example-chip" data-mode="decrease" data-a="1000" data-b="800" title="Calculate decrease from 1,000 to 800">
+                    1,000 → 800 (-20%)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Action Buttons (Reset) -->
+              <div class="pct-actions-row">
+                <button type="button" class="btn-calc-reset" id="btn-pct-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Result Card -->
+          <div class="pct-card pct-results-card" id="pct-result-card">
+            <div class="pct-card-header">
+              <h2 class="pct-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <polyline points="9 11 12 14 22 4"></polyline>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                Calculation Result
+              </h2>
+              <span class="pct-tag-badge">Exact Output</span>
+            </div>
+
+            <!-- Prominent Result Box -->
+            <div class="pct-main-result-box">
+              <div class="pct-result-label">Answer</div>
+              <div class="pct-result-val" id="pct-result-val">100</div>
+              <div class="pct-result-summary" id="pct-result-summary">20% of 500 is equal to 100</div>
+            </div>
+
+            <!-- Formula & Step-by-Step Breakdown -->
+            <div class="pct-explanation-box">
+              <div class="pct-expl-row">
+                <span class="pct-expl-label">Mathematical Formula:</span>
+                <code class="pct-expl-code" id="pct-result-formula">(20 ÷ 100) × 500</code>
+              </div>
+              <div class="pct-expl-row">
+                <span class="pct-expl-label">Step-by-Step Computation:</span>
+                <code class="pct-expl-code" id="pct-result-calc">0.2 × 500</code>
+              </div>
+            </div>
+
+            <!-- Copy Summary Button -->
+            <button type="button" class="btn-calc-copy" id="btn-pct-copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Calculation Summary</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Specialized Business & Shopping Tools Section (Discount, Markup, Reverse)
+         ========================================================================= -->
+    <section class="specialized-section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="pct-badge">Business &amp; Shopping</div>
+          <h2 class="section-title">Discount, Markup &amp; Reverse Tools</h2>
+          <p class="section-desc">
+            Practical calculators tailored for retail shopping, merchant pricing, and profit margin analysis.
+          </p>
+        </div>
+
+        <div class="specialized-grid">
+
+          <!-- Card 1: Discount Calculator -->
+          <div class="pct-card" id="discount-card">
+            <div class="pct-card-header">
+              <h3 class="pct-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Discount Calculator
+              </h3>
+            </div>
+
+            <form onsubmit="return false;">
+              <div class="pct-input-group">
+                <label for="discount-input-price" class="pct-label">Original Price</label>
+                <div class="pct-input-wrapper">
+                  <span class="pct-affix pct-prefix">₹</span>
+                  <input type="number" id="discount-input-price" class="pct-input-text has-prefix" value="2000" min="0" step="any" placeholder="e.g. 2000">
+                </div>
+              </div>
+
+              <div class="pct-input-group" style="margin-top: 1rem;">
+                <label for="discount-input-pct" class="pct-label">Discount Percentage</label>
+                <div class="pct-input-wrapper">
+                  <input type="number" id="discount-input-pct" class="pct-input-text has-suffix" value="20" min="0" max="100" step="any" placeholder="e.g. 20">
+                  <span class="pct-affix pct-suffix">%</span>
+                </div>
+                <div class="shop-presets-row">
+                  <button type="button" class="shop-preset-chip discount-preset-chip" data-pct="10">10%</button>
+                  <button type="button" class="shop-preset-chip discount-preset-chip is-active" data-pct="20">20%</button>
+                  <button type="button" class="shop-preset-chip discount-preset-chip" data-pct="30">30%</button>
+                  <button type="button" class="shop-preset-chip discount-preset-chip" data-pct="50">50%</button>
+                </div>
+              </div>
+
+              <div class="shop-stats-list">
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Discount Saved:</span>
+                  <span class="shop-stat-val savings" id="discount-result-amount">₹400</span>
+                </div>
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Final Sale Price:</span>
+                  <span class="shop-stat-val highlight" id="discount-result-final">₹1,600</span>
+                </div>
+              </div>
+
+              <button type="button" class="btn-calc-reset" id="btn-discount-reset" style="width: 100%; margin-top: 1rem;">
+                Reset Discount
+              </button>
+            </form>
+          </div>
+
+          <!-- Card 2: Markup Calculator -->
+          <div class="pct-card" id="markup-card">
+            <div class="pct-card-header">
+              <h3 class="pct-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                Markup Calculator
+              </h3>
+            </div>
+
+            <form onsubmit="return false;">
+              <div class="pct-input-group">
+                <label for="markup-input-cost" class="pct-label">Cost Price</label>
+                <div class="pct-input-wrapper">
+                  <span class="pct-affix pct-prefix">₹</span>
+                  <input type="number" id="markup-input-cost" class="pct-input-text has-prefix" value="1000" min="0" step="any" placeholder="e.g. 1000">
+                </div>
+              </div>
+
+              <div class="pct-input-group" style="margin-top: 1rem;">
+                <label for="markup-input-pct" class="pct-label">Markup Percentage</label>
+                <div class="pct-input-wrapper">
+                  <input type="number" id="markup-input-pct" class="pct-input-text has-suffix" value="25" min="0" step="any" placeholder="e.g. 25">
+                  <span class="pct-affix pct-suffix">%</span>
+                </div>
+                <div class="shop-presets-row">
+                  <button type="button" class="shop-preset-chip markup-preset-chip" data-pct="15">15%</button>
+                  <button type="button" class="shop-preset-chip markup-preset-chip is-active" data-pct="25">25%</button>
+                  <button type="button" class="shop-preset-chip markup-preset-chip" data-pct="35">35%</button>
+                  <button type="button" class="shop-preset-chip markup-preset-chip" data-pct="50">50%</button>
+                </div>
+              </div>
+
+              <div class="shop-stats-list">
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Markup Profit:</span>
+                  <span class="shop-stat-val savings" id="markup-result-amount">₹250</span>
+                </div>
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Selling Price:</span>
+                  <span class="shop-stat-val highlight" id="markup-result-selling">₹1,250</span>
+                </div>
+              </div>
+
+              <button type="button" class="btn-calc-reset" id="btn-markup-reset" style="width: 100%; margin-top: 1rem;">
+                Reset Markup
+              </button>
+            </form>
+          </div>
+
+          <!-- Card 3: Reverse Discount Calculator -->
+          <div class="pct-card" id="revdisc-card">
+            <div class="pct-card-header">
+              <h3 class="pct-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                </svg>
+                Reverse Discount
+              </h3>
+            </div>
+
+            <form onsubmit="return false;">
+              <div class="pct-input-group">
+                <label for="revdisc-input-final" class="pct-label">Final Price Paid</label>
+                <div class="pct-input-wrapper">
+                  <span class="pct-affix pct-prefix">₹</span>
+                  <input type="number" id="revdisc-input-final" class="pct-input-text has-prefix" value="800" min="0" step="any" placeholder="e.g. 800">
+                </div>
+              </div>
+
+              <div class="pct-input-group" style="margin-top: 1rem;">
+                <label for="revdisc-input-pct" class="pct-label">Discount Applied</label>
+                <div class="pct-input-wrapper">
+                  <input type="number" id="revdisc-input-pct" class="pct-input-text has-suffix" value="20" min="0" max="99.9" step="any" placeholder="e.g. 20">
+                  <span class="pct-affix pct-suffix">%</span>
+                </div>
+              </div>
+
+              <div class="revdisc-error-box" id="revdisc-error-msg">
+                Discount cannot be 100% or greater for reverse calculation.
+              </div>
+
+              <div class="shop-stats-list">
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Original Price (Pre-sale):</span>
+                  <span class="shop-stat-val highlight" id="revdisc-result-original">₹1,000</span>
+                </div>
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Discount Amount:</span>
+                  <span class="shop-stat-val savings" id="revdisc-result-saved">₹200</span>
+                </div>
+              </div>
+
+              <button type="button" class="btn-calc-reset" id="btn-revdisc-reset" style="width: 100%; margin-top: 1rem;">
+                Reset Reverse
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Formula & Calculation Methodology Section
+         ========================================================================= -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-grid">
+
+          <!-- Left Column: Formulas Explained -->
+          <article class="article-card">
+            <div>
+              <h2 class="article-heading">Percentage Formulas Explained</h2>
+              <p class="article-p">
+                A percentage represents a fraction of 100 (from Latin <em>per centum</em>, meaning "by the hundred"). Below are the foundational mathematical formulas for standard percentage operations:
+              </p>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">1. Percentage of a Number (What is X% of Y?)</h3>
+              <div class="formula-box">
+                <div class="formula-display">Percentage = (X ÷ 100) × Y</div>
+                <div class="formula-vars-list">
+                  <div>Divide the percentage by 100 to obtain its decimal multiplier, then multiply by the total number.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">2. Finding What Percentage X Is of Y</h3>
+              <div class="formula-box">
+                <div class="formula-display">Percentage = (X ÷ Y) × 100</div>
+                <div class="formula-vars-list">
+                  <div>Divide the part (X) by the total (Y) and multiply by 100 to express the ratio as a percentage.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">3. Percentage Increase</h3>
+              <div class="formula-box">
+                <div class="formula-display">Increase % = ((New − Original) ÷ Original) × 100</div>
+                <div class="formula-vars-list">
+                  <div>Subtract the original value from the new value, divide by the original value, and multiply by 100.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">4. Percentage Decrease</h3>
+              <div class="formula-box">
+                <div class="formula-display">Decrease % = ((Original − New) ÷ Original) × 100</div>
+                <div class="formula-vars-list">
+                  <div>Subtract the new value from the original, divide by the original, and multiply by 100.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">5. Percentage Difference</h3>
+              <div class="formula-box">
+                <div class="formula-display">Difference % = |A − B| ÷ ((A + B) ÷ 2) × 100</div>
+                <div class="formula-vars-list">
+                  <div>Used when comparing two non-sequential values where neither is considered the initial baseline. Divide the absolute difference by the average of both values.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">6. Retail Discount &amp; Markup Formulas</h3>
+              <div class="formula-box">
+                <div class="formula-display">
+                  Discount Amount = Original Price × (Discount% ÷ 100)<br>
+                  Final Price = Original Price − Discount Amount<br><br>
+                  Selling Price = Cost Price + (Cost Price × Markup% ÷ 100)<br><br>
+                  Original Price = Final Price ÷ (1 − (Discount% ÷ 100))
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Right Column: Worked Examples -->
+          <article class="article-card">
+            <div>
+              <h2 class="article-heading">Worked Practical Examples</h2>
+              <p class="article-p">
+                Step-by-step solutions to common real-world percentage calculations:
+              </p>
+            </div>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-text">
+                  <strong>What is 15% of 2,000?</strong><br>
+                  • Step 1: 15 ÷ 100 = 0.15<br>
+                  • Step 2: 0.15 × 2,000 = <strong>300</strong>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-text">
+                  <strong>80 is what percentage of 400?</strong><br>
+                  • Step 1: 80 ÷ 400 = 0.20<br>
+                  • Step 2: 0.20 × 100 = <strong>20%</strong>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-text">
+                  <strong>Price increases from ₹1,000 to ₹1,200</strong><br>
+                  • Step 1: Change = ₹1,200 − ₹1,000 = ₹200<br>
+                  • Step 2: ₹200 ÷ ₹1,000 = 0.20<br>
+                  • Step 3: 0.20 × 100 = <strong>20% increase</strong>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-text">
+                  <strong>₹2,000 item with a 25% discount</strong><br>
+                  • Discount: ₹2,000 × 0.25 = <strong>₹500</strong><br>
+                  • Final Price: ₹2,000 − ₹500 = <strong>₹1,500</strong>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-text">
+                  <strong>Cost ₹1,000 with a 30% markup</strong><br>
+                  • Markup Profit: ₹1,000 × 0.30 = <strong>₹300</strong><br>
+                  • Selling Price: ₹1,000 + ₹300 = <strong>₹1,300</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Educational Section: Everyday Use Cases
+         ========================================================================= -->
+    <section class="content-section" style="padding-top: 0;">
+      <div class="container">
+        <article class="article-card">
+          <div>
+            <h2 class="article-heading">Where Are Percentages Used in Everyday Life?</h2>
+            <p class="article-p">
+              Percentages are among the most versatile mathematical tools used across personal finance, commerce, education, and health:
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 0.5rem;">
+            <div>
+              <h3 class="article-subheading">🛍️ Shopping &amp; Discounts</h3>
+              <p class="article-p">Calculating retail sales, seasonal discounts ("30% off"), promotional coupons, and cash-back rewards on purchases.</p>
+            </div>
+            <div>
+              <h3 class="article-subheading">🎓 Academic Scores &amp; Exams</h3>
+              <p class="article-p">Converting total test marks into percentages or percentiles for university admissions and academic evaluations.</p>
+            </div>
+            <div>
+              <h3 class="article-subheading">💼 Salary Appraisals &amp; Raises</h3>
+              <p class="article-p">Evaluating annual compensation adjustments, bonus payouts, commission rates, and cost-of-living increases.</p>
+            </div>
+            <div>
+              <h3 class="article-subheading">📈 Business Margins &amp; Markup</h3>
+              <p class="article-p">Establishing profitable pricing for wholesale goods, calculating gross margins, and evaluating inventory turnover.</p>
+            </div>
+            <div>
+              <h3 class="article-subheading">🏛️ Taxes &amp; Statutory Duties</h3>
+              <p class="article-p">Computing GST slabs, customs tariffs, income tax deductions, and municipal property taxes.</p>
+            </div>
+            <div>
+              <h3 class="article-subheading">📊 Statistics &amp; Metrics</h3>
+              <p class="article-p">Tracking demographic changes, market share comparisons, election polling ratios, and performance metrics.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Frequently Asked Questions (Accordion)
+         ========================================================================= -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Help &amp; Answers</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">
+            Clear answers to common questions regarding percentage mathematics, discounts, and everyday calculations.
+          </p>
+        </div>
+
+        <div class="article-card" style="max-width: 900px; margin: 0 auto;">
+          <div class="faq-list">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate a percentage of a number?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  To find X% of Y, convert the percentage into a decimal by dividing it by 100, then multiply by the number: <code>(X ÷ 100) × Y</code>. For example, 20% of 500 is (20 ÷ 100) × 500 = 100.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate what percentage one number is of another?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Divide the part by the whole number and multiply the result by 100: <code>(Part ÷ Whole) × 100</code>. For example, if you scored 80 marks out of 400: (80 ÷ 400) × 100 = 20%.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate percentage increase?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Subtract the original value from the new value, divide by the original value, and multiply by 100: <code>((New − Original) ÷ Original) × 100</code>. If an item rises from ₹500 to ₹600: ((600 − 500) ÷ 500) × 100 = 20% increase.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate percentage decrease?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Subtract the new value from the original, divide by the original, and multiply by 100: <code>((Original − New) ÷ Original) × 100</code>. If a price drops from ₹500 to ₹400: ((500 − 400) ÷ 500) × 100 = 20% decrease.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What is percentage difference and when is it used?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Percentage difference compares two numbers when neither is an initial or baseline value. It divides the absolute difference by the average of the two numbers: <code>|A − B| ÷ ((A + B) ÷ 2) × 100</code>.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate a discount during a sale?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Multiply the original price by the discount percentage divided by 100 to get the discount amount. Then subtract that discount from the original price to find the final price. For a ₹2,000 item at 20% off: Discount = ₹400, Final Price = ₹1,600.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate the original price after a discount?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Divide the final discounted price by (1 − Discount% ÷ 100): <code>Original Price = Final Price ÷ (1 − (Discount% ÷ 100))</code>. For instance, if you paid ₹800 after a 20% discount: ₹800 ÷ 0.80 = ₹1,000 original price.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What is markup percentage and how is it different from profit margin?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Markup is the percentage added to the cost price to determine the retail selling price. Profit margin, by contrast, is the profit expressed as a percentage of the final selling price. A 25% markup on a ₹1,000 cost yields a ₹1,250 selling price (20% margin).
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 9 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Can percentages be greater than 100%?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes. A percentage greater than 100% simply means the quantity exceeds the original baseline. For example, if your investment grows from ₹1,000 to ₹3,000, that represents a 200% increase (or 300% of the original value).
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 10 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Is this percentage calculator free and private?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes, 100% free and completely private. All calculations run locally in your web browser. No figures or personal data are stored, tracked, or sent to external servers.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Statutory Disclaimer -->
+        <div class="disclaimer-card" style="max-width: 900px; margin: 1.5rem auto 0 auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>Disclaimer:</strong> This percentage calculator is provided for educational and general informational purposes only. While calculations follow standard mathematical and commercial formulas, commercial terms, trade discounts, and tax considerations may vary based on statutory regulations.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Related Tools (Only Valid Existing Links)
+         ========================================================================= -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="pct-badge">More Tools</div>
+          <h2 class="section-title">Explore Related Calculators</h2>
+          <p class="section-desc">
+            Discover other essential financial and mathematical tools built for precision and simplicity.
+          </p>
+        </div>
+
+        <div class="related-grid" style="max-width: 1000px; margin: 0 auto;">
+          <!-- 1. Standard Calculator -->
+          <a href="../../calculator.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">Math</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="related-title">Standard Calculator</h3>
+            <p class="related-desc">Fast arithmetic calculator with live calculation history, memory, and percentage shortcuts.</p>
+            <span class="related-action">
+              <span>Open Tool</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </a>
+
+          <!-- 2. EMI Calculator -->
+          <a href="../../calculators/emi/index.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <path d="M3 21h18"></path>
+                <path d="M3 10h18"></path>
+                <path d="M5 6l7-3 7 3"></path>
+                <path d="M4 10v11"></path>
+                <path d="M20 10v11"></path>
+              </svg>
+            </div>
+            <h3 class="related-title">EMI Calculator</h3>
+            <p class="related-desc">Calculate equated monthly installments, total interest, and complete amortization schedules.</p>
+            <span class="related-action">
+              <span>Open Tool</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </a>
+
+          <!-- 3. GST Calculator -->
+          <a href="../../calculators/gst/index.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+                <line x1="7" y1="15" x2="7.01" y2="15"></line>
+                <line x1="11" y1="15" x2="13" y2="15"></line>
+              </svg>
+            </div>
+            <h3 class="related-title">GST Calculator</h3>
+            <p class="related-desc">Compute GST inclusive/exclusive prices with 5%, 12%, 18%, 28% slabs and tax splits.</p>
+            <span class="related-action">
+              <span>Open Tool</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </a>
+
+          <!-- 4. SIP Calculator -->
+          <a href="../../calculators/sip/index.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="related-title">SIP Calculator</h3>
+            <p class="related-desc">Estimate maturity wealth, total investments, and compounding returns with annual Step-Up.</p>
+            <span class="related-action">
+              <span>Open Tool</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer (Universal CalculatorHub Footer)
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand & Bio -->
+        <div class="footer-brand-col">
+          <a href="../../index.html" class="brand-logo footer-brand">
+            <div class="brand-icon-wrapper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+              </svg>
+            </div>
+            <div class="brand-text-wrapper">
+              <span class="brand-name">Calculator<span>Hub</span></span>
+              <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Fast, clean, and reliable calculators designed for everyday clarity. No ads, no sign-ups, 100% private.
+          </p>
+        </div>
+
+        <!-- Column 2: Popular Calculators -->
+        <div>
+          <h4 class="footer-heading">Calculators</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link" style="color: var(--primary); font-weight: 600;">Percentage Calculator</a></li>
+            <li><a href="../../calculators/sip/index.html" class="footer-link">SIP Calculator</a></li>
+            <li><a href="../../calculators/emi/index.html" class="footer-link">EMI Calculator</a></li>
+            <li><a href="../../calculators/gst/index.html" class="footer-link">GST Calculator</a></li>
+            <li><a href="../../calculator.html" class="footer-link">Standard Calculator</a></li>
+            <li><a href="../age/index.html" class="footer-link">Age Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Categories -->
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="../../index.html#categories" class="footer-link">Finance</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Work &amp; Freelance</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Health</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Time &amp; Date</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Math</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: About & Legal -->
+        <div>
+          <h4 class="footer-heading">CalculatorHub</h4>
+          <ul class="footer-links-list">
+            <li><a href="../../index.html#why-us" class="footer-link">About CalculatorHub</a></li>
+            <li><a href="../../index.html#faq" class="footer-link">FAQ &amp; Help</a></li>
+            <li><a href="../../index.html#footer-contact" class="footer-link">Contact</a></li>
+            <li><a href="../../index.html#footer-privacy" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../../index.html#footer-terms" class="footer-link">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="../../index.html#footer-privacy">Privacy Policy</a>
+          <span>·</span>
+          <a href="../../index.html#footer-terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/registry.js"></script>
+  <script src="../../js/calculators/percentage-engine.js"></script>
+  <script src="../../js/calculators/percentage.js"></script>
+</body>
+</html>

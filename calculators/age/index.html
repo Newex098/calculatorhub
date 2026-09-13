@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate your exact age in years, months and days and find your next birthday with CalculatorHub's free age calculator.">
+  <link rel="canonical" href="https://calculatorhub.com/calculators/age/">
+  <meta property="og:title" content="Age Calculator – Calculate Exact Age &amp; Birthday | CalculatorHub">
+  <meta property="og:description" content="Calculate your exact age in years, months and days and find your next birthday with CalculatorHub's free age calculator.">
+  <meta property="og:url" content="https://calculatorhub.com/calculators/age/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculatorHub">
+  <title>Age Calculator – Calculate Exact Age &amp; Birthday | CalculatorHub</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Age Calculator – Calculate Exact Age & Birthday",
+        "url": "https://calculatorhub.com/calculators/age/",
+        "description": "Calculate your exact age in years, months and days and find your next birthday with CalculatorHub's free age calculator.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://calculatorhub.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Math",
+              "item": "https://calculatorhub.com/#categories"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Age Calculator",
+              "item": "https://calculatorhub.com/calculators/age/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is age calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Age is calculated by measuring the exact calendar difference between your date of birth and the chosen target date, broken down into completed years, months, and days based on varying month lengths."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate age on a future date?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can choose any future calculation date to determine how old you or a project will be at that future milestone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate age on a past date?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can select any historical date occurring on or after the date of birth to find your exact chronological age on that specific past day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are months and days handled?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our engine accounts for the varying number of days in each calendar month (28, 29, 30, or 31 days) rather than using a fixed 30-day approximation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens for a February 29 birthday?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For individuals born on February 29 (leap day), birthdays in non-leap years are observed on February 28 following standard civil convention."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate my next birthday?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The calculator automatically calculates the day of the week, the exact date, and the countdown of days remaining until your next birthday."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this age calculator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% free with unlimited calculations. No sign-up, registration, or subscription is ever required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the calculator store my date of birth?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Your date is processed entirely in your web browser. This page does not require an account or a server connection to perform the calculation."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/age.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header (Matches CalculatorHub Master Header)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../../index.html#popular" class="nav-link">Popular</a>
+        <a href="../../index.html#categories" class="nav-link">Categories</a>
+        <a href="#age-calc-card" class="nav-link active">Age Calculator</a>
+        <a href="../../index.html#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="../../calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="../../calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="../../index.html#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="../../index.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#age-calc-card" class="mobile-nav-link active">Featured: Age Calculator</a></li>
+        <li><a href="../../index.html#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero & Breadcrumbs
+         ========================================================================= -->
+    <section class="age-hero">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="../../index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../index.html#categories" class="breadcrumb-link">Math</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" aria-current="page">Age Calculator</span>
+        </nav>
+
+        <div class="age-badge">Math · Age &amp; Time</div>
+        <h1 class="age-page-title">Age Calculator</h1>
+        <p class="age-page-subtitle">
+          Calculate your exact age in years, months, and days, and find your next birthday.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Primary Interactive Age Calculator Section
+         ========================================================================= -->
+    <section class="age-calculator-section" id="age-calc-card">
+      <div class="container">
+        <div class="age-calc-grid">
+
+          <!-- Left Column: Input Form Card -->
+          <div class="age-card">
+            <div class="age-card-header">
+              <h2 class="age-card-title">Enter Dates</h2>
+              <p class="age-card-subtitle">Choose your birth date and target calculation date.</p>
+            </div>
+
+            <form class="age-form" onsubmit="return false;" novalidate>
+              <!-- Input: Date of Birth -->
+              <div class="age-input-group">
+                <div class="age-label-row">
+                  <label for="age-input-dob" class="age-label">Date of Birth</label>
+                </div>
+                <div class="age-input-wrapper">
+                  <input type="date" id="age-input-dob" class="age-input-date" value="2000-01-01" aria-label="Date of Birth" required>
+                </div>
+              </div>
+
+              <!-- Input: Calculate Age On (Target Date) -->
+              <div class="age-input-group">
+                <div class="age-label-row">
+                  <label for="age-input-target" class="age-label">Calculate Age On</label>
+                  <button type="button" class="btn-inline-today" id="btn-target-today" title="Set to Today's date">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span>Today</span>
+                  </button>
+                </div>
+                <div class="age-input-wrapper">
+                  <input type="date" id="age-input-target" class="age-input-date" aria-label="Target calculation date" required>
+                </div>
+              </div>
+
+              <!-- Error Alert Box -->
+              <div class="age-error-alert" id="age-error-alert" style="display: none;" role="alert">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="age-error-message">Invalid date selection.</span>
+              </div>
+
+              <!-- Quick Examples Box -->
+              <div class="age-examples-box">
+                <span class="age-examples-title">Quick Test Examples:</span>
+                <div class="age-chips-row">
+                  <button type="button" class="age-example-btn" data-dob="2000-01-01" data-target="2020-01-01" title="Test 20-year milestone">
+                    2000 → 2020 (20 Years)
+                  </button>
+                  <button type="button" class="age-example-btn" data-dob="2000-01-31" data-target="2020-02-29" title="Test calendar leap calculation">
+                    Jan 31 → Feb 29 (Leap)
+                  </button>
+                  <button type="button" class="age-example-btn" data-dob="2000-02-29" data-target="2021-02-28" title="Test leap day anniversary">
+                    Leap Birthday (Feb 29)
+                  </button>
+                  <button type="button" class="age-example-btn" data-dob="1996-03-15" title="Sample 1996 birthdate">
+                    15 March 1996
+                  </button>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="age-actions-row">
+                <button type="button" class="btn-age-secondary" id="btn-age-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Results Stack -->
+          <div class="age-results-stack" id="age-result-card">
+
+            <!-- 1. Primary Age Hero Card -->
+            <div class="age-result-hero-box">
+              <div class="age-result-badge-row">
+                <span class="age-res-label">Your Chronological Age</span>
+                <button type="button" class="btn-copy-sm" id="btn-age-copy" title="Copy age summary to clipboard">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <!-- 3 Unit Blocks -->
+              <div class="age-numbers-display">
+                <div class="age-unit-block">
+                  <div class="age-unit-val" id="age-res-years">26</div>
+                  <div class="age-unit-lbl">Years</div>
+                </div>
+                <div class="age-unit-block">
+                  <div class="age-unit-val" id="age-res-months">8</div>
+                  <div class="age-unit-lbl">Months</div>
+                </div>
+                <div class="age-unit-block">
+                  <div class="age-unit-val" id="age-res-days">12</div>
+                  <div class="age-unit-lbl">Days</div>
+                </div>
+              </div>
+
+              <!-- Born On Banner -->
+              <div class="age-born-on-banner">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Born on: <strong id="age-res-born-on">Saturday, 1 January 2000</strong></span>
+              </div>
+
+              <!-- Leap Year Convention Note (Conditional) -->
+              <div class="age-leap-note" id="age-leap-note" style="display: none;">
+                For February 29 leap-day birthdays, February 28 is observed as the birthday in non-leap years.
+              </div>
+            </div>
+
+            <!-- 2. Next Birthday Card -->
+            <div class="age-next-bday-card" id="age-next-bday-card">
+              <div class="bday-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <h3 class="bday-header-title">Next Birthday Countdown</h3>
+              </div>
+
+              <!-- Today is Birthday Celebratory Banner -->
+              <div class="bday-greeting-banner" id="bday-greeting-banner">
+                <span>Happy Birthday! 🎉</span>
+              </div>
+
+              <!-- Standard Countdown Grid -->
+              <div id="bday-standard-info">
+                <div class="bday-countdown-grid">
+                  <div class="bday-metric-box">
+                    <div class="bday-metric-val" id="bday-days-remaining">110</div>
+                    <div class="bday-metric-lbl">Days Remaining</div>
+                  </div>
+                  <div class="bday-metric-box">
+                    <div class="bday-metric-val" id="bday-turning-age">27</div>
+                    <div class="bday-metric-lbl">Turning Age</div>
+                  </div>
+                </div>
+                <div class="bday-date-text">
+                  Next Birthday: <strong id="bday-next-date">Friday, 1 January 2027</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Supplementary Units Card -->
+            <div class="age-supp-card">
+              <h3 class="supp-card-title">Age in Different Units (Calendar-Aware)</h3>
+              <div class="supp-list">
+                <div class="supp-row">
+                  <span class="supp-row-label">Total Years:</span>
+                  <span class="supp-row-val" id="supp-total-years">26 Completed Years</span>
+                </div>
+                <div class="supp-row">
+                  <span class="supp-row-label">Total Months:</span>
+                  <span class="supp-row-val" id="supp-total-months">320 Months, 12 Days</span>
+                </div>
+                <div class="supp-row">
+                  <span class="supp-row-label">Total Weeks:</span>
+                  <span class="supp-row-val" id="supp-total-weeks">1,393 Weeks, 1 Day</span>
+                </div>
+                <div class="supp-row">
+                  <span class="supp-row-label">Total Days:</span>
+                  <span class="supp-row-val" id="supp-total-days">9,752 Days</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Educational & Worked Example Section
+         ========================================================================= -->
+    <section class="age-content-section">
+      <div class="container">
+        <article class="age-article-card age-prose">
+
+          <h2>What is an Age Calculator?</h2>
+          <p>
+            An <strong>Age Calculator</strong> is a precision date calculation tool designed to determine the exact elapsed duration between a person's date of birth and any selected reference date. Unlike simple arithmetic that divides total elapsed days by an approximate 365 or 30 days, an authentic calendar-aware calculator accounts for the irregular lengths of months (28, 29, 30, and 31 days) as well as leap years.
+          </p>
+
+          <h2>How is Age Calculated?</h2>
+          <p>
+            Chronological age is calculated using the Gregorian calendar system. It determines the number of completed full years, followed by the remaining completed calendar months, and finally the leftover days up to the target date:
+          </p>
+
+          <div class="age-formula-box">
+            <div class="age-formula-title">Exact Calendar Difference Method:</div>
+            <div class="age-formula-code">Years = Target Year − Birth Year</div><br>
+            <div class="age-formula-code">Months = Target Month − Birth Month</div><br>
+            <div class="age-formula-code">Days = Target Day − Birth Day</div>
+            <p class="age-formula-desc">
+              When the target day is less than the birth day, one month is borrowed from the target month, and the exact number of days from the preceding calendar month is added to the day count. Similarly, if the target month is less than the birth month, one year is borrowed (12 months).
+            </p>
+          </div>
+
+          <!-- Worked Example -->
+          <h2>Worked Example: Step-by-Step Calculation</h2>
+          <div class="age-example-card">
+            <div class="age-example-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+              <span>Example: Born on 15 March 1996, Target Date: 15 September 2026</span>
+            </div>
+            <ul class="age-example-steps">
+              <li class="age-example-step">
+                <span class="age-step-num">1</span>
+                <span><strong>Year Difference:</strong> 2026 − 1996 = 30 completed years.</span>
+              </li>
+              <li class="age-example-step">
+                <span class="age-step-num">2</span>
+                <span><strong>Month Difference:</strong> September (Month 9) − March (Month 3) = 6 completed months.</span>
+              </li>
+              <li class="age-example-step">
+                <span class="age-step-num">3</span>
+                <span><strong>Day Difference:</strong> Day 15 − Day 15 = 0 remaining days.</span>
+              </li>
+              <li class="age-example-step">
+                <span class="age-step-num">4</span>
+                <span><strong>Final Exact Age:</strong> <strong>30 Years, 6 Months, 0 Days</strong>.</span>
+              </li>
+            </ul>
+          </div>
+
+          <h2>How Does the Birthday Countdown Work?</h2>
+          <p>
+            The birthday countdown calculates the upcoming occurrence of your birthday. If your birthday has not yet occurred in the current calendar year, the countdown calculates the days from the reference date until this year's anniversary. If your birthday has already passed, the countdown projects forward to next year's date. On the exact day of your birthday, the countdown highlights 0 days remaining with an anniversary celebration message.
+          </p>
+
+          <h2>How are Leap-Year Birthdays Handled?</h2>
+          <p>
+            A leap year occurs every 4 years (when divisible by 4, except for century years not divisible by 400). People born on <strong>February 29</strong> face a unique situation in non-leap years, which only contain 28 days in February.
+          </p>
+          <p>
+            CalculatorHub implements the widely accepted civil convention where February 28 is observed as the legal anniversary in non-leap years. In leap years (such as 2024, 2028, and 2032), February 29 is celebrated as the exact birthday.
+          </p>
+
+          <!-- Privacy Guarantee Callout -->
+          <div class="age-privacy-callout">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div>
+              <div class="age-privacy-title">100% Client-Side Privacy Guarantee</div>
+              <p class="age-privacy-desc">
+                Your date is processed in your browser by this calculator. This page does not require an account or a server connection to perform the calculation. No personal dates or identifiers are ever uploaded, recorded, or transmitted.
+              </p>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Frequently Asked Questions (Accordion)
+         ========================================================================= -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Common questions about exact age calculation, leap years, and date differences.
+          </p>
+        </div>
+
+        <div class="article-card" style="max-width: 900px; margin: 0 auto;">
+          <div class="faq-list">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How is age calculated?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Age is calculated by measuring the exact calendar difference between your date of birth and the chosen target date, broken down into completed years, months, and days based on varying month lengths.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Can I calculate age on a future date?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes. You can choose any future calculation date to determine how old you or a project will be at that future milestone.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Can I calculate age on a past date?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes. You can select any historical date occurring on or after the date of birth to find your exact chronological age on that specific past day.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How are months and days handled?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Our engine accounts for the varying number of days in each calendar month (28, 29, 30, or 31 days) rather than using a fixed 30-day approximation.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What happens for a February 29 birthday?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  For individuals born on February 29 (leap day), birthdays in non-leap years are observed on February 28 following standard civil convention.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Can I calculate my next birthday?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes. The calculator automatically calculates the day of the week, the exact date, and the countdown of days remaining until your next birthday.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Is this age calculator free?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes, 100% free with unlimited calculations. No sign-up, registration, or subscription is ever required.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Does the calculator store my date of birth?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  No. Your date is processed in your browser by this calculator. This page does not require an account or a server connection to perform the calculation.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Related Calculators Section
+         ========================================================================= -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Related Financial &amp; Math Calculators</h2>
+          <p class="section-subtitle">Explore more fast, free, and accurate calculation tools on CalculatorHub.</p>
+        </div>
+
+        <div class="related-grid" style="max-width: 900px; margin: 0 auto;">
+          <!-- 1. Percentage Calculator -->
+          <a href="../percentage/index.html" class="related-card">
+            <div class="related-header">
+              <div class="related-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="5" x2="5" y2="19"></line>
+                  <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                  <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                </svg>
+              </div>
+              <span class="related-tag">Math</span>
+            </div>
+            <h3 class="related-title">Percentage Calculator</h3>
+            <p class="related-desc">
+              Calculate percentages, percentage increases, decreases, discounts, and markups.
+            </p>
+            <span class="related-action">
+              Open Tool
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 2. Standard Calculator -->
+          <a href="../../calculator.html" class="related-card">
+            <div class="related-header">
+              <div class="related-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                  <line x1="8" y1="6" x2="16" y2="6"></line>
+                  <line x1="16" y1="14" x2="16" y2="18"></line>
+                  <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+                </svg>
+              </div>
+              <span class="related-tag">Everyday</span>
+            </div>
+            <h3 class="related-title">Standard Calculator</h3>
+            <p class="related-desc">
+              Fast, clean, interactive calculator for everyday basic and scientific operations.
+            </p>
+            <span class="related-action">
+              Open Tool
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 3. EMI Calculator -->
+          <a href="../emi/index.html" class="related-card">
+            <div class="related-header">
+              <div class="related-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21h18"></path>
+                  <path d="M3 10h18"></path>
+                  <path d="M5 6l7-3 7 3"></path>
+                  <path d="M4 10v11"></path>
+                  <path d="M20 10v11"></path>
+                  <path d="M8 14v4"></path>
+                  <path d="M12 14v4"></path>
+                  <path d="M16 14v4"></path>
+                </svg>
+              </div>
+              <span class="related-tag">Finance</span>
+            </div>
+            <h3 class="related-title">EMI Calculator</h3>
+            <p class="related-desc">
+              Calculate loan equated monthly installments and yearly principal/interest schedules.
+            </p>
+            <span class="related-action">
+              Open Tool
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 4. SIP Calculator -->
+          <a href="../sip/index.html" class="related-card">
+            <div class="related-header">
+              <div class="related-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+              <span class="related-tag">Finance</span>
+            </div>
+            <h3 class="related-title">SIP Calculator</h3>
+            <p class="related-desc">
+              Project mutual fund compounding wealth with optional annual step-up contributions.
+            </p>
+            <span class="related-action">
+              Open Tool
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer (Universal CalculatorHub Master Footer)
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand Summary -->
+        <div class="footer-brand-col">
+          <a href="../../index.html" class="brand-logo footer-logo" aria-label="CalculatorHub Homepage">
+            <div class="brand-icon-wrapper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+              </svg>
+            </div>
+            <div class="brand-text-wrapper">
+              <span class="brand-name">Calculator<span>Hub</span></span>
+              <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Fast, clean, and reliable calculators designed for everyday clarity. No ads, no sign-ups, 100% private.
+          </p>
+        </div>
+
+        <!-- Column 2: Popular Calculators -->
+        <div>
+          <h4 class="footer-heading">Calculators</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link" style="color: var(--primary); font-weight: 600;">Age Calculator</a></li>
+            <li><a href="../percentage/index.html" class="footer-link">Percentage Calculator</a></li>
+            <li><a href="../sip/index.html" class="footer-link">SIP Calculator</a></li>
+            <li><a href="../emi/index.html" class="footer-link">EMI Calculator</a></li>
+            <li><a href="../gst/index.html" class="footer-link">GST Calculator</a></li>
+            <li><a href="../../calculator.html" class="footer-link">Standard Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Categories -->
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="../../index.html#categories" class="footer-link">Finance</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Work &amp; Freelance</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Health</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Time &amp; Date</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Math</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: About & Legal -->
+        <div>
+          <h4 class="footer-heading">CalculatorHub</h4>
+          <ul class="footer-links-list">
+            <li><a href="../../index.html#why-us" class="footer-link">About CalculatorHub</a></li>
+            <li><a href="../../index.html#faq" class="footer-link">FAQ &amp; Help</a></li>
+            <li><a href="../../index.html#footer-contact" class="footer-link">Contact</a></li>
+            <li><a href="../../index.html#footer-privacy" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../../index.html#footer-terms" class="footer-link">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="../../index.html#footer-privacy">Privacy Policy</a>
+          <span>·</span>
+          <a href="../../index.html#footer-terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/registry.js"></script>
+  <script src="../../js/calculators/age-engine.js"></script>
+  <script src="../../js/calculators/age.js"></script>
+</body>
+</html>

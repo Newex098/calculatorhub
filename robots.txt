@@ -1,0 +1,6 @@
+# CalculatorHub - robots.txt
+# Canonical base domain placeholder: https://calculatorhub.com (replace with live custom domain upon deployment)
+User-agent: *
+Allow: /
+
+Sitemap: https://calculatorhub.com/sitemap.xml

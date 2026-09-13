@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free GST Calculator India - Calculate GST inclusive and exclusive prices with 5%, 12%, 18%, and 28% slabs. Includes CGST, SGST, and IGST tax breakdowns.">
+  <link rel="canonical" href="https://calculatorhub.com/calculators/gst/">
+  <meta property="og:title" content="GST Calculator – Add or Remove GST | CalculatorHub">
+  <meta property="og:description" content="Calculate GST inclusive and exclusive prices with 5%, 12%, 18%, and 28% slabs. Includes CGST, SGST, and IGST tax breakdowns.">
+  <meta property="og:url" content="https://calculatorhub.com/calculators/gst/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculatorHub">
+  <title>GST Calculator – Add or Remove GST | CalculatorHub</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "GST Calculator – Add or Remove GST",
+        "url": "https://calculatorhub.com/calculators/gst/",
+        "description": "Calculate GST inclusive and exclusive prices with 5%, 12%, 18%, and 28% slabs. Includes CGST, SGST, and IGST tax breakdowns.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://calculatorhub.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Finance",
+              "item": "https://calculatorhub.com/#categories"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "GST Calculator",
+              "item": "https://calculatorhub.com/calculators/gst/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the basic formula to calculate GST?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To calculate GST on a net base amount, multiply the base price by the GST percentage and divide by 100: GST Amount = (Base Amount × Rate) / 100. Then add the GST amount to the base price to get the total bill."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I remove or reverse-calculate GST from an invoice total?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To find the original net price from a tax-inclusive total, divide the gross total by (1 + GST Rate / 100): Base Amount = Gross Total ÷ (1 + (Rate / 100))."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between CGST, SGST, and IGST?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When a trade takes place within the same state (intra-state), GST is split equally between CGST and SGST. When goods or services are supplied from one state to another (inter-state), IGST applies in full."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which GST rate applies to most software, freelance, and consulting services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most professional services in India—including software development, IT consulting, freelance creative work, legal consulting, and digital marketing—are taxed under the standard 18% GST slab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the GST rate be a custom or decimal percentage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. While the standard slabs are 5%, 12%, 18%, and 28%, special GST rates exist (such as 3% for gold/silver jewelry and 0.25% for cut diamonds). You can type any custom or decimal percentage directly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is legally required to register for GST in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under standard GST rules, businesses dealing in goods with an annual turnover exceeding ₹40 lakhs and service providers exceeding ₹20 lakhs must register for GST."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Input Tax Credit (ITC) and how do businesses benefit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Input Tax Credit allows a business to offset the GST it paid on its business purchases against the GST liability it collects on outbound sales."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this calculator store or transmit my financial data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. CalculatorHub computes all calculations 100% locally in your web browser. No figures, invoice amounts, or personal data are ever uploaded or saved."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/gst.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header (Matches CalculatorHub Master Header)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../../index.html#popular" class="nav-link">Popular</a>
+        <a href="../../index.html#categories" class="nav-link">Categories</a>
+        <a href="#gst-calc-card" class="nav-link active">GST Calculator</a>
+        <a href="../../index.html#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="../../calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="../../calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="../../index.html#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="../../index.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#gst-calc-card" class="mobile-nav-link active">Featured: GST Calculator</a></li>
+        <li><a href="../../index.html#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero & Breadcrumbs
+         ========================================================================= -->
+    <section class="gst-hero">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="../../index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../index.html#categories" class="breadcrumb-link">Finance</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" aria-current="page">GST Calculator India</span>
+        </nav>
+
+        <div class="gst-badge">India GST · Goods &amp; Services Tax</div>
+        <h1 class="gst-page-title">GST Calculator India</h1>
+        <p class="gst-page-subtitle">
+          Calculate Goods and Services Tax (GST) for products, invoices, and contracts. Easily add GST to net prices or reverse-calculate to remove GST from gross amounts with instant CGST, SGST, and IGST breakdowns.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Interactive Calculator Unit (Two Column Card Grid)
+         ========================================================================= -->
+    <section class="gst-calc-section" id="gst-calc-card">
+      <div class="container">
+        <div class="gst-calc-grid">
+
+          <!-- Left Column: Input Form Card -->
+          <div class="gst-card">
+            <div class="gst-card-header">
+              <h2 class="gst-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <line x1="2" y1="10" x2="22" y2="10"></line>
+                  <line x1="7" y1="15" x2="7.01" y2="15"></line>
+                  <line x1="11" y1="15" x2="13" y2="15"></line>
+                </svg>
+                Calculate GST
+              </h2>
+              <span class="gst-tag-india">India Slabs</span>
+            </div>
+
+            <!-- Mode Switcher: Add GST vs Remove GST -->
+            <div class="gst-mode-toggle" role="group" aria-label="GST Calculation Mode">
+              <button type="button" class="gst-mode-btn is-active" id="btn-mode-add" aria-pressed="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Add GST (Exclusive)</span>
+              </button>
+              <button type="button" class="gst-mode-btn" id="btn-mode-remove" aria-pressed="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Remove GST (Inclusive)</span>
+              </button>
+            </div>
+
+            <form class="gst-form" onsubmit="return false;" novalidate>
+              <!-- 1. Amount Input -->
+              <div class="gst-input-group">
+                <div class="gst-label-row">
+                  <label for="gst-input-amount" class="gst-label" id="gst-amount-label">Net Amount (Excl. GST)</label>
+                  <span class="gst-value-pill" id="gst-pill-amount">₹10,000</span>
+                </div>
+                <div class="gst-input-wrapper">
+                  <span class="gst-affix gst-prefix">₹</span>
+                  <input type="number" id="gst-input-amount" class="gst-input-text has-prefix" value="10000" min="0" step="any" inputmode="decimal" placeholder="e.g. 10000" aria-describedby="gst-amount-hint">
+                </div>
+                <p class="gst-hint" id="gst-amount-hint">Original price before GST is added</p>
+              </div>
+
+              <!-- 2. GST Rate Selection -->
+              <div class="gst-input-group">
+                <div class="gst-label-row">
+                  <label for="gst-input-rate" class="gst-label">GST Tax Rate (%)</label>
+                  <span class="gst-value-pill" id="gst-pill-rate">18%</span>
+                </div>
+
+                <!-- Rate Preset Chips (5%, 12%, 18%, 28%) -->
+                <div class="rate-chips-row" role="group" aria-label="Preset Tax Rates">
+                  <button type="button" class="rate-chip" data-rate="5" aria-pressed="false">5%</button>
+                  <button type="button" class="rate-chip" data-rate="12" aria-pressed="false">12%</button>
+                  <button type="button" class="rate-chip is-active" data-rate="18" aria-pressed="true">18%</button>
+                  <button type="button" class="rate-chip" data-rate="28" aria-pressed="false">28%</button>
+                </div>
+
+                <!-- Custom Rate Input Field -->
+                <div class="gst-input-wrapper" style="margin-top: 0.45rem;">
+                  <input type="number" id="gst-input-rate" class="gst-input-text has-suffix" value="18" min="0" max="100" step="0.1" inputmode="decimal" placeholder="Custom Rate %" aria-label="Custom GST percentage rate">
+                  <span class="gst-affix gst-suffix">%</span>
+                </div>
+              </div>
+
+              <!-- 3. Intra-State vs Inter-State Tax Split -->
+              <div class="gst-input-group">
+                <div class="gst-label-row">
+                  <span class="gst-label">Transaction Type (Tax Breakdown)</span>
+                </div>
+                <div class="split-selector" role="group" aria-label="Transaction Type Selection">
+                  <button type="button" class="split-btn is-active" id="split-btn-intra" aria-pressed="true">
+                    Intra-State (CGST 50% + SGST 50%)
+                  </button>
+                  <button type="button" class="split-btn" id="split-btn-inter" aria-pressed="false">
+                    Inter-State (IGST 100%)
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4. Quick Examples Box (Click to Load) -->
+              <div class="quick-examples-box">
+                <span class="quick-examples-title">Quick Test Examples:</span>
+                <div class="example-chips-row">
+                  <button type="button" class="example-chip" data-amount="1000" data-rate="5" data-mode="add" title="Add 5% GST to ₹1,000">
+                    <span>₹1,000</span>
+                    <span class="example-chip-rate">@ 5%</span>
+                  </button>
+                  <button type="button" class="example-chip" data-amount="10000" data-rate="18" data-mode="add" title="Add 18% GST to ₹10,000">
+                    <span>₹10,000</span>
+                    <span class="example-chip-rate">@ 18%</span>
+                  </button>
+                  <button type="button" class="example-chip" data-amount="50000" data-rate="12" data-mode="add" title="Add 12% GST to ₹50,000">
+                    <span>₹50,000</span>
+                    <span class="example-chip-rate">@ 12%</span>
+                  </button>
+                  <button type="button" class="example-chip" data-amount="100000" data-rate="28" data-mode="add" title="Add 28% GST to ₹1,00,000">
+                    <span>₹1,00,000</span>
+                    <span class="example-chip-rate">@ 28%</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 5. Form Actions (Reset) -->
+              <div class="gst-actions-row">
+                <button type="button" class="btn-calc-reset" id="btn-gst-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Results & Breakdown Card -->
+          <div class="gst-card gst-results-card" id="gst-results-card">
+            <div class="gst-card-header">
+              <h2 class="gst-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Calculation Summary
+              </h2>
+              <span class="gst-tag-india">Live Output</span>
+            </div>
+
+            <!-- Primary Headline Result -->
+            <div class="gst-main-result-box">
+              <div class="gst-result-label" id="result-main-label">Total Amount (Incl. GST)</div>
+              <div class="gst-result-amount" id="result-main-amount">₹11,800</div>
+              <div class="gst-result-subtitle" id="result-main-subtitle">Includes ₹1,800 GST (18%) added to base</div>
+            </div>
+
+            <!-- Key Financial Figures -->
+            <div class="gst-stats-list">
+              <div class="gst-stat-row">
+                <span class="gst-stat-label">Net Base Price (Excl. Tax)</span>
+                <span class="gst-stat-val" id="result-stat-base">₹10,000</span>
+              </div>
+              <div class="gst-stat-row">
+                <span class="gst-stat-label" id="result-stat-gst-label">Total GST Tax (18%)</span>
+                <span class="gst-stat-val highlight" id="result-stat-gst">₹1,800</span>
+              </div>
+              <div class="gst-stat-row">
+                <span class="gst-stat-label">Gross Total Price (Incl. Tax)</span>
+                <span class="gst-stat-val" id="result-stat-final">₹11,800</span>
+              </div>
+            </div>
+
+            <!-- Tax Split Details (CGST + SGST vs IGST) -->
+            <div class="gst-breakdown-box">
+              <div class="gst-breakdown-header">
+                <span>Tax Allocation</span>
+                <span class="breakdown-subtext">Statutory Split</span>
+              </div>
+
+              <!-- Intra-State Breakdown (Default) -->
+              <div id="breakdown-intra-rows">
+                <div class="breakdown-row">
+                  <span class="gst-stat-label" id="result-cgst-label">CGST (Central Tax 9%)</span>
+                  <span class="breakdown-val" id="result-cgst-amount">₹900</span>
+                </div>
+                <div class="breakdown-row">
+                  <span class="gst-stat-label" id="result-sgst-label">SGST (State Tax 9%)</span>
+                  <span class="breakdown-val" id="result-sgst-amount">₹900</span>
+                </div>
+              </div>
+
+              <!-- Inter-State Breakdown (Hidden when Intra-state) -->
+              <div id="breakdown-inter-rows" style="display: none;">
+                <div class="breakdown-row">
+                  <span class="gst-stat-label" id="result-igst-label">IGST (Integrated Tax 18%)</span>
+                  <span class="breakdown-val" id="result-igst-amount">₹1,800</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Share Bar (Base vs Tax) -->
+            <div class="gst-ratio-wrapper">
+              <div class="gst-ratio-header">
+                <div class="ratio-legend-item">
+                  <span class="ratio-dot base"></span>
+                  <span>Base Price (<span id="pct-base">85%</span>)</span>
+                </div>
+                <div class="ratio-legend-item">
+                  <span class="ratio-dot tax"></span>
+                  <span>GST Tax (<span id="pct-gst">15%</span>)</span>
+                </div>
+              </div>
+              <div class="ratio-bar-track" aria-hidden="true">
+                <div class="bar-segment-base" id="bar-base" style="width: 85%;"></div>
+                <div class="bar-segment-tax" id="bar-gst" style="width: 15%;"></div>
+              </div>
+            </div>
+
+            <!-- Copy Summary Button -->
+            <button type="button" class="btn-calc-copy" id="btn-gst-copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Calculation Summary</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Formula & Calculation Methodology
+         ========================================================================= -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-grid">
+
+          <!-- Left Column: Step-by-Step Formula & Explanation -->
+          <article class="article-card">
+            <div>
+              <h2 class="article-heading">GST Calculation Formulas Explained</h2>
+              <p class="article-p">
+                Under the Indian Goods and Services Tax (GST) system, calculations differ depending on whether the starting figure is tax-exclusive (adding GST) or tax-inclusive (extracting GST).
+              </p>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">1. Formula to Add GST (Tax-Exclusive to Inclusive)</h3>
+              <p class="article-p" style="margin-bottom: 0.75rem;">
+                Use this formula when you know the manufacturer's net base price and need to determine the final bill amount payable by the consumer:
+              </p>
+              <div class="formula-box">
+                <div class="formula-display">
+                  GST Amount = (Base Amount × GST Rate) ÷ 100<br>
+                  Gross Total = Base Amount + GST Amount
+                </div>
+                <div class="formula-vars-list">
+                  <div><strong>Base Amount:</strong> Pre-tax price of the goods or services.</div>
+                  <div><strong>GST Rate:</strong> Statutory tax percentage (e.g. 5%, 12%, 18%, or 28%).</div>
+                  <div><strong>Gross Total:</strong> Total invoice amount including tax.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">2. Formula to Remove GST (Reverse Tax-Inclusive Calculation)</h3>
+              <p class="article-p" style="margin-bottom: 0.75rem;">
+                Use this formula when you have a gross total invoice figure and need to find the underlying base cost and extract the tax paid:
+              </p>
+              <div class="formula-box">
+                <div class="formula-display">
+                  Base Amount = Gross Total ÷ (1 + (GST Rate ÷ 100))<br>
+                  GST Amount = Gross Total - Base Amount
+                </div>
+                <div class="formula-vars-list">
+                  <div><strong>Gross Total:</strong> Amount already inclusive of GST.</div>
+                  <div><strong>Base Amount:</strong> Extracted net pre-tax figure.</div>
+                  <div><strong>GST Amount:</strong> Exact tax portion embedded inside the total.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">3. Intra-State vs. Inter-State Split Rules</h3>
+              <div class="formula-box">
+                <div class="formula-display">
+                  Intra-State: CGST = GST ÷ 2 &nbsp;|&nbsp; SGST = GST ÷ 2<br>
+                  Inter-State: IGST = Total GST Amount
+                </div>
+                <div class="formula-vars-list">
+                  <div><strong>Intra-State (Same State):</strong> Tax is equally divided between Central Government (CGST) and State Government (SGST).</div>
+                  <div><strong>Inter-State (Between States):</strong> Entire tax is collected as Integrated GST (IGST) by the Central Government.</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Right Column: Practical Step-by-Step Example -->
+          <article class="article-card">
+            <div>
+              <h2 class="article-heading">Worked Examples</h2>
+              <p class="article-p">
+                Review how numbers flow through the formulas in real commercial transactions:
+              </p>
+            </div>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-text">
+                  <strong>Example A: Adding 18% GST to ₹10,000</strong><br>
+                  • Base Price = ₹10,000<br>
+                  • GST = (₹10,000 × 18) ÷ 100 = <strong>₹1,800</strong><br>
+                  • Final Invoice Price = ₹10,000 + ₹1,800 = <strong>₹11,800</strong><br>
+                  • If intra-state: CGST = ₹900, SGST = ₹900
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-text">
+                  <strong>Example B: Removing 18% GST from ₹11,800</strong><br>
+                  • Gross Price = ₹11,800<br>
+                  • Base Price = ₹11,800 ÷ (1 + 0.18) = <strong>₹10,000</strong><br>
+                  • Extracted GST = ₹11,800 - ₹10,000 = <strong>₹1,800</strong>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-text">
+                  <strong>Example C: Adding 5% GST to ₹1,000</strong><br>
+                  • Base Price = ₹1,000<br>
+                  • GST = (₹1,000 × 5) ÷ 100 = <strong>₹50</strong><br>
+                  • Total Price = <strong>₹1,050</strong> (CGST ₹25, SGST ₹25)
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-text">
+                  <strong>Example D: Adding 28% GST to ₹1,00,000</strong><br>
+                  • Base Price = ₹1,00,000<br>
+                  • GST = (₹1,00,000 × 28) ÷ 100 = <strong>₹28,000</strong><br>
+                  • Total Price = <strong>₹1,28,000</strong> (CGST ₹14,000, SGST ₹14,000)
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Educational Guide: Indian GST System & Slab Rates
+         ========================================================================= -->
+    <section class="content-section" style="padding-top: 0;">
+      <div class="container">
+        <article class="article-card">
+          <div>
+            <h2 class="article-heading">Goods and Services Tax (GST) Slabs in India</h2>
+            <p class="article-p">
+              Introduced on July 1, 2017, the Goods and Services Tax (GST) unified a complex multi-tier indirect tax regime (VAT, Central Excise Duty, Service Tax, Octroi, and Entry Tax) under a single national framework: "One Nation, One Tax". The GST Council categorizes all commodities and commercial services across four primary standard tax tiers:
+            </p>
+          </div>
+
+          <div class="table-responsive">
+            <table class="gst-rate-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%;">Tax Slab</th>
+                  <th style="width: 25%;">Category</th>
+                  <th style="width: 60%;">Typical Goods &amp; Services Included</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="slab-badge" style="background-color: #f1f5f9; color: var(--text-body);">0% (Exempt)</span></td>
+                  <td><strong>Essential Needs &amp; Unprocessed Items</strong></td>
+                  <td>Fresh vegetables, fresh fruits, unbranded food grains, natural honey, curd, fresh milk, educational services, primary healthcare.</td>
+                </tr>
+                <tr>
+                  <td><span class="slab-badge">5%</span></td>
+                  <td><strong>Basic Necessities &amp; Low-Tier Transport</strong></td>
+                  <td>Packaged food items, tea, coffee beans, spices, edible oils, medicines, footwear under ₹1,000, economy air travel, railway tickets.</td>
+                </tr>
+                <tr>
+                  <td><span class="slab-badge">12%</span></td>
+                  <td><strong>Processed Goods &amp; Work Tools</strong></td>
+                  <td>Butter, cheese, fruit juices, computers, frozen meats, ayurvedic medicines, sewing machines, business class tickets.</td>
+                </tr>
+                <tr>
+                  <td><span class="slab-badge">18%</span></td>
+                  <td><strong>Standard Goods &amp; Professional Services</strong></td>
+                  <td>Software development, IT consulting, telecom services, banking, financial services, hair oils, consumer electronics, restaurants.</td>
+                </tr>
+                <tr>
+                  <td><span class="slab-badge" style="background-color: #fee2e2; color: #b91c1c;">28%</span></td>
+                  <td><strong>Luxury, High-End &amp; Sin Goods</strong></td>
+                  <td>Automobiles, high-end motorcycles, air conditioners, dishwashers, tobacco items, aerated beverages, five-star hotel stays.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="article-subheading">Understanding CGST, SGST, UTGST, and IGST</h3>
+            <p class="article-p">
+              India operates an integrated dual-GST structure where both the Union government and State governments levy tax simultaneously on a common tax base:
+            </p>
+            <ul style="margin-top: 0.5rem; margin-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9375rem; color: var(--text-body); line-height: 1.6;">
+              <li><strong>CGST (Central Goods and Services Tax):</strong> Collected by the Central Government on an intra-state supply of goods or services.</li>
+              <li><strong>SGST (State Goods and Services Tax):</strong> Collected by the State Government where the consumption takes place.</li>
+              <li><strong>UTGST (Union Territory Goods and Services Tax):</strong> Collected instead of SGST in Union Territories without legislatures (e.g. Andaman &amp; Nicobar, Lakshadweep, Ladakh).</li>
+              <li><strong>IGST (Integrated Goods and Services Tax):</strong> Collected by the Central Government on interstate supplies as well as imports and exports. The Central government then apportions the state's share to the destination state.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="article-subheading">Input Tax Credit (ITC) Mechanism</h3>
+            <p class="article-p">
+              A foundational advantage of GST is the seamless flow of <strong>Input Tax Credit (ITC)</strong>. Registered businesses can claim credit for the GST paid when purchasing raw materials or operational services against the GST collected when selling their products. This mechanism prevents the cascading "tax-on-tax" effect that historically inflated consumer prices.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Frequently Asked Questions (Accordion)
+         ========================================================================= -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Help &amp; Answers</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">
+            Common questions regarding GST calculations, tax slabs, invoicing rules, and compliance in India.
+          </p>
+        </div>
+
+        <div class="article-card" style="max-width: 900px; margin: 0 auto;">
+          <div class="faq-list">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What is the basic formula to calculate GST?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  To calculate GST on a net base amount, multiply the base price by the GST percentage and divide by 100: <code>GST Amount = (Base Amount × Rate) / 100</code>. Then add the GST amount to the base price to get the total bill: <code>Total Amount = Base Amount + GST Amount</code>.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I remove or reverse-calculate GST from an invoice total?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  To find the original net price from a tax-inclusive total, divide the gross total by (1 + GST Rate / 100): <code>Base Amount = Gross Total ÷ (1 + (Rate / 100))</code>. For example, if a bill is ₹11,800 with 18% GST: ₹11,800 ÷ 1.18 = ₹10,000 base amount, leaving ₹1,800 as the extracted GST amount.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What is the difference between CGST, SGST, and IGST?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  When a trade takes place within the same state (intra-state), GST is split equally between CGST (Central Government) and SGST (State Government). When goods or services are supplied from one state to another (inter-state) or imported, IGST (Integrated GST) applies in full and is collected by the Centre.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Which GST rate applies to most software, freelance, and consulting services?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Most professional services in India—including software development, IT consulting, freelance creative work, legal consulting, and digital marketing—are taxed under the standard 18% GST slab.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Can the GST rate be a custom or decimal percentage?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Yes. While the standard slabs are 5%, 12%, 18%, and 28%, special GST rates exist (such as 3% for gold/silver jewelry and 0.25% for cut &amp; polished diamonds). You can type any custom or decimal percentage directly into the GST Tax Rate field of this calculator.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Who is legally required to register for GST in India?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Under standard GST rules, businesses dealing in goods with an annual turnover exceeding ₹40 lakhs (₹20 lakhs for special category states) and service providers exceeding ₹20 lakhs (₹10 lakhs for special states) must register for GST. Additionally, entities engaged in inter-state supplies or e-commerce must register irrespective of turnover.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What is Input Tax Credit (ITC) and how do businesses benefit?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Input Tax Credit allows a business to offset the GST it paid on its business purchases (inputs) against the GST liability it collects on outbound sales (outputs). This ensures tax is paid only on the incremental value added at each transaction stage.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Does this calculator store or transmit my financial data?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  No. CalculatorHub computes all calculations 100% locally in your web browser. No figures, invoice amounts, or personal data are ever uploaded, saved to external databases, or shared with third parties.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Statutory Disclaimer -->
+        <div class="disclaimer-card" style="max-width: 900px; margin: 1.5rem auto 0 auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>Disclaimer:</strong> This GST Calculator is provided solely for educational, preliminary estimation, and informational purposes. While calculation logic strictly complies with standard Goods and Services Tax formulas, specific invoice treatments, tax exemptions, reverse charge mechanisms (RCM), and GST cess may apply to particular commodities. Always verify your calculations with a certified Chartered Accountant (CA) or tax consultant before filing statutory GSTR returns.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Related Tools (Only Valid Existing Links)
+         ========================================================================= -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="section-badge">More Tools</div>
+          <h2 class="section-title">Explore Related Calculators</h2>
+          <p class="section-desc">
+            Discover other essential financial tools built for precision and simplicity.
+          </p>
+        </div>
+
+        <div class="related-grid" style="max-width: 800px; margin: 0 auto;">
+          <!-- 1. EMI Calculator (Dedicated Page) -->
+          <a href="../../calculators/emi/index.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <path d="M3 21h18"></path>
+                <path d="M3 10h18"></path>
+                <path d="M5 6l7-3 7 3"></path>
+                <path d="M4 10v11"></path>
+                <path d="M20 10v11"></path>
+              </svg>
+            </div>
+            <h3 class="related-title">EMI Calculator</h3>
+            <p class="related-desc">
+              Calculate equated monthly installments, total interest, and complete amortization schedules for home, car, or personal loans.
+            </p>
+            <span class="related-action">
+              <span>Open EMI Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 2. SIP Calculator -->
+          <a href="../sip/index.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="related-title">SIP Calculator</h3>
+            <p class="related-desc">
+              Estimate future maturity wealth and total returns on systematic mutual fund investments over your target horizon.
+            </p>
+            <span class="related-action">
+              <span>Open SIP Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 3. Standard Interactive Calculator -->
+          <a href="../../calculator.html" class="related-card">
+            <div class="related-header">
+              <span class="calc-category-tag">General</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="related-title">Standard Calculator</h3>
+            <p class="related-desc">
+              Fast, reliable everyday arithmetic calculator with live calculation history, memory functions, and percentage tools.
+            </p>
+            <span class="related-action">
+              <span>Open Standard Tool</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer (Universal CalculatorHub Footer)
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand & Bio -->
+        <div class="footer-brand-col">
+          <a href="../../index.html" class="brand-logo footer-brand">
+            <div class="brand-icon-wrapper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+              </svg>
+            </div>
+            <div class="brand-text-wrapper">
+              <span class="brand-name">Calculator<span>Hub</span></span>
+              <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Fast, clean, and reliable calculators designed for everyday clarity. No ads, no sign-ups, 100% private.
+          </p>
+        </div>
+
+        <!-- Column 2: Popular Calculators -->
+        <div>
+          <h4 class="footer-heading">Calculators</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link" style="color: var(--primary); font-weight: 600;">GST Calculator</a></li>
+            <li><a href="../../calculators/emi/index.html" class="footer-link">EMI Calculator</a></li>
+            <li><a href="../../calculator.html" class="footer-link">Standard Calculator</a></li>
+            <li><a href="../sip/index.html" class="footer-link">SIP Calculator</a></li>
+            <li><a href="../percentage/index.html" class="footer-link">Percentage Calculator</a></li>
+            <li><a href="../age/index.html" class="footer-link">Age Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Categories -->
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="../../index.html#categories" class="footer-link">Finance</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Work &amp; Freelance</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Health</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Time &amp; Date</a></li>
+            <li><a href="../../index.html#categories" class="footer-link">Math</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: About & Legal -->
+        <div>
+          <h4 class="footer-heading">CalculatorHub</h4>
+          <ul class="footer-links-list">
+            <li><a href="../../index.html#why-us" class="footer-link">About CalculatorHub</a></li>
+            <li><a href="../../index.html#faq" class="footer-link">FAQ &amp; Help</a></li>
+            <li><a href="../../index.html#footer-contact" class="footer-link">Contact</a></li>
+            <li><a href="../../index.html#footer-privacy" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../../index.html#footer-terms" class="footer-link">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="../../index.html#footer-privacy">Privacy Policy</a>
+          <span>·</span>
+          <a href="../../index.html#footer-terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/registry.js"></script>
+  <script src="../../js/calculators/gst-engine.js"></script>
+  <script src="../../js/calculators/gst.js"></script>
+</body>
+</html>
