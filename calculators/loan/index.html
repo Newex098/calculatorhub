@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate loan periodic payments, reducing-balance amortization schedules, total interest, and total cost across monthly, quarterly, and yearly frequencies.">
+  <link rel="canonical" href="https://calculatorhub.com/calculators/loan/">
+  <meta property="og:title" content="Loan Calculator – Periodic Repayment & Amortization Schedule | CalculatorHub">
+  <meta property="og:description" content="Calculate loan periodic payments, reducing-balance amortization schedules, total interest, and total cost across monthly, quarterly, and yearly frequencies.">
+  <meta property="og:url" content="https://calculatorhub.com/calculators/loan/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculatorHub">
+  <title>Loan Calculator – Periodic Repayment & Amortization Schedule | CalculatorHub</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Loan Calculator – Periodic Repayment & Amortization Schedule",
+        "url": "https://calculatorhub.com/calculators/loan/",
+        "description": "Calculate loan periodic payments, reducing-balance amortization schedules, total interest, and total cost across monthly, quarterly, and yearly frequencies.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://calculatorhub.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Finance",
+              "item": "https://calculatorhub.com/#categories"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Loan Calculator",
+              "item": "https://calculatorhub.com/calculators/loan/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FinancialCalculator",
+        "name": "Loan Calculator",
+        "url": "https://calculatorhub.com/calculators/loan/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "General-purpose reducing-balance loan calculator with multi-frequency repayments (monthly, quarterly, half-yearly, yearly) and full amortization table."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a loan calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A loan calculator is a financial tool that computes the periodic repayment amount, total interest cost, and overall repayment sum for a borrowed principal based on an annual interest rate, tenure, and repayment frequency."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is loan payment calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Loan payments are calculated using the reducing-balance amortization formula: Payment = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where P is the loan principal, r is the periodic interest rate, and n is the total number of repayment periods."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between a loan calculator and an EMI calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While an EMI calculator specifically calculates Equated Monthly Installments (monthly frequency only), a general-purpose loan calculator supports multiple repayment frequencies including monthly, quarterly, half-yearly, and yearly schedules, as well as tenures in both years and months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a reducing-balance loan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In a reducing-balance loan, interest is calculated only on the remaining outstanding principal balance at each cycle rather than the original loan amount. As principal is repaid, the interest portion of each installment decreases while the principal portion increases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does repayment frequency affect total interest?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "More frequent repayment cycles (such as monthly vs. yearly) pay down principal earlier, resulting in slightly lower overall interest accumulation over the life of the loan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if the interest rate is 0%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At a 0% interest rate, no interest is charged. The periodic payment is simply the principal divided equally by the number of repayment periods (Payment = P / n), and the total repayment equals the exact original loan principal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I choose tenure in months instead of years?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can toggle between Years and Months directly in the calculator interface, making it ideal for short-term financing, bridge loans, or multi-year commercial borrowings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does a longer tenure increase total interest?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A longer tenure reduces your periodic payment by stretching the debt over more periods, but keeps the unpaid principal exposed to interest charges for a longer duration, resulting in a substantially higher total interest cost."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/loan.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header (Universal CalculatorHub Header)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../../index.html#popular" class="nav-link">Popular</a>
+        <a href="../../index.html#categories" class="nav-link">Categories</a>
+        <a href="#loan-calc-card" class="nav-link active">Loan Calculator</a>
+        <a href="../../index.html#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="../../calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="../../calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="../../index.html#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="../../index.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#loan-calc-card" class="mobile-nav-link active">Loan Calculator</a></li>
+        <li><a href="../../index.html#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero & Breadcrumbs
+         ========================================================================= -->
+    <section class="loan-hero">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="../../index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../index.html#categories" class="breadcrumb-link">Finance</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" aria-current="page">Loan Calculator</span>
+        </nav>
+
+        <div class="loan-badge">Finance · Reducing Balance</div>
+        <h1 class="loan-page-title">Loan Calculator</h1>
+        <p class="loan-page-subtitle">
+          Calculate periodic loan repayments, reducing-balance amortization schedules, total interest, and total debt cost.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Interactive Calculator Unit (Two Column Grid)
+         ========================================================================= -->
+    <section class="loan-calc-section" id="loan-calc-card">
+      <div class="container">
+        <div class="loan-calc-grid">
+
+          <!-- Left Column: Input Form Card -->
+          <div class="loan-card">
+            <div class="loan-card-header">
+              <h2 class="loan-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                Loan Terms & Parameters
+              </h2>
+              <span class="loan-tag-badge">Interactive Tool</span>
+            </div>
+
+            <form class="loan-form" onsubmit="return false;" novalidate>
+              <!-- 1. Loan Amount -->
+              <div class="loan-input-group">
+                <div class="loan-label-row">
+                  <label for="loan-input-amount" class="loan-label">Loan Amount</label>
+                  <span class="loan-value-pill" id="loan-pill-amount">₹5,00,000</span>
+                </div>
+                <div class="loan-input-wrapper">
+                  <span class="loan-affix loan-prefix">₹</span>
+                  <input type="number" id="loan-input-amount" class="loan-input-text has-prefix" value="500000" min="1000" max="100000000" step="5000" inputmode="decimal" placeholder="e.g. 500000" aria-label="Loan amount in rupees">
+                </div>
+                <input type="range" id="loan-slider-amount" class="loan-range-slider" min="10000" max="10000000" step="10000" value="500000" aria-label="Loan amount slider">
+                <div class="loan-range-legend">
+                  <span>₹10,000</span>
+                  <span>₹50,00,000</span>
+                  <span>₹1,00,00,000</span>
+                </div>
+              </div>
+
+              <!-- 2. Annual Interest Rate -->
+              <div class="loan-input-group">
+                <div class="loan-label-row">
+                  <label for="loan-input-rate" class="loan-label">Annual Interest Rate</label>
+                  <span class="loan-value-pill" id="loan-pill-rate">10%</span>
+                </div>
+                <div class="loan-input-wrapper">
+                  <input type="number" id="loan-input-rate" class="loan-input-text has-suffix" value="10" min="0" max="50" step="0.1" inputmode="decimal" placeholder="e.g. 10" aria-label="Annual interest rate percentage">
+                  <span class="loan-affix loan-suffix">%</span>
+                </div>
+                <input type="range" id="loan-slider-rate" class="loan-range-slider" min="0" max="30" step="0.25" value="10" aria-label="Annual interest rate slider">
+                <div class="loan-range-legend">
+                  <span>0%</span>
+                  <span>15%</span>
+                  <span>30%</span>
+                </div>
+              </div>
+
+              <!-- 3. Loan Tenure & Unit Switcher -->
+              <div class="loan-input-group">
+                <div class="loan-label-row">
+                  <label for="loan-input-tenure" class="loan-label">Loan Tenure</label>
+                  <div class="loan-tenure-switch-box">
+                    <div class="loan-tenure-toggle-pills" role="radiogroup" aria-label="Tenure measurement unit">
+                      <button type="button" class="loan-unit-btn is-active" id="loan-tenure-years-btn" role="radio" aria-checked="true" aria-pressed="true">Years</button>
+                      <button type="button" class="loan-unit-btn" id="loan-tenure-months-btn" role="radio" aria-checked="false" aria-pressed="false">Months</button>
+                    </div>
+                    <span class="loan-value-pill" id="loan-pill-tenure">5 Yrs</span>
+                  </div>
+                </div>
+                <div class="loan-input-wrapper">
+                  <input type="number" id="loan-input-tenure" class="loan-input-text has-suffix" value="5" min="1" max="360" step="1" inputmode="numeric" placeholder="e.g. 5" aria-label="Loan tenure">
+                  <span class="loan-affix loan-suffix" id="loan-tenure-unit-label">Years</span>
+                </div>
+                <input type="range" id="loan-slider-tenure" class="loan-range-slider" min="1" max="30" step="1" value="5" aria-label="Loan tenure slider">
+                <div class="loan-range-legend">
+                  <span>1 Yr</span>
+                  <span>15 Yrs</span>
+                  <span>30 Yrs</span>
+                </div>
+              </div>
+
+              <!-- 4. Repayment Frequency -->
+              <div class="loan-input-group">
+                <div class="loan-label-row">
+                  <label class="loan-label">Repayment Frequency</label>
+                  <span class="loan-value-pill" id="loan-pill-freq">Monthly (12x/yr)</span>
+                </div>
+                <div class="loan-freq-grid" role="radiogroup" aria-label="Repayment frequency">
+                  <button type="button" class="loan-freq-btn is-active" data-freq="monthly" role="radio" aria-checked="true">
+                    Monthly
+                  </button>
+                  <button type="button" class="loan-freq-btn" data-freq="quarterly" role="radio" aria-checked="false">
+                    Quarterly
+                  </button>
+                  <button type="button" class="loan-freq-btn" data-freq="half_yearly" role="radio" aria-checked="false">
+                    Half-Yearly
+                  </button>
+                  <button type="button" class="loan-freq-btn" data-freq="yearly" role="radio" aria-checked="false">
+                    Yearly
+                  </button>
+                </div>
+              </div>
+
+              <!-- 5. Quick Test Presets -->
+              <div class="quick-examples-box">
+                <span class="quick-examples-title">Quick Test Presets:</span>
+                <div class="example-chips-row">
+                  <button type="button" class="loan-preset-chip" data-amount="100000" data-rate="10" data-tenure="1" data-unit="years" title="₹1 Lakh at 10% for 1 year">
+                    <span>₹1 Lakh</span>
+                    <span class="loan-preset-detail">10% · 1y</span>
+                  </button>
+                  <button type="button" class="loan-preset-chip is-active" data-amount="500000" data-rate="10" data-tenure="5" data-unit="years" title="₹5 Lakh at 10% for 5 years">
+                    <span>₹5 Lakh</span>
+                    <span class="loan-preset-detail">10% · 5y</span>
+                  </button>
+                  <button type="button" class="loan-preset-chip" data-amount="1000000" data-rate="9.5" data-tenure="7" data-unit="years" title="₹10 Lakh at 9.5% for 7 years">
+                    <span>₹10 Lakh</span>
+                    <span class="loan-preset-detail">9.5% · 7y</span>
+                  </button>
+                  <button type="button" class="loan-preset-chip" data-amount="2000000" data-rate="8.5" data-tenure="15" data-unit="years" title="₹20 Lakh at 8.5% for 15 years">
+                    <span>₹20 Lakh</span>
+                    <span class="loan-preset-detail">8.5% · 15y</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 6. Form Actions (Reset Button Only - Live Auto-Calculation) -->
+              <div class="loan-actions-row">
+                <button type="button" class="btn-calc-reset" id="btn-loan-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset Loan Calculator</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Results Card -->
+          <div class="loan-card loan-results-card" id="loan-results-card">
+            <div class="loan-card-header">
+              <h2 class="loan-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Repayment Summary
+              </h2>
+              <span class="loan-tag-badge">Live Result</span>
+            </div>
+
+            <!-- Prominent Periodic Payment Display -->
+            <div class="loan-main-result-box">
+              <div class="loan-result-label" id="result-loan-payment-label">Monthly Payment</div>
+              <div class="loan-result-amount" id="result-loan-payment">₹10,624</div>
+              <div class="loan-result-subtitle" id="result-loan-payment-subtitle">Payable across 60 periods over 5 years at 10%</div>
+            </div>
+
+            <!-- Core Figures List -->
+            <div class="loan-stats-list">
+              <div class="loan-stat-row">
+                <span class="loan-stat-label">Principal Borrowed</span>
+                <span class="loan-stat-val" id="result-loan-principal">₹5,00,000</span>
+              </div>
+              <div class="loan-stat-row">
+                <span class="loan-stat-label">Total Interest Payable</span>
+                <span class="loan-stat-val debt" id="result-loan-interest">₹1,37,411</span>
+              </div>
+              <div class="loan-stat-row">
+                <span class="loan-stat-label">Total Payment (P + I)</span>
+                <span class="loan-stat-val" id="result-loan-total">₹6,37,411</span>
+              </div>
+              <div class="loan-stat-row">
+                <span class="loan-stat-label">Interest as % of Principal</span>
+                <span class="loan-stat-val debt" id="result-loan-rate-gain">+27.48%</span>
+              </div>
+            </div>
+
+            <!-- Visual Breakdown Bar (Principal vs Interest) -->
+            <div class="loan-ratio-wrapper">
+              <div class="loan-ratio-header">
+                <div class="ratio-legend-item">
+                  <span class="ratio-dot principal"></span>
+                  <span>Principal (<span id="pct-principal">78%</span>)</span>
+                </div>
+                <div class="ratio-legend-item">
+                  <span class="ratio-dot interest"></span>
+                  <span>Interest (<span id="pct-interest">22%</span>)</span>
+                </div>
+              </div>
+              <div class="ratio-bar-track" aria-hidden="true">
+                <div class="bar-segment-principal" id="bar-principal" style="width: 78%;"></div>
+                <div class="bar-segment-interest" id="bar-interest" style="width: 22%;"></div>
+              </div>
+            </div>
+
+            <!-- Copy Summary Button -->
+            <button type="button" class="btn-calc-copy" id="btn-loan-copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Calculation Summary</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Amortization Schedule Table
+         ========================================================================= -->
+    <section class="loan-amort-section">
+      <div class="container">
+        <div class="loan-amort-card">
+          <div class="loan-amort-header">
+            <h2 class="loan-amort-title">Loan Amortization Schedule</h2>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">
+              Period-by-period breakdown of starting balance, installment, interest charged, principal repaid, and remaining balance.
+            </p>
+          </div>
+
+          <div class="table-responsive">
+            <table class="loan-amort-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Period</th>
+                  <th>Starting Balance</th>
+                  <th>Payment</th>
+                  <th>Interest</th>
+                  <th>Principal</th>
+                  <th>Ending Balance</th>
+                </tr>
+              </thead>
+              <tbody id="loan-amort-tbody">
+                <!-- Dynamically generated rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div style="text-align: center;">
+            <button type="button" class="btn-toggle-amort" id="btn-toggle-amort" style="display: none;">
+              View Full Schedule
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Educational & SEO Content Section
+         ========================================================================= -->
+    <section class="loan-content-section">
+      <div class="container">
+        <article class="loan-article-card loan-prose">
+          <h2>1. What is a Loan Calculator?</h2>
+          <p>
+            A <strong>loan calculator</strong> is an essential financial planning tool that enables borrowers to forecast the recurring cost of borrowing money. By entering the loan amount, interest rate, tenure, and repayment cycle, you can instantly determine your exact periodic obligation, total interest expense, and the time required to become debt-free.
+          </p>
+          <p>
+            Whether evaluating a commercial mortgage, vehicle loan, student financing, or equipment lease, using a loan calculator provides clarity into how debt structures impact long-term financial commitments.
+          </p>
+
+          <h2>2. How Loan Payments are Calculated</h2>
+          <p>
+            Standard term loans utilize the <strong>reducing-balance method</strong> (also known as the diminishing balance method). Under this framework, interest for any given period is computed strictly on the remaining outstanding principal balance rather than the initial borrowed amount.
+          </p>
+          <p>
+            Each equal periodic payment is divided into two distinct components:
+          </p>
+          <ul>
+            <li><strong>Interest Component:</strong> Compensates the lender for the funds borrowed during that cycle (<code>Outstanding Balance × Periodic Rate</code>).</li>
+            <li><strong>Principal Component:</strong> The remainder of your installment, which directly reduces the outstanding debt balance.</li>
+          </ul>
+
+          <h2>3. Reducing-Balance Loans</h2>
+          <p>
+            Because the principal balance diminishes with each installment, the interest charged in successive periods continuously decreases. To maintain a constant, predictable installment amount, the principal portion of each payment automatically grows over time.
+          </p>
+          <p>
+            During the early stages of a loan, the vast majority of your payment goes toward interest charges. As the debt matures, the balance tilts heavily toward principal repayment until the entire loan is cleared.
+          </p>
+
+          <h2>4. The Loan Payment Formula</h2>
+          <p>
+            The mathematical formula used by global banking and financial institutions to determine fixed periodic loan repayments is:
+          </p>
+
+          <div class="loan-formula-box">
+            <div class="loan-formula-code">Payment = [P × r × (1 + r)^n] / [(1 + r)^n - 1]</div>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.9375rem; color: var(--text-body);">
+              Total Repayment: <strong>Total = Payment × n</strong> &nbsp;|&nbsp; Total Interest: <strong>Interest = Total - P</strong>
+            </p>
+          </div>
+
+          <p>Where each parameter represents:</p>
+          <ul>
+            <li><strong>P:</strong> Principal loan balance borrowed in Rupees (₹)</li>
+            <li><strong>r:</strong> Periodic interest rate, calculated as annual rate divided by periods per year (<code>Annual Rate / (m × 100)</code>)</li>
+            <li><strong>n:</strong> Total number of repayment periods throughout the loan tenure (<code>Tenure in Years × m</code>)</li>
+            <li><strong>m:</strong> Compounding frequency per year (12 for Monthly, 4 for Quarterly, 2 for Half-Yearly, 1 for Yearly)</li>
+          </ul>
+
+          <h2>5. Total Interest vs Principal</h2>
+          <p>
+            Borrowers frequently underestimate the cumulative cost of interest. On high-rate or long-tenure loans, total interest paid over the life of the debt can equal or even exceed the original principal borrowed. Understanding the ratio between principal and interest empowers borrowers to optimize their repayment schedules and minimize unnecessary finance charges.
+          </p>
+
+          <h2>6. Effect of Interest Rate</h2>
+          <p>
+            The interest rate is the single most influential variable affecting total borrowing cost. Even a slight 0.5% or 1% reduction in annual interest can translate into tens of thousands of rupees saved over the life of a loan.
+          </p>
+
+          <h2>7. Effect of Loan Tenure</h2>
+          <p>
+            Opting for a longer tenure reduces your periodic installment, making monthly budgeting easier. However, extending the tenure forces your principal to remain exposed to interest charges for a significantly longer duration. Conversely, choosing the shortest affordable tenure drastically slashes the total interest payable.
+          </p>
+
+          <h2>8. Effect of Repayment Frequency</h2>
+          <p>
+            Choosing a more frequent repayment schedule—such as monthly or quarterly instead of annual payments—accelerates the rate at which outstanding principal is reduced. This slight acceleration compounds over time, lowering the total interest paid across the debt lifecycle.
+          </p>
+
+          <h2>9. Difference Between a Loan Calculator and an EMI Calculator</h2>
+          <p>
+            While both tools calculate debt obligations using reducing-balance amortization, they serve complementary purposes:
+          </p>
+
+          <div class="table-responsive">
+            <table class="loan-comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Loan Calculator</th>
+                  <th>EMI Calculator</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Repayment Frequency</strong></td>
+                  <td>Monthly, Quarterly, Half-Yearly, Yearly</td>
+                  <td>Monthly (Equated Monthly Installment) only</td>
+                </tr>
+                <tr>
+                  <td><strong>Tenure Units</strong></td>
+                  <td>Both Years and Months supported</td>
+                  <td>Typically configured in Years or Months</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Use Case</strong></td>
+                  <td>General debt analysis, business loans, custom frequencies</td>
+                  <td>Consumer loans (Home, Car, Personal loans)</td>
+                </tr>
+                <tr>
+                  <td><strong>Schedule Table</strong></td>
+                  <td>Flexible period amortization schedule</td>
+                  <td>Monthly repayment schedule</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Step-by-Step Worked Example</h2>
+          <div class="loan-example-card">
+            <div class="loan-example-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Example: ₹5,00,000 Loan at 10% Annual Interest for 5 Years (Monthly Repayment)
+            </div>
+            <ul class="loan-example-steps">
+              <li class="loan-example-step">
+                <span class="loan-step-num">1</span>
+                <div><strong>Identify Loan Parameters:</strong> Principal <code>P = ₹5,00,000</code>, Annual Rate <code>R = 10%</code>, Tenure <code>T = 5 Years</code> (60 months).</div>
+              </li>
+              <li class="loan-example-step">
+                <span class="loan-step-num">2</span>
+                <div><strong>Calculate Periodic Rate:</strong> <code>r = 10 / (12 × 100) = 0.008333</code> (approx 0.833% per month).</div>
+              </li>
+              <li class="loan-example-step">
+                <span class="loan-step-num">3</span>
+                <div><strong>Apply Amortization Formula:</strong> <code>Payment = [500000 × 0.008333 × (1.008333)^60] / [(1.008333)^60 - 1] = ₹10,623.52</code> per month.</div>
+              </li>
+              <li class="loan-example-step">
+                <span class="loan-step-num">4</span>
+                <div><strong>Calculate Total Repayment:</strong> <code>60 × ₹10,623.52 = ₹6,37,411.34</code>.</div>
+              </li>
+              <li class="loan-example-step">
+                <span class="loan-step-num">5</span>
+                <div><strong>Determine Total Interest:</strong> <code>₹6,37,411.34 - ₹5,00,000 = ₹1,37,411.34</code> (representing 27.48% of the original principal).</div>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Frequently Asked Questions (Accordion)
+         ========================================================================= -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="loan-badge">Knowledge Base</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">
+            Reliable explanations regarding loan formulas, reducing balances, and repayment strategies.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What is a loan calculator?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                A loan calculator is a specialized financial estimation tool that calculates your periodic installment amount, total interest cost, and overall repayment commitment based on the loan amount, interest rate, tenure, and payment frequency.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>How is loan payment calculated?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Loan payments are computed using standard reducing-balance amortization: <code>Payment = [P × r × (1 + r)^n] / [(1 + r)^n - 1]</code>, where <em>P</em> is the borrowed principal, <em>r</em> is the periodic interest rate, and <em>n</em> is the total count of payment periods.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What is the difference between a loan calculator and an EMI calculator?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                An EMI calculator is specifically dedicated to monthly installments (Equated Monthly Installments), commonly used for Indian retail home, car, or personal loans. A general loan calculator allows you to model alternative repayment cadences (quarterly, half-yearly, yearly) as well as tenure in both years and months.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What is a reducing-balance loan?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                In a reducing-balance loan, interest is calculated solely on the outstanding principal remaining at each payment date rather than the original loan amount. As you gradually pay down principal, the interest share of each installment decreases and the principal recovery share rises.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>How does repayment frequency affect total interest?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                More frequent repayments (e.g. monthly vs. yearly) decrease the outstanding principal sooner. Because interest is charged on the unpaid balance, earlier principal reduction yields a modestly lower cumulative interest outlay.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What happens if the interest rate is 0%?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                When the interest rate is 0%, interest payable is ₹0. The repayment amount is simply the principal divided equally by the number of installments (<code>Payment = P / n</code>), and the total repayment equals the exact principal borrowed.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Can I choose tenure in months instead of years?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Yes. Use the Years/Months switch above the tenure input to toggle between time units. The slider and inputs automatically update their ranges to accommodate your chosen unit.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Why does a longer tenure increase total interest?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                A longer tenure reduces your periodic installment amount by distributing repayment across more cycles. However, because the unpaid balance remains outstanding for a longer period of time, interest continues accumulating, resulting in a substantially higher cumulative interest cost.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Statutory Note -->
+        <div class="disclaimer-card" style="max-width: 800px; margin: 2rem auto 0 auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>Statutory Note:</strong> Actual loan payments may vary depending on lender terms, fees, taxes, insurance, processing charges, and repayment rules. This tool is provided for informational and financial estimation purposes only.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Related Calculators Section (Valid Existing Links)
+         ========================================================================= -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="loan-badge">More Tools</div>
+          <h2 class="section-title">Explore Related Calculators</h2>
+          <p class="section-desc">
+            Discover other essential financial and mathematical tools built for precision and simplicity.
+          </p>
+        </div>
+
+        <div class="related-grid" style="max-width: 900px; margin: 0 auto;">
+          <!-- 1. EMI Calculator -->
+          <a href="../../calculators/emi/index.html" class="related-card">
+            <div class="related-header">
+              <span class="loan-tag-badge">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <path d="M3 21h18"></path>
+                <path d="M3 10h18"></path>
+                <path d="M5 6l7-3 7 3"></path>
+                <path d="M4 10v11"></path>
+                <path d="M20 10v11"></path>
+              </svg>
+            </div>
+            <h3 class="related-title">EMI Calculator</h3>
+            <p class="related-desc">
+              Calculate equated monthly installments, total interest, and complete repayment schedules for home, car, or personal loans.
+            </p>
+            <span class="related-action">
+              <span>Open EMI Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 2. Simple Interest Calculator -->
+          <a href="../../calculators/simple-interest/index.html" class="related-card">
+            <div class="related-header">
+              <span class="loan-tag-badge">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 class="related-title">Simple Interest Calculator</h3>
+            <p class="related-desc">
+              Calculate simple interest, maturity proceeds, and linear annual growth for fixed deposits and consumer loans.
+            </p>
+            <span class="related-action">
+              <span>Open Simple Interest</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 3. Compound Interest Calculator -->
+          <a href="../../calculators/compound-interest/index.html" class="related-card">
+            <div class="related-header">
+              <span class="loan-tag-badge">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                <line x1="12" y1="6" x2="12" y2="8"></line>
+                <line x1="12" y1="16" x2="12" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="related-title">Compound Interest Calculator</h3>
+            <p class="related-desc">
+              Calculate compound interest and total future value with annual, monthly, or daily compounding schedules.
+            </p>
+            <span class="related-action">
+              <span>Open Compound Interest</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 4. SIP Calculator -->
+          <a href="../../calculators/sip/index.html" class="related-card">
+            <div class="related-header">
+              <span class="loan-tag-badge">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="related-title">SIP Calculator</h3>
+            <p class="related-desc">
+              Estimate future maturity wealth and total returns on regular monthly mutual fund investments over your target horizon.
+            </p>
+            <span class="related-action">
+              <span>Open SIP Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <!-- Column 1: Brand & Bio -->
+      <div class="footer-brand-col">
+        <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+          <div class="brand-icon-wrapper" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+              <line x1="8" y1="6" x2="16" y2="6"></line>
+              <line x1="16" y1="14" x2="16" y2="18"></line>
+              <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+            </svg>
+          </div>
+          <div class="brand-text-wrapper">
+            <span class="brand-name">Calculator<span>Hub</span></span>
+            <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+          </div>
+        </a>
+        <p class="footer-description">
+          Free, fast, and accessible calculation tools designed for everyday finance, work, health, and mathematics decisions.
+        </p>
+        <div class="footer-trust-badges">
+          <span class="footer-trust-badge">🛡️ Client-Side Private</span>
+          <span class="footer-trust-badge">⚡ Instant Math</span>
+          <span class="footer-trust-badge">📱 Mobile First</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Popular Calculators -->
+      <div>
+        <h4 class="footer-heading">Calculators</h4>
+        <ul class="footer-links-list">
+          <li><a href="../../calculators/loan/index.html" class="footer-link" style="color: var(--primary); font-weight: 600;">Loan Calculator</a></li>
+          <li><a href="../../calculators/emi/index.html" class="footer-link">EMI Calculator</a></li>
+          <li><a href="../../calculators/simple-interest/index.html" class="footer-link">Simple Interest</a></li>
+          <li><a href="../../calculators/compound-interest/index.html" class="footer-link">Compound Interest</a></li>
+          <li><a href="../../calculators/gst/index.html" class="footer-link">GST Calculator</a></li>
+          <li><a href="../../calculators/sip/index.html" class="footer-link">SIP Calculator</a></li>
+          <li><a href="../../calculator.html" class="footer-link">Standard Calculator</a></li>
+          <li><a href="../../calculators/percentage/index.html" class="footer-link">Percentage Calculator</a></li>
+          <li><a href="../../calculators/age/index.html" class="footer-link">Age Calculator</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Categories -->
+      <div>
+        <h4 class="footer-heading">Categories</h4>
+        <ul class="footer-links-list">
+          <li><a href="../../index.html#categories" class="footer-link">Finance</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Work & Freelance</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Health</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Time & Date</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Math</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Utilities</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Platform & Legal -->
+      <div>
+        <h4 class="footer-heading">CalculatorHub</h4>
+        <ul class="footer-links-list">
+          <li><a href="../../index.html#popular" class="footer-link">Popular Tools</a></li>
+          <li><a href="../../index.html#why-us" class="footer-link">Why CalculatorHub</a></li>
+          <li><a href="#faq" class="footer-link">Help & FAQs</a></li>
+          <li><a href="../../index.html#footer-privacy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../../index.html#footer-terms" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="container footer-bottom">
+      <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="../../index.html#footer-privacy">Privacy</a>
+        <span>·</span>
+        <a href="../../index.html#footer-terms">Terms</a>
+        <span>·</span>
+        <a href="#loan-calc-card">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/registry.js"></script>
+  <script src="../../js/calculators/loan-engine.js"></script>
+  <script src="../../js/calculators/loan.js"></script>
+</body>
+</html>

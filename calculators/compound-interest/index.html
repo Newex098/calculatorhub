@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate compound interest, future value, and total interest earned with annual, half-yearly, quarterly, monthly, or daily compounding schedules.">
+  <link rel="canonical" href="https://calculatorhub.com/calculators/compound-interest/">
+  <meta property="og:title" content="Compound Interest Calculator – Calculate CI & Growth | CalculatorHub">
+  <meta property="og:description" content="Calculate compound interest, future value, and total interest earned with annual, half-yearly, quarterly, monthly, or daily compounding schedules.">
+  <meta property="og:url" content="https://calculatorhub.com/calculators/compound-interest/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculatorHub">
+  <title>Compound Interest Calculator – Calculate CI & Growth | CalculatorHub</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Compound Interest Calculator – Calculate CI & Growth",
+        "url": "https://calculatorhub.com/calculators/compound-interest/",
+        "description": "Calculate compound interest, future value, and total interest earned with annual, half-yearly, quarterly, monthly, or daily compounding schedules.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://calculatorhub.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Finance",
+              "item": "https://calculatorhub.com/#categories"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Compound Interest Calculator",
+              "item": "https://calculatorhub.com/calculators/compound-interest/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FinancialCalculator",
+        "name": "Compound Interest Calculator",
+        "url": "https://calculatorhub.com/calculators/compound-interest/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "Online financial tool to calculate future value, compound interest earned, and annual progression schedules across various compounding frequencies."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is compound interest?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Compound interest is interest calculated on the initial principal and also on the accumulated interest of previous periods. In simple terms, it is 'interest on interest,' causing your wealth to grow at an accelerating rate over time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is compound interest calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Compound interest is calculated using the formula A = P(1 + r/n)^(nt), where A is the total future value, P is the initial principal, r is the annual interest rate (as a decimal), n is the compounding frequency per year, and t is the time horizon in years. The total compound interest is CI = A - P."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the compound interest formula?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard compound interest formula is A = P(1 + r/n)^(nt), where A is the future maturity value, P is the principal amount, r is the annual nominal interest rate in decimal form, n is the number of times interest compounds per year, and t is time in years."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is monthly or yearly compounding better?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "More frequent compounding generates higher returns. Monthly compounding (n=12) produces more total interest than yearly compounding (n=1) for the same principal and nominal interest rate because interest is credited and reinvested twelve times per year instead of once."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when the interest rate is 0%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When the interest rate is 0%, no interest accumulates. The future value equals the exact initial principal (A = P), and total compound interest earned is 0 (CI = 0)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between simple and compound interest?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simple interest is paid only on the original principal balance (SI = P × r × t). In contrast, compound interest calculates interest on the growing cumulative balance (principal plus all previously earned interest), producing exponential rather than linear growth."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can time period be entered as decimal or fractional years?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can enter fractional years like 2.5 years or 7.5 years. The calculator compounds interest through the full periods and computes the remaining fractional interval accordingly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this compound interest calculator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% free with no registration, login, or installation required. All calculations run client-side in your web browser for complete speed and data privacy."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/compound-interest.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header (Universal CalculatorHub Header)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-text-wrapper">
+          <span class="brand-name">Calculator<span>Hub</span></span>
+          <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../../index.html#popular" class="nav-link">Popular</a>
+        <a href="../../index.html#categories" class="nav-link">Categories</a>
+        <a href="#ci-calc-card" class="nav-link active">Compound Interest</a>
+        <a href="../../index.html#why-us" class="nav-link">Why CalculatorHub</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="nav-actions">
+        <a href="../../calculator.html" class="search-submit-btn">
+          <span>Open Calculator</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-drawer" aria-label="Mobile Navigation" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="../../calculator.html" class="mobile-nav-link" style="color: var(--primary); font-weight: 600;">⚡ Open Interactive Calculator</a></li>
+        <li><a href="../../index.html#popular" class="mobile-nav-link">Popular Calculators</a></li>
+        <li><a href="../../index.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="#ci-calc-card" class="mobile-nav-link active">Compound Interest Calculator</a></li>
+        <li><a href="../../index.html#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero & Breadcrumbs
+         ========================================================================= -->
+    <section class="ci-hero">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="../../index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../index.html#categories" class="breadcrumb-link">Finance</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" aria-current="page">Compound Interest Calculator</span>
+        </nav>
+
+        <div class="ci-badge">Finance · Wealth Growth</div>
+        <h1 class="ci-page-title">Compound Interest Calculator</h1>
+        <p class="ci-page-subtitle">
+          Calculate compound interest and total future value from principal, interest rate, compounding frequency, and time.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Interactive Calculator Unit (Two Column Grid)
+         ========================================================================= -->
+    <section class="ci-calc-section" id="ci-calc-card">
+      <div class="container">
+        <div class="ci-calc-grid">
+
+          <!-- Left Column: Input Form Card -->
+          <div class="ci-card">
+            <div class="ci-card-header">
+              <h2 class="ci-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <line x1="12" y1="6" x2="12" y2="8"></line>
+                  <line x1="12" y1="16" x2="12" y2="18"></line>
+                </svg>
+                Investment Details
+              </h2>
+              <span class="ci-tag-badge">Interactive Tool</span>
+            </div>
+
+            <form class="ci-form" onsubmit="return false;" novalidate>
+              <!-- 1. Initial Investment / Principal -->
+              <div class="ci-input-group">
+                <div class="ci-label-row">
+                  <label for="ci-input-principal" class="ci-label">Initial Investment / Principal</label>
+                  <span class="ci-value-pill" id="ci-pill-principal">₹10,000</span>
+                </div>
+                <div class="ci-input-wrapper">
+                  <span class="ci-affix ci-prefix">₹</span>
+                  <input type="number" id="ci-input-principal" class="ci-input-text has-prefix" value="10000" min="0" max="10000000" step="1000" inputmode="decimal" placeholder="e.g. 10000" aria-label="Initial principal investment in rupees">
+                </div>
+                <input type="range" id="ci-slider-principal" class="ci-range-slider" min="1000" max="1000000" step="1000" value="10000" aria-label="Principal slider">
+                <div class="ci-range-legend">
+                  <span>₹1,000</span>
+                  <span>₹5,00,000</span>
+                  <span>₹10,00,000</span>
+                </div>
+              </div>
+
+              <!-- 2. Annual Interest Rate -->
+              <div class="ci-input-group">
+                <div class="ci-label-row">
+                  <label for="ci-input-rate" class="ci-label">Annual Interest Rate</label>
+                  <span class="ci-value-pill" id="ci-pill-rate">8%</span>
+                </div>
+                <div class="ci-input-wrapper">
+                  <input type="number" id="ci-input-rate" class="ci-input-text has-suffix" value="8" min="0" max="50" step="0.25" inputmode="decimal" placeholder="e.g. 8" aria-label="Annual interest rate percentage">
+                  <span class="ci-affix ci-suffix">%</span>
+                </div>
+                <input type="range" id="ci-slider-rate" class="ci-range-slider" min="1" max="25" step="0.25" value="8" aria-label="Annual interest rate slider">
+                <div class="ci-range-legend">
+                  <span>1%</span>
+                  <span>12.5%</span>
+                  <span>25%</span>
+                </div>
+              </div>
+
+              <!-- 3. Time Period (Years) -->
+              <div class="ci-input-group">
+                <div class="ci-label-row">
+                  <label for="ci-input-years" class="ci-label">Time Period</label>
+                  <span class="ci-value-pill" id="ci-pill-years">5 Yrs</span>
+                </div>
+                <div class="ci-input-wrapper">
+                  <input type="number" id="ci-input-years" class="ci-input-text has-suffix" value="5" min="0.1" max="50" step="0.5" inputmode="decimal" placeholder="e.g. 5" aria-label="Time period in years">
+                  <span class="ci-affix ci-suffix">Yrs</span>
+                </div>
+                <input type="range" id="ci-slider-years" class="ci-range-slider" min="1" max="30" step="0.5" value="5" aria-label="Time period slider">
+                <div class="ci-range-legend">
+                  <span>1 Yr</span>
+                  <span>15 Yrs</span>
+                  <span>30 Yrs</span>
+                </div>
+              </div>
+
+              <!-- 4. Compounding Frequency -->
+              <div class="ci-input-group">
+                <div class="ci-label-row">
+                  <span class="ci-label" id="ci-label-freq">Compounding Frequency</span>
+                  <span class="ci-value-pill" id="ci-pill-freq">Annually (1x/yr)</span>
+                </div>
+                <div class="ci-freq-grid" role="radiogroup" aria-labelledby="ci-label-freq">
+                  <button type="button" class="ci-freq-btn is-active" data-freq="1" role="radio" aria-checked="true">Annually</button>
+                  <button type="button" class="ci-freq-btn" data-freq="2" role="radio" aria-checked="false">Half-Yearly</button>
+                  <button type="button" class="ci-freq-btn" data-freq="4" role="radio" aria-checked="false">Quarterly</button>
+                  <button type="button" class="ci-freq-btn" data-freq="12" role="radio" aria-checked="false">Monthly</button>
+                  <button type="button" class="ci-freq-btn" data-freq="365" role="radio" aria-checked="false">Daily</button>
+                </div>
+              </div>
+
+              <!-- 5. Quick Test Presets -->
+              <div class="quick-examples-box">
+                <span class="quick-examples-title">Quick Test Presets:</span>
+                <div class="example-chips-row">
+                  <button type="button" class="ci-preset-chip" data-principal="10000" data-rate="8" data-years="5" data-freq="1" title="₹10,000 at 8% for 5 years, Annually">
+                    <span>₹10,000</span>
+                    <span class="ci-preset-detail">8% · 5y · Annual</span>
+                  </button>
+                  <button type="button" class="ci-preset-chip" data-principal="10000" data-rate="8" data-years="5" data-freq="12" title="₹10,000 at 8% for 5 years, Monthly">
+                    <span>₹10,000</span>
+                    <span class="ci-preset-detail">8% · 5y · Monthly</span>
+                  </button>
+                  <button type="button" class="ci-preset-chip" data-principal="50000" data-rate="7.5" data-years="10" data-freq="4" title="₹50,000 at 7.5% for 10 years, Quarterly">
+                    <span>₹50,000</span>
+                    <span class="ci-preset-detail">7.5% · 10y · Qtr</span>
+                  </button>
+                  <button type="button" class="ci-preset-chip" data-principal="100000" data-rate="9" data-years="3" data-freq="365" title="₹1,00,000 at 9% for 3 years, Daily">
+                    <span>₹1,00,000</span>
+                    <span class="ci-preset-detail">9% · 3y · Daily</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 6. Form Actions (Reset Button Only - Live Auto-Calculation) -->
+              <div class="ci-actions-row">
+                <button type="button" class="btn-calc-reset" id="btn-ci-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset Calculator</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Results Card -->
+          <div class="ci-card ci-results-card" id="ci-results-card">
+            <div class="ci-card-header">
+              <h2 class="ci-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Future Value Summary
+              </h2>
+              <span class="ci-tag-badge">Live Result</span>
+            </div>
+
+            <!-- Prominent Future Value Display -->
+            <div class="ci-main-result-box">
+              <div class="ci-result-label">Total Future Value</div>
+              <div class="ci-result-amount" id="result-ci-total">₹14,693</div>
+              <div class="ci-result-subtitle" id="result-ci-total-subtitle">Maturity amount over 5 years with annual compounding at 8%</div>
+            </div>
+
+            <!-- Core Figures List -->
+            <div class="ci-stats-list">
+              <div class="ci-stat-row">
+                <span class="ci-stat-label">Initial Principal</span>
+                <span class="ci-stat-val" id="result-ci-principal">₹10,000</span>
+              </div>
+              <div class="ci-stat-row">
+                <span class="ci-stat-label">Total Interest Earned</span>
+                <span class="ci-stat-val gain" id="result-ci-interest">₹4,693</span>
+              </div>
+              <div class="ci-stat-row">
+                <span class="ci-stat-label">Interest as % of Principal</span>
+                <span class="ci-stat-val gain" id="result-ci-rate-gain">+46.93%</span>
+              </div>
+            </div>
+
+            <!-- Visual Breakdown Bar (Principal vs Interest) -->
+            <div class="ci-ratio-wrapper">
+              <div class="ci-ratio-header">
+                <div class="ratio-legend-item">
+                  <span class="ratio-dot principal"></span>
+                  <span>Principal (<span id="pct-principal">68%</span>)</span>
+                </div>
+                <div class="ratio-legend-item">
+                  <span class="ratio-dot interest"></span>
+                  <span>Interest (<span id="pct-interest">32%</span>)</span>
+                </div>
+              </div>
+              <div class="ratio-bar-track" aria-hidden="true">
+                <div class="bar-segment-principal" id="bar-principal" style="width: 68%;"></div>
+                <div class="bar-segment-interest" id="bar-interest" style="width: 32%;"></div>
+              </div>
+            </div>
+
+            <!-- Copy Summary Button -->
+            <button type="button" class="btn-calc-copy" id="btn-ci-copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Calculation Summary</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Yearly Investment Growth Schedule Table
+         ========================================================================= -->
+    <section class="ci-growth-section">
+      <div class="container">
+        <div class="ci-growth-card">
+          <div class="ci-growth-header">
+            <h2 class="ci-growth-title">Yearly Investment Growth</h2>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">
+              Annual progression showing starting balance, annual interest earned, and ending balance.
+            </p>
+          </div>
+
+          <div class="table-responsive">
+            <table class="ci-growth-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Year</th>
+                  <th>Starting Balance</th>
+                  <th>Interest Earned</th>
+                  <th>Ending Balance</th>
+                </tr>
+              </thead>
+              <tbody id="ci-schedule-tbody">
+                <!-- Dynamically generated rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div style="text-align: center;">
+            <button type="button" class="btn-toggle-growth" id="btn-toggle-schedule" style="display: none;">
+              View Full Schedule
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Educational & SEO Content Section
+         ========================================================================= -->
+    <section class="ci-content-section">
+      <div class="container">
+        <article class="ci-article-card ci-prose">
+          <h2>What is Compound Interest?</h2>
+          <p>
+            <strong>Compound interest</strong> is the interest earned on both your initial principal investment and the accumulated interest from prior periods. Often referred to by financial educators as <em>"interest on interest,"</em> compounding allows your savings and investments to grow at an accelerating, exponential rate over time rather than a flat linear progression.
+          </p>
+          <p>
+            When you deposit money into an interest-bearing account—such as a fixed deposit, bonds, or dividend-reinvesting mutual funds—your earned interest is added back to your balance. In subsequent periods, the next round of interest is computed on that higher total balance, compounding your earnings cycle after cycle.
+          </p>
+
+          <h2>How Compound Interest Works</h2>
+          <p>
+            The compounding mechanism operates on three critical pillars:
+          </p>
+          <ul>
+            <li><strong>Principal Amount (P):</strong> The initial capital you start with. Larger principal amounts generate higher initial interest payouts.</li>
+            <li><strong>Interest Rate (r):</strong> The annual percentage yield paid on your funds. Even fractional increases in interest rates compound into substantial sums over long horizons.</li>
+            <li><strong>Compounding Frequency (n):</strong> How often earned interest is credited to the principal (annually, half-yearly, quarterly, monthly, or daily). More frequent compounding boosts final yields.</li>
+            <li><strong>Time Horizon (t):</strong> The total duration your capital remains invested. Time is the most powerful variable in compound interest because exponential curves steepen significantly over decades.</li>
+          </ul>
+
+          <h2>The Compound Interest Formula</h2>
+          <p>
+            The standard mathematical equation used across global financial systems to calculate compound interest is:
+          </p>
+
+          <div class="ci-formula-box">
+            <div class="ci-formula-code">A = P × (1 + r / n)^(n × t)</div>
+            <p style="margin: 0; font-size: 0.9375rem; color: var(--text-body);">
+              Total Compound Interest: <strong>CI = A − P</strong>
+            </p>
+          </div>
+
+          <p>Where each variable represents:</p>
+          <ul>
+            <li><strong>A:</strong> Final maturity amount (Future Value)</li>
+            <li><strong>P:</strong> Initial principal investment</li>
+            <li><strong>r:</strong> Annual nominal interest rate expressed as a decimal (e.g. 8% = 0.08)</li>
+            <li><strong>n:</strong> Number of compounding periods per year (1 for Annual, 2 for Half-Yearly, 4 for Quarterly, 12 for Monthly, 365 for Daily)</li>
+            <li><strong>t:</strong> Total investment horizon in years (decimal values like 2.5 are fully supported)</li>
+          </ul>
+
+          <h3>Handling Fractional-Year Periods</h3>
+          <p>
+            For fractional-year periods (such as 2.5 years or 18 months), CalculatorHub uses the standard exponential compounding convention <code>A = P(1 + r/n)^(n × t)</code> across the exact decimal duration. In the yearly growth table above, full consecutive years are displayed first, followed by a designated final fractional row detailing the exact partial period.
+          </p>
+
+          <h2>Difference Between Simple and Compound Interest</h2>
+          <p>
+            While both formulas compute interest on money, their fundamental mechanics differ substantially:
+          </p>
+
+          <div class="table-responsive">
+            <table class="ci-comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Simple Interest (SI)</th>
+                  <th>Compound Interest (CI)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Calculation Base</strong></td>
+                  <td>Original principal balance only</td>
+                  <td>Principal + all accumulated prior interest</td>
+                </tr>
+                <tr>
+                  <td><strong>Formula</strong></td>
+                  <td><code>SI = P × r × t</code></td>
+                  <td><code>A = P(1 + r/n)^(nt)</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Growth Curve</strong></td>
+                  <td>Linear (constant annual gain)</td>
+                  <td>Exponential (accelerating annual gain)</td>
+                </tr>
+                <tr>
+                  <td><strong>Annual Interest Earned</strong></td>
+                  <td>Identical every single year</td>
+                  <td>Increases every compounding period</td>
+                </tr>
+                <tr>
+                  <td><strong>Best Suited For</strong></td>
+                  <td>Short-term personal loans, auto loans</td>
+                  <td>Long-term investments, FDs, mutual funds</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Effect of Compounding Frequency</h2>
+          <p>
+            Because interest is reinvested sooner when compounding happens more frequently, higher frequencies yield greater final returns for the same nominal rate:
+          </p>
+
+          <div class="table-responsive">
+            <table class="ci-comparison-table">
+              <thead>
+                <tr>
+                  <th>Frequency</th>
+                  <th>Periods / Year (n)</th>
+                  <th>Final Value (₹10,000 @ 8%, 5 Yrs)</th>
+                  <th>Total Interest Earned</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Annually</strong></td>
+                  <td>1</td>
+                  <td>₹14,693.28</td>
+                  <td>₹4,693.28</td>
+                </tr>
+                <tr>
+                  <td><strong>Half-Yearly</strong></td>
+                  <td>2</td>
+                  <td>₹14,802.44</td>
+                  <td>₹4,802.44</td>
+                </tr>
+                <tr>
+                  <td><strong>Quarterly</strong></td>
+                  <td>4</td>
+                  <td>₹14,859.47</td>
+                  <td>₹4,859.47</td>
+                </tr>
+                <tr>
+                  <td><strong>Monthly</strong></td>
+                  <td>12</td>
+                  <td>₹14,898.46</td>
+                  <td>₹4,898.46</td>
+                </tr>
+                <tr>
+                  <td><strong>Daily</strong></td>
+                  <td>365</td>
+                  <td>₹14,917.59</td>
+                  <td>₹4,917.59</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Step-by-Step Worked Example</h2>
+          <div class="ci-example-card">
+            <div class="ci-example-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Example: ₹10,000 invested at 8% annual interest for 5 years compounded annually
+            </div>
+            <ul class="ci-example-steps">
+              <li class="ci-example-step">
+                <span class="ci-step-num">1</span>
+                <div><strong>Identify Inputs:</strong> Principal <code>P = ₹10,000</code>, Rate <code>r = 0.08</code>, Frequency <code>n = 1</code>, Time <code>t = 5</code>.</div>
+              </li>
+              <li class="ci-example-step">
+                <span class="ci-step-num">2</span>
+                <div><strong>Substitute in Formula:</strong> <code>A = 10,000 × (1 + 0.08 / 1)^(1 × 5) = 10,000 × (1.08)^5</code>.</div>
+              </li>
+              <li class="ci-example-step">
+                <span class="ci-step-num">3</span>
+                <div><strong>Compute Exponential Multiplier:</strong> <code>(1.08)^5 ≈ 1.469328</code>.</div>
+              </li>
+              <li class="ci-example-step">
+                <span class="ci-step-num">4</span>
+                <div><strong>Calculate Final Maturity Value:</strong> <code>A = 10,000 × 1.469328 = ₹14,693.28</code>.</div>
+              </li>
+              <li class="ci-example-step">
+                <span class="ci-step-num">5</span>
+                <div><strong>Determine Total Interest Earned:</strong> <code>CI = ₹14,693.28 − ₹10,000 = ₹4,693.28</code> (a <strong>46.93%</strong> net gain).</div>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Frequently Asked Questions (Accordion)
+         ========================================================================= -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="ci-badge">Knowledge Base</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">
+            Quick, reliable answers regarding compound interest calculations, formulas, and frequency choices.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What is compound interest?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Compound interest is the interest calculated on both the initial principal deposit and all accumulated interest from prior compounding periods. This "interest on interest" allows investments to grow exponentially over time rather than in flat linear steps.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>How is compound interest calculated?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Compound interest is calculated using the formula <code>A = P(1 + r/n)^(nt)</code>, where <em>A</em> is the total maturity value, <em>P</em> is the initial principal, <em>r</em> is the annual interest rate as a decimal, <em>n</em> is compounding frequency per year, and <em>t</em> is the duration in years. Total interest earned equals <code>A − P</code>.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What is the compound interest formula?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                The global formula is <code>A = P × (1 + r/n)^(nt)</code>. For annual compounding where <em>n = 1</em>, this simplifies to <code>A = P(1 + r)^t</code>.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Is monthly or yearly compounding better?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                For investors and savers, monthly compounding is better because interest is credited and begins generating its own return twelve times per year instead of once, resulting in higher final maturity values.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What happens when the interest rate is 0%?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                When the interest rate is 0%, no interest accumulates. The future maturity value equals the original principal amount (<code>A = P</code>), and total interest earned is ₹0.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What is the difference between simple and compound interest?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Simple interest is paid only on the initial principal (<code>SI = P × r × t</code>) and yields the exact same rupee amount every year. Compound interest earns returns on both principal and past interest, creating compounding growth that accelerates over time.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Can time period be entered as decimal or fractional years?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Yes. You can enter decimal years such as 2.5 years, 3.25 years, or 7.5 years. The calculator computes the exact continuous compounding progression for the specified time horizon.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Is this compound interest calculator free?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Yes, 100% free with no registration, account creation, or hidden fees. All computations run in your web browser, ensuring speed and absolute user privacy.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financial Disclaimer -->
+        <div class="disclaimer-card" style="max-width: 800px; margin: 2rem auto 0 auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>Disclaimer:</strong> This compound interest calculator is provided for educational and estimation purposes only. Actual financial returns on real bank accounts, mutual funds, or bonds may vary due to taxes, management fees, TDS deductions, and fluctuating market rates.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Related Calculators Section (Valid Existing Links)
+         ========================================================================= -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="ci-badge">More Tools</div>
+          <h2 class="section-title">Explore Related Calculators</h2>
+          <p class="section-desc">
+            Discover other essential financial and mathematical tools built for precision and simplicity.
+          </p>
+        </div>
+
+        <div class="related-grid" style="max-width: 900px; margin: 0 auto;">
+          <!-- 1. SIP Calculator -->
+          <a href="../../calculators/sip/index.html" class="related-card">
+            <div class="related-header">
+              <span class="ci-tag-badge">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="related-title">SIP Calculator</h3>
+            <p class="related-desc">
+              Estimate future maturity wealth and total returns on regular monthly mutual fund investments over your target horizon.
+            </p>
+            <span class="related-action">
+              <span>Open SIP Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 2. EMI Calculator -->
+          <a href="../../calculators/emi/index.html" class="related-card">
+            <div class="related-header">
+              <span class="ci-tag-badge">Finance</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <path d="M3 21h18"></path>
+                <path d="M3 10h18"></path>
+                <path d="M5 6l7-3 7 3"></path>
+                <path d="M4 10v11"></path>
+                <path d="M20 10v11"></path>
+              </svg>
+            </div>
+            <h3 class="related-title">EMI Calculator</h3>
+            <p class="related-desc">
+              Calculate equated monthly installments, total interest, and complete repayment schedules for home, car, or personal loans.
+            </p>
+            <span class="related-action">
+              <span>Open EMI Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 3. Percentage Calculator -->
+          <a href="../../calculators/percentage/index.html" class="related-card">
+            <div class="related-header">
+              <span class="ci-tag-badge">Math</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <line x1="19" y1="5" x2="5" y2="19"></line>
+                <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                <circle cx="17.5" cy="17.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <h3 class="related-title">Percentage Calculator</h3>
+            <p class="related-desc">
+              Quickly calculate percentages, percentage increases, decreases, proportional differences, and sales markups.
+            </p>
+            <span class="related-action">
+              <span>Open Percentage Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- 4. Standard Calculator -->
+          <a href="../../calculator.html" class="related-card">
+            <div class="related-header">
+              <span class="ci-tag-badge">Core Tool</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+              </svg>
+            </div>
+            <h3 class="related-title">Standard Calculator</h3>
+            <p class="related-desc">
+              Fast, responsive everyday arithmetic calculator featuring live calculation history tape, percentage operations, and sign toggle.
+            </p>
+            <span class="related-action">
+              <span>Open Standard Calculator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <!-- Column 1: Brand & Bio -->
+      <div class="footer-brand-col">
+        <a href="../../index.html" class="brand-logo" aria-label="CalculatorHub Homepage">
+          <div class="brand-icon-wrapper" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+              <line x1="8" y1="6" x2="16" y2="6"></line>
+              <line x1="16" y1="14" x2="16" y2="18"></line>
+              <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path>
+            </svg>
+          </div>
+          <div class="brand-text-wrapper">
+            <span class="brand-name">Calculator<span>Hub</span></span>
+            <span class="brand-tagline-sub">Simple Calculators for Everyday Life</span>
+          </div>
+        </a>
+        <p class="footer-description">
+          Free, fast, and accessible calculation tools designed for everyday finance, work, health, and mathematics decisions.
+        </p>
+        <div class="footer-trust-badges">
+          <span class="footer-trust-badge">🛡️ Client-Side Private</span>
+          <span class="footer-trust-badge">⚡ Instant Math</span>
+          <span class="footer-trust-badge">📱 Mobile First</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Popular Calculators -->
+      <div>
+        <h4 class="footer-heading">Calculators</h4>
+        <ul class="footer-links-list">
+          <li><a href="../../calculators/compound-interest/index.html" class="footer-link" style="color: var(--primary); font-weight: 600;">Compound Interest</a></li>
+          <li><a href="../../calculators/emi/index.html" class="footer-link">EMI Calculator</a></li>
+          <li><a href="../../calculators/gst/index.html" class="footer-link">GST Calculator</a></li>
+          <li><a href="../../calculators/sip/index.html" class="footer-link">SIP Calculator</a></li>
+          <li><a href="../../calculator.html" class="footer-link">Standard Calculator</a></li>
+          <li><a href="../../calculators/percentage/index.html" class="footer-link">Percentage Calculator</a></li>
+          <li><a href="../../calculators/age/index.html" class="footer-link">Age Calculator</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Categories -->
+      <div>
+        <h4 class="footer-heading">Categories</h4>
+        <ul class="footer-links-list">
+          <li><a href="../../index.html#categories" class="footer-link">Finance</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Work & Freelance</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Health</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Time & Date</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Math</a></li>
+          <li><a href="../../index.html#categories" class="footer-link">Utilities</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Platform & Legal -->
+      <div>
+        <h4 class="footer-heading">CalculatorHub</h4>
+        <ul class="footer-links-list">
+          <li><a href="../../index.html#popular" class="footer-link">Popular Tools</a></li>
+          <li><a href="../../index.html#why-us" class="footer-link">Why CalculatorHub</a></li>
+          <li><a href="#faq" class="footer-link">Help & FAQs</a></li>
+          <li><a href="../../index.html#footer-privacy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../../index.html#footer-terms" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="container footer-bottom">
+      <p>&copy; 2026 CalculatorHub. Simple Calculators for Everyday Life. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="../../index.html#footer-privacy">Privacy</a>
+        <span>·</span>
+        <a href="../../index.html#footer-terms">Terms</a>
+        <span>·</span>
+        <a href="#ci-calc-card">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/registry.js"></script>
+  <script src="../../js/calculators/compound-interest-engine.js"></script>
+  <script src="../../js/calculators/compound-interest.js"></script>
+</body>
+</html>
