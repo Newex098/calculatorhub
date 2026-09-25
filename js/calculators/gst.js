@@ -344,7 +344,7 @@ function initGstCalculatorUI() {
         `• GST Rate: ${result.gstRate}%`,
         `• GST Amount: ${result.formatted.gstAmount} (${isIntraState ? `CGST: ${result.formatted.cgstAmount} + SGST: ${result.formatted.sgstAmount}` : `IGST: ${result.formatted.igstAmount}`})`,
         `• Final Gross Amount: ${result.formatted.finalAmount}`,
-        `Calculated via CalculatorHub (https://calculatorhub.com/calculators/gst/)`
+        `Calculated via CalculatorHub (https://calcuface.co.in/calculators/gst/)`
       ].join('\n');
 
       if (navigator.clipboard && navigator.clipboard.writeText) {

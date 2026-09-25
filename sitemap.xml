@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- CalculatorHub XML Sitemap -->
-<!-- Canonical base domain placeholder: https://calculatorhub.com (replace with live custom domain upon deployment) -->
+<!-- Canonical base domain: https://calcuface.co.in -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://calculatorhub.com/</loc>
+    <loc>https://calcuface.co.in/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculator.html</loc>
+    <loc>https://calcuface.co.in/calculator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/emi/</loc>
+    <loc>https://calcuface.co.in/calculators/emi/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/gst/</loc>
+    <loc>https://calcuface.co.in/calculators/gst/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/sip/</loc>
+    <loc>https://calcuface.co.in/calculators/sip/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/percentage/</loc>
+    <loc>https://calcuface.co.in/calculators/percentage/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/age/</loc>
+    <loc>https://calcuface.co.in/calculators/age/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/compound-interest/</loc>
+    <loc>https://calcuface.co.in/calculators/compound-interest/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/simple-interest/</loc>
+    <loc>https://calcuface.co.in/calculators/simple-interest/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculatorhub.com/calculators/loan/</loc>
+    <loc>https://calcuface.co.in/calculators/loan/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

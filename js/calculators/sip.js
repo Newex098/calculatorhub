@@ -366,7 +366,7 @@ function initSipCalculatorUI() {
         `• Estimated Returns: ${data.formatted.estimatedReturns}`,
         `• Estimated Future Value: ${data.formatted.futureValue}`,
         `Note: Mutual fund returns are market-linked and not guaranteed.`,
-        `Calculated via CalculatorHub (https://calculatorhub.com/calculators/sip/)`
+        `Calculated via CalculatorHub (https://calcuface.co.in/calculators/sip/)`
       ].join('\n');
 
       if (navigator.clipboard && navigator.clipboard.writeText) {

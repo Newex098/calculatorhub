@@ -211,7 +211,7 @@ function initAgeCalculatorUI() {
         `• Total Days Lived: ${res.supplementary.totalDays.toLocaleString('en-IN')} Days`,
         `• Total Weeks: ${res.supplementary.totalWeeks.toLocaleString('en-IN')} Weeks and ${res.supplementary.remainingDaysInWeek} Days`,
         `• Next Birthday: ${res.nextBirthday.dateFormatted} (${res.nextBirthday.daysRemaining} days remaining, turning ${res.nextBirthday.turningAge})`,
-        `Calculated via CalculatorHub (https://calculatorhub.com/calculators/age/)`
+        `Calculated via CalculatorHub (https://calcuface.co.in/calculators/age/)`
       ].join('\n');
 
       if (navigator.clipboard && navigator.clipboard.writeText) {

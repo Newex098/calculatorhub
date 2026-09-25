@@ -271,7 +271,7 @@ function initSimpleInterestCalculator() {
         `Simple Interest Earned: ${engine.formatINR(data.simpleInterest)}`,
         `Interest Gain on Principal: +${data.interestPercentOfPrincipal.toFixed(2)}%`,
         '------------------------------------------------',
-        'Calculate yours at: https://calculatorhub.com/calculators/simple-interest/'
+        'Calculate yours at: https://calcuface.co.in/calculators/simple-interest/'
       ].join('\n');
 
       navigator.clipboard.writeText(summaryText).then(() => {

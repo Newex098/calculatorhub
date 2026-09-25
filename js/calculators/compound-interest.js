@@ -322,7 +322,7 @@ function initCompoundInterestCalculator() {
         `Total Interest Earned: ${engine.formatINR(data.totalInterest)}`,
         `Interest Gain on Principal: +${data.interestPercentOfPrincipal.toFixed(2)}%`,
         '------------------------------------------------',
-        'Calculate yours at: https://calculatorhub.com/calculators/compound-interest/'
+        'Calculate yours at: https://calcuface.co.in/calculators/compound-interest/'
       ].join('\n');
 
       navigator.clipboard.writeText(summaryText).then(() => {

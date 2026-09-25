@@ -227,7 +227,7 @@ function initPercentageCalculatorUI() {
         `• Mode: ${cfg.title}`,
         `• Calculation: ${res.formula} = ${res.formattedResult}`,
         `• Result: ${cfg.formatSummary(res, valA, valB)}`,
-        `Calculated via CalculatorHub (https://calculatorhub.com/calculators/percentage/)`
+        `Calculated via CalculatorHub (https://calcuface.co.in/calculators/percentage/)`
       ].join('\n');
 
       if (navigator.clipboard && navigator.clipboard.writeText) {

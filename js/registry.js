@@ -17,8 +17,8 @@
   const SITE_CONFIG = {
     brandName: 'CalculatorHub',
     tagline: 'Simple Calculators for Everyday Life',
-    productionDomain: 'https://calculatorhub.com',
-    canonicalBase: 'https://calculatorhub.com'
+    productionDomain: 'https://calcuface.co.in',
+    canonicalBase: 'https://calcuface.co.in'
   };
 
   // Category Definitions with Descriptions and Icon metadata
@@ -310,7 +310,7 @@
 
     /**
      * Get the production canonical base URL
-     * @returns {string} Base URL (e.g. 'https://calculatorhub.com')
+     * @returns {string} Base URL (e.g. 'https://calcuface.co.in')
      */
     getBaseUrl: function() {
       return SITE_CONFIG.productionDomain;

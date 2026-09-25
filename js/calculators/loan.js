@@ -396,7 +396,7 @@ function initLoanCalculator() {
         `Total Repayment Amount: ${engine.formatINR(data.totalPayment)}`,
         `Interest as % of Principal: +${data.interestPercentOfPrincipal.toFixed(2)}%`,
         '------------------------------------------------',
-        'Calculate yours at: https://calculatorhub.com/calculators/loan/'
+        'Calculate yours at: https://calcuface.co.in/calculators/loan/'
       ].join('\n');
 
       navigator.clipboard.writeText(summaryText).then(() => {
