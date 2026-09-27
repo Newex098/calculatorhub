@@ -15,6 +15,33 @@
 
   function EmiCalculatorEngine() {}
 
+  // Maximum duration limits (50 years = 600 months)
+  EmiCalculatorEngine.MAX_TENURE_YEARS = 50;
+  EmiCalculatorEngine.MAX_TENURE_MONTHS = 600;
+
+  /**
+   * Validate EMI inputs
+   * @param {number} principal
+   * @param {number} rate
+   * @param {number} tenureMonths
+   * @returns {Object} Validation result { isValid: boolean, error: string|null }
+   */
+  EmiCalculatorEngine.prototype.validate = function(principal, rate, tenureMonths) {
+    if (principal < 0) {
+      return { isValid: false, error: 'Principal amount cannot be negative.' };
+    }
+    if (rate < 0) {
+      return { isValid: false, error: 'Interest rate cannot be negative.' };
+    }
+    if (tenureMonths <= 0) {
+      return { isValid: false, error: 'Loan tenure must be greater than zero.' };
+    }
+    if (tenureMonths > EmiCalculatorEngine.MAX_TENURE_MONTHS) {
+      return { isValid: false, error: `Loan tenure cannot exceed ${EmiCalculatorEngine.MAX_TENURE_YEARS} years (${EmiCalculatorEngine.MAX_TENURE_MONTHS} months).` };
+    }
+    return { isValid: true, error: null };
+  };
+
   /**
    * Format numbers into Indian Currency system (e.g. ₹10,00,000)
    * @param {number} val - Number to format
@@ -69,13 +96,15 @@
   EmiCalculatorEngine.prototype.calculate = function(principal, annualRate, tenureMonths) {
     const P = this.parseInput(principal);
     const R = this.parseInput(annualRate);
-    const n = Math.max(1, Math.round(this.parseInput(tenureMonths)));
+    const rawN = this.parseInput(tenureMonths);
 
-    // Handle invalid or zero principal
-    if (P <= 0 || n <= 0) {
+    const validation = this.validate(P, R, rawN);
+    if (!validation.isValid || P <= 0) {
       return {
         isValid: false,
+        errorMessage: validation.error || 'Invalid principal or tenure.',
         monthlyEmi: 0,
+        monthlyEmiExact: 0,
         principalAmount: 0,
         totalInterest: 0,
         totalPayment: 0,
@@ -90,6 +119,9 @@
         }
       };
     }
+
+    // Strictly clamp n to valid duration bounds
+    const n = Math.max(1, Math.min(EmiCalculatorEngine.MAX_TENURE_MONTHS, Math.round(rawN)));
 
     let monthlyEmi = 0;
     let totalPayment = 0;
@@ -160,6 +192,7 @@
 
     return {
       isValid: true,
+      errorMessage: null,
       monthlyEmi: Math.round(monthlyEmi),
       monthlyEmiExact: monthlyEmi,
       principalAmount: Math.round(P),

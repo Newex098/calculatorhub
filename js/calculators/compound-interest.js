@@ -114,6 +114,14 @@ function initCompoundInterestCalculator() {
       if (resultPrincipal) resultPrincipal.textContent = '₹0';
       if (resultInterest) resultInterest.textContent = '₹0';
       if (resultRateGain) resultRateGain.textContent = '0%';
+      if (resultTotalSubtitle) {
+        resultTotalSubtitle.textContent = data.errorMessage || 'Invalid time period';
+      }
+      if (barPrincipal) barPrincipal.style.width = '0%';
+      if (barInterest) barInterest.style.width = '0%';
+      if (pctPrincipal) pctPrincipal.textContent = '0%';
+      if (pctInterest) pctInterest.textContent = '0%';
+      renderSchedule([]);
       return;
     }
 

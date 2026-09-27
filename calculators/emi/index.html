@@ -2856,10 +2856,14 @@ button {
                 </div>
                 <div class="emi-input-wrapper">
                   <input 
-                    type="text" 
+                    type="number" 
                     id="emi-input-tenure" 
                     class="emi-input-text has-suffix" 
                     value="20" 
+                    min="1" 
+                    max="50" 
+                    step="1" 
+                    inputmode="numeric" 
                     aria-label="Loan Tenure Duration"
                   >
                   <span class="emi-affix emi-suffix" id="emi-tenure-unit-label">Years</span>

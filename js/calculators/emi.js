@@ -75,6 +75,22 @@ function initEmiCalculatorUI() {
 
     const data = engine.calculate(p, r, n);
 
+    if (!data.isValid) {
+      if (resultEmi) resultEmi.textContent = '₹0';
+      if (resultPrincipal) resultPrincipal.textContent = '₹0';
+      if (resultInterest) resultInterest.textContent = '₹0';
+      if (resultTotal) resultTotal.textContent = '₹0';
+      if (resultPeriod) {
+        resultPeriod.textContent = data.errorMessage || 'Invalid loan duration';
+      }
+      if (barPrincipal) barPrincipal.style.width = '0%';
+      if (barInterest) barInterest.style.width = '0%';
+      if (pctPrincipal) pctPrincipal.textContent = '0%';
+      if (pctInterest) pctInterest.textContent = '0%';
+      renderAmortizationTable([]);
+      return;
+    }
+
     // Update Result Summary
     if (resultEmi) resultEmi.textContent = data.formatted.monthlyEmi;
     if (resultPrincipal) resultPrincipal.textContent = data.formatted.principalAmount;
@@ -95,9 +111,17 @@ function initEmiCalculatorUI() {
   }
 
   function renderAmortizationTable(schedule) {
-    if (!amortTbody || !schedule) return;
+    if (!amortTbody) return;
 
     amortTbody.innerHTML = '';
+    if (!schedule || schedule.length === 0) {
+      const emptyRow = document.createElement('tr');
+      emptyRow.innerHTML = '<td colspan="6" style="text-align:center; padding: 1.5rem; color: var(--text-muted);">Enter valid loan details to view schedule</td>';
+      amortTbody.appendChild(emptyRow);
+      if (btnToggleAmort) btnToggleAmort.style.display = 'none';
+      return;
+    }
+
     const visibleCount = isAmortExpanded ? schedule.length : Math.min(5, schedule.length);
 
     schedule.slice(0, visibleCount).forEach(row => {
@@ -198,6 +222,8 @@ function initEmiCalculatorUI() {
       tenureSlider.max = '30';
       tenureSlider.step = '1';
       tenureSlider.value = String(years);
+      tenureInput.min = '1';
+      tenureInput.max = '50';
       tenureInput.value = String(years);
       if (tenurePill) tenurePill.textContent = years + ' Yrs';
       recalculate();
@@ -217,6 +243,8 @@ function initEmiCalculatorUI() {
       tenureSlider.max = '360';
       tenureSlider.step = '6';
       tenureSlider.value = String(months);
+      tenureInput.min = '12';
+      tenureInput.max = '600';
       tenureInput.value = String(months);
       if (tenurePill) tenurePill.textContent = months + ' Mos';
       recalculate();
@@ -304,7 +332,20 @@ function createFallbackEmiEngine() {
     },
     formatINR: (num) => '₹' + Math.round(num || 0).toLocaleString('en-IN'),
     calculate: function(p, r, n) {
-      if (p <= 0 || n <= 0) return { monthlyEmi: 0, formatted: { monthlyEmi: '₹0' } };
+      if (p <= 0 || n <= 0 || n > 600) {
+        return {
+          isValid: false,
+          errorMessage: 'Loan tenure cannot exceed 50 years (600 months).',
+          monthlyEmi: 0,
+          principalAmount: 0,
+          totalInterest: 0,
+          totalPayment: 0,
+          principalPercentage: 0,
+          interestPercentage: 0,
+          yearlyAmortization: [],
+          formatted: { monthlyEmi: '₹0', principalAmount: '₹0', totalInterest: '₹0', totalPayment: '₹0' }
+        };
+      }
       const rate = r / 1200;
       const factor = Math.pow(1 + rate, n);
       const emi = !isFinite(factor) ? (p * rate) : ((p * rate * factor) / (factor - 1));

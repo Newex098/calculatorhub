@@ -30,6 +30,10 @@
 
   function LoanCalculatorEngine() {}
 
+  // Maximum duration limits (50 years = 600 months)
+  LoanCalculatorEngine.MAX_TENURE_YEARS = 50;
+  LoanCalculatorEngine.MAX_TENURE_MONTHS = 600;
+
   LoanCalculatorEngine.FREQUENCY_PERIODS = {
     'monthly': 12,
     'quarterly': 4,
@@ -101,9 +105,10 @@
    * @param {number} principal
    * @param {number} rate
    * @param {number} tenure
+   * @param {string} [tenureUnit='years']
    * @returns {Object} Validation result { isValid: boolean, error: string|null }
    */
-  LoanCalculatorEngine.prototype.validate = function(principal, rate, tenure) {
+  LoanCalculatorEngine.prototype.validate = function(principal, rate, tenure, tenureUnit) {
     if (principal < 0) {
       return { isValid: false, error: 'Loan principal cannot be negative.' };
     }
@@ -112,6 +117,11 @@
     }
     if (tenure <= 0) {
       return { isValid: false, error: 'Loan tenure must be greater than zero.' };
+    }
+    const unit = (tenureUnit || 'years').toLowerCase();
+    const totalYears = unit === 'months' ? (tenure / 12) : tenure;
+    if (totalYears > LoanCalculatorEngine.MAX_TENURE_YEARS) {
+      return { isValid: false, error: `Loan tenure cannot exceed ${LoanCalculatorEngine.MAX_TENURE_YEARS} years (${LoanCalculatorEngine.MAX_TENURE_MONTHS} months).` };
     }
     return { isValid: true, error: null };
   };
@@ -133,7 +143,7 @@
     const unit = (tenureUnit || 'years').toLowerCase();
     const freqKey = (frequency || 'monthly').toLowerCase();
 
-    const validation = this.validate(rawP, rawR, rawT);
+    const validation = this.validate(rawP, rawR, rawT, unit);
     if (!validation.isValid) {
       return {
         isValid: false,
@@ -162,8 +172,9 @@
     // Convert tenure to total years
     const totalYears = unit === 'months' ? (rawT / 12) : rawT;
 
-    // Total number of payment periods (rounded to nearest positive integer, minimum 1)
-    const n = Math.max(1, Math.round(totalYears * periodsPerYear));
+    // Total number of payment periods (bounded by MAX_TENURE_YEARS)
+    const maxPeriods = LoanCalculatorEngine.MAX_TENURE_YEARS * periodsPerYear;
+    const n = Math.max(1, Math.min(maxPeriods, Math.round(totalYears * periodsPerYear)));
 
     // Zero loan amount edge case
     if (P === 0) {

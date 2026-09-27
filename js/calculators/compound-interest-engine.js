@@ -32,6 +32,9 @@
 
   function CompoundInterestEngine() {}
 
+  // Maximum supported duration limit (50 years)
+  CompoundInterestEngine.MAX_YEARS = 50;
+
   /**
    * Compounding frequency mapping
    */
@@ -121,6 +124,9 @@
     }
     if (years < 0) {
       return { isValid: false, error: 'Time period cannot be negative.' };
+    }
+    if (years > CompoundInterestEngine.MAX_YEARS) {
+      return { isValid: false, error: `Time period cannot exceed ${CompoundInterestEngine.MAX_YEARS} years.` };
     }
     if (frequency <= 0 || !isFinite(frequency)) {
       return { isValid: false, error: 'Compounding frequency must be a positive number.' };
@@ -232,7 +238,7 @@
 
     // Build yearly growth schedule
     const yearlySchedule = [];
-    const fullYears = Math.floor(t);
+    const fullYears = Math.min(CompoundInterestEngine.MAX_YEARS, Math.floor(t));
     let runningBalance = P;
 
     for (let y = 1; y <= fullYears; y++) {
@@ -255,7 +261,7 @@
     }
 
     // If fractional year remains (e.g. t = 2.5 years, remaining = 0.5 years)
-    if (t > fullYears) {
+    if (t > fullYears && fullYears < CompoundInterestEngine.MAX_YEARS) {
       const remainingFraction = t - fullYears;
       const yearStart = runningBalance;
       const yearEnd = futureValue;

@@ -132,6 +132,14 @@ function initLoanCalculator() {
       if (resultInterest) resultInterest.textContent = '₹0';
       if (resultTotal) resultTotal.textContent = '₹0';
       if (resultRateGain) resultRateGain.textContent = '0%';
+      if (resultPaymentSubtitle) {
+        resultPaymentSubtitle.textContent = data.errorMessage || 'Invalid loan duration';
+      }
+      if (barPrincipal) barPrincipal.style.width = '0%';
+      if (barInterest) barInterest.style.width = '0%';
+      if (pctPrincipal) pctPrincipal.textContent = '0%';
+      if (pctInterest) pctInterest.textContent = '0%';
+      renderAmortization([], currentFreq);
       return;
     }
 
@@ -265,6 +273,8 @@ function initLoanCalculator() {
       sliderTenure.min = '1';
       sliderTenure.max = '30';
       sliderTenure.step = '1';
+      inputTenure.min = '1';
+      inputTenure.max = '50';
       let currentYears = Math.max(1, Math.min(30, Math.round(parseFloat(inputTenure.value) / 12) || 5));
       inputTenure.value = currentYears;
       sliderTenure.value = currentYears;
@@ -273,6 +283,8 @@ function initLoanCalculator() {
       sliderTenure.min = '6';
       sliderTenure.max = '360';
       sliderTenure.step = '6';
+      inputTenure.min = '1';
+      inputTenure.max = '600';
       let currentMonths = Math.max(6, Math.min(360, Math.round(parseFloat(inputTenure.value) * 12) || 60));
       inputTenure.value = currentMonths;
       sliderTenure.value = currentMonths;

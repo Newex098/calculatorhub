@@ -32,6 +32,9 @@
 
   function SimpleInterestEngine() {}
 
+  // Maximum supported duration limit (50 years)
+  SimpleInterestEngine.MAX_YEARS = 50;
+
   /**
    * Format numbers into the Indian numbering system (e.g. ₹10,000, ₹1,00,000, ₹14,000)
    * @param {number} val - Amount to format
@@ -108,6 +111,9 @@
     if (years < 0) {
       return { isValid: false, error: 'Time period cannot be negative.' };
     }
+    if (years > SimpleInterestEngine.MAX_YEARS) {
+      return { isValid: false, error: `Time period cannot exceed ${SimpleInterestEngine.MAX_YEARS} years.` };
+    }
     return { isValid: true, error: null };
   };
 
@@ -182,7 +188,7 @@
 
     // Build yearly interest progression schedule
     const yearlySchedule = [];
-    const fullYears = Math.floor(T);
+    const fullYears = Math.min(SimpleInterestEngine.MAX_YEARS, Math.floor(T));
     const annualInterestRateAmount = (P * R) / 100; // Constant interest accrued per full year
 
     let cumulativeInterest = 0;
