@@ -379,5 +379,71 @@
     };
   };
 
+  /**
+   * Exam Marks Percentage Calculator
+   * Formula: Percentage = (Marks Obtained ÷ Maximum Marks) × 100
+   * @param {number|string} marksObtained
+   * @param {number|string} maximumMarks
+   * @returns {Object}
+   */
+  PercentageCalculatorEngine.prototype.calculateExamPercentage = function(marksObtained, maximumMarks) {
+    const obtainedRaw = this.parseInput(marksObtained, true);
+    const totalRaw = this.parseInput(maximumMarks, true);
+
+    // Validation: Marks Obtained cannot be negative
+    if (obtainedRaw < 0) {
+      return {
+        isValid: false,
+        error: 'Marks obtained cannot be negative.',
+        hasWarning: false,
+        warningMessage: '',
+        marksObtained: obtainedRaw,
+        maximumMarks: totalRaw,
+        percentage: 0,
+        roundedPercentage: 0,
+        formula: `(${obtainedRaw} ÷ ${totalRaw}) × 100`,
+        formattedResult: '0%',
+        breakdown: `${obtainedRaw} out of ${totalRaw} marks`
+      };
+    }
+
+    // Validation: Maximum Marks must be greater than zero
+    if (totalRaw <= 0) {
+      return {
+        isValid: false,
+        error: 'Maximum marks must be greater than zero.',
+        hasWarning: false,
+        warningMessage: '',
+        marksObtained: obtainedRaw,
+        maximumMarks: totalRaw,
+        percentage: 0,
+        roundedPercentage: 0,
+        formula: `(${obtainedRaw} ÷ 0) × 100`,
+        formattedResult: '0%',
+        breakdown: `${obtainedRaw} out of ${totalRaw} marks`
+      };
+    }
+
+    const pct = (obtainedRaw / totalRaw) * 100;
+    const rounded = this.round2(pct);
+    const exceeds100 = obtainedRaw > totalRaw;
+
+    return {
+      isValid: true,
+      error: '',
+      hasWarning: exceeds100,
+      warningMessage: exceeds100
+        ? 'Marks obtained exceed maximum marks. Result exceeds 100% and may indicate extra credit or incorrect input.'
+        : '',
+      marksObtained: this.round2(obtainedRaw),
+      maximumMarks: this.round2(totalRaw),
+      percentage: pct,
+      roundedPercentage: rounded,
+      formula: `(${this.formatNumber(obtainedRaw)} ÷ ${this.formatNumber(totalRaw)}) × 100`,
+      formattedResult: `${this.formatNumber(rounded)}%`,
+      breakdown: `${this.formatNumber(obtainedRaw)} out of ${this.formatNumber(totalRaw)} marks`
+    };
+  };
+
   return PercentageCalculatorEngine;
 });

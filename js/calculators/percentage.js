@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDiscountCalculatorUI();
   initMarkupCalculatorUI();
   initReverseDiscountUI();
+  initExamMarksCalculatorUI();
   initPercentageFaqAccordion();
   initPercentageMobileDrawer();
 });
@@ -484,8 +485,186 @@ function createFallbackPercentageEngine() {
     percentageDifference: (a, b) => ({ isValid: true, formattedResult: `${(a + b) > 0 ? (Math.abs(a - b) / ((a + b) / 2)) * 100 : 0}%`, formula: `|${a} − ${b}| ÷ ((${a} + ${b}) ÷ 2) × 100`, calculation: `${Math.abs(a - b)} ÷ ${(a + b) / 2} × 100` }),
     calculateDiscount: (p, d) => ({ isValid: true, formatted: { discountAmount: '₹' + (p * d / 100), finalPrice: '₹' + (p - (p * d / 100)) } }),
     calculateMarkup: (c, m) => ({ isValid: true, formatted: { markupAmount: '₹' + (c * m / 100), sellingPrice: '₹' + (c + (c * m / 100)) } }),
-    calculateReverseDiscount: (f, d) => ({ isValid: d < 100, formatted: { originalPrice: d < 100 ? '₹' + (f / (1 - d / 100)) : 'Undefined', discountSaved: '₹' + ((f / (1 - d / 100)) - f) } })
+    calculateReverseDiscount: (f, d) => ({ isValid: d < 100, formatted: { originalPrice: d < 100 ? '₹' + (f / (1 - d / 100)) : 'Undefined', discountSaved: '₹' + ((f / (1 - d / 100)) - f) } }),
+    calculateExamPercentage: (obt, tot) => {
+      if (obt < 0) return { isValid: false, error: 'Marks obtained cannot be negative.', formattedResult: '0%' };
+      if (tot <= 0) return { isValid: false, error: 'Maximum marks must be greater than zero.', formattedResult: '0%' };
+      const p = (obt / tot) * 100;
+      const exceeds = obt > tot;
+      const rounded = Math.round(p * 100) / 100;
+      return {
+        isValid: true,
+        hasWarning: exceeds,
+        warningMessage: exceeds ? 'Marks obtained exceed maximum marks. Result exceeds 100% and may indicate extra credit or incorrect input.' : '',
+        formattedResult: `${rounded}%`,
+        formula: `(${obt} ÷ ${tot}) × 100`,
+        breakdown: `${obt} out of ${tot} marks`
+      };
+    }
   };
+}
+
+/* ==========================================================================
+   6. Exam Marks Percentage Calculator UI
+   ========================================================================== */
+function initExamMarksCalculatorUI() {
+  const engine = typeof PercentageCalculatorEngine !== 'undefined'
+    ? new PercentageCalculatorEngine()
+    : createFallbackPercentageEngine();
+
+  const inputObtained = document.getElementById('exam-input-obtained');
+  const inputTotal = document.getElementById('exam-input-total');
+  const resultPct = document.getElementById('exam-result-pct');
+  const resultBreakdown = document.getElementById('exam-result-breakdown');
+  const resultFormula = document.getElementById('exam-result-formula');
+  const errorBox = document.getElementById('exam-error-box');
+  const warningBox = document.getElementById('exam-warning-box');
+  const warningText = document.getElementById('exam-warning-text');
+  const btnReset = document.getElementById('btn-exam-reset');
+  const btnCopy = document.getElementById('btn-exam-copy');
+  const presetChips = document.querySelectorAll('.exam-preset-chip');
+
+  if (!inputObtained || !inputTotal) return;
+
+  function recalculate() {
+    const rawObtained = inputObtained.value.trim();
+    const rawTotal = inputTotal.value.trim();
+
+    if (rawObtained === '' || rawTotal === '') {
+      if (errorBox) {
+        errorBox.textContent = 'Please enter both marks obtained and maximum marks.';
+        errorBox.style.display = 'block';
+      }
+      if (warningBox) warningBox.style.display = 'none';
+      if (resultPct) resultPct.textContent = '—';
+      if (resultBreakdown) resultBreakdown.textContent = 'Awaiting input';
+      if (resultFormula) resultFormula.textContent = 'Percentage = (Marks Obtained ÷ Maximum Marks) × 100';
+      return;
+    }
+
+    const obtainedVal = parseFloat(rawObtained);
+    const totalVal = parseFloat(rawTotal);
+
+    if (isNaN(obtainedVal) || isNaN(totalVal)) {
+      if (errorBox) {
+        errorBox.textContent = 'Please enter valid numeric values for marks.';
+        errorBox.style.display = 'block';
+      }
+      if (warningBox) warningBox.style.display = 'none';
+      if (resultPct) resultPct.textContent = '—';
+      return;
+    }
+
+    const res = engine.calculateExamPercentage(obtainedVal, totalVal);
+
+    if (!res.isValid) {
+      if (errorBox) {
+        errorBox.textContent = res.error || 'Invalid marks entered.';
+        errorBox.style.display = 'block';
+      }
+      if (warningBox) warningBox.style.display = 'none';
+      if (resultPct) resultPct.textContent = '—';
+      if (resultBreakdown) resultBreakdown.textContent = 'Calculation paused';
+      if (resultFormula) resultFormula.textContent = res.formula || '—';
+    } else {
+      if (errorBox) {
+        errorBox.style.display = 'none';
+      }
+
+      if (res.hasWarning) {
+        if (warningBox) {
+          if (warningText) warningText.textContent = res.warningMessage;
+          warningBox.style.display = 'flex';
+        }
+      } else {
+        if (warningBox) {
+          warningBox.style.display = 'none';
+        }
+      }
+
+      if (resultPct) resultPct.textContent = res.formattedResult;
+      if (resultBreakdown) resultBreakdown.textContent = res.breakdown;
+      if (resultFormula) resultFormula.textContent = res.formula;
+    }
+  }
+
+  inputObtained.addEventListener('input', recalculate);
+  inputTotal.addEventListener('input', recalculate);
+
+  presetChips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      const obt = chip.dataset.obtained;
+      const tot = chip.dataset.total;
+      if (obt !== undefined && tot !== undefined) {
+        inputObtained.value = obt;
+        inputTotal.value = tot;
+        presetChips.forEach(c => c.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        recalculate();
+      }
+    });
+  });
+
+  if (btnReset) {
+    btnReset.addEventListener('click', (e) => {
+      e.preventDefault();
+      inputObtained.value = '450';
+      inputTotal.value = '500';
+      presetChips.forEach(c => {
+        if (c.dataset.obtained === '450' && c.dataset.total === '500') {
+          c.classList.add('is-active');
+        } else {
+          c.classList.remove('is-active');
+        }
+      });
+      recalculate();
+    });
+  }
+
+  if (btnCopy) {
+    btnCopy.addEventListener('click', (e) => {
+      e.preventDefault();
+      const rawObtained = inputObtained.value.trim();
+      const rawTotal = inputTotal.value.trim();
+      const obtainedVal = parseFloat(rawObtained);
+      const totalVal = parseFloat(rawTotal);
+      const res = engine.calculateExamPercentage(obtainedVal, totalVal);
+
+      if (!res.isValid) {
+        alert('Please resolve validation errors before copying.');
+        return;
+      }
+
+      const copyText = [
+        `CalculatorHub - Exam Marks Percentage`,
+        `• Marks Scored: ${res.breakdown}`,
+        `• Percentage: ${res.formattedResult}`,
+        `• Formula: ${res.formula} = ${res.formattedResult}`,
+        res.hasWarning ? `• Note: ${res.warningMessage}` : '',
+        `Calculated via CalculatorHub (https://calcuface.co.in/calculators/percentage/#academic-tools)`
+      ].filter(Boolean).join('\n');
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(() => {
+          const orig = btnCopy.innerHTML;
+          btnCopy.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Copied!</span>
+          `;
+          setTimeout(() => { btnCopy.innerHTML = orig; }, 2000);
+        }).catch(() => {
+          prompt('Copy exam score summary:', copyText);
+        });
+      } else {
+        prompt('Copy exam score summary:', copyText);
+      }
+    });
+  }
+
+  recalculate();
 }
 
 /* ==========================================================================

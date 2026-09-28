@@ -126,6 +126,22 @@
               "@type": "Answer",
               "text": "Yes, 100% free and completely private. All calculations run locally in your web browser. No figures or personal data are stored, tracked, or sent to external servers."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate my exam marks percentage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To calculate your exam marks percentage, divide your total marks obtained by the maximum marks possible and multiply by 100: (Marks Obtained ÷ Maximum Marks) × 100. For example, 450 marks out of 500 is (450 ÷ 500) × 100 = 90%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if my marks obtained exceed the maximum marks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If marks obtained exceed maximum marks, the calculated percentage will be greater than 100%. This can happen if extra credit or bonus marks were awarded, or if the maximum marks were entered incorrectly."
+            }
           }
         ]
       }
@@ -544,6 +560,119 @@
     </section>
 
     <!-- =========================================================================
+         Academic & Student Tools Section (Exam Marks Percentage)
+         ========================================================================= -->
+    <section class="academic-section" id="academic-tools">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="pct-badge">Academic &amp; Student Tools</div>
+          <h2 class="section-title">Academic &amp; Student Tools</h2>
+          <p class="section-desc">
+            Dedicated calculators for school exams, college tests, and academic score evaluations.
+          </p>
+        </div>
+
+        <div class="academic-grid">
+          <!-- Card 1: Exam Marks Percentage Calculator -->
+          <div class="pct-card" id="exam-marks-card">
+            <div class="pct-card-header">
+              <h3 class="pct-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                Exam Marks Percentage
+              </h3>
+              <span class="pct-tag-badge">Student Tool</span>
+            </div>
+
+            <form onsubmit="return false;" novalidate>
+              <div class="academic-inputs-grid">
+                <!-- Input: Marks Obtained -->
+                <div class="pct-input-group">
+                  <div class="pct-label-row">
+                    <label for="exam-input-obtained" class="pct-label">Marks Obtained</label>
+                  </div>
+                  <div class="pct-input-wrapper">
+                    <input type="number" id="exam-input-obtained" class="pct-input-text" value="450" min="0" step="any" inputmode="decimal" placeholder="e.g. 450" aria-label="Marks Obtained">
+                  </div>
+                </div>
+
+                <!-- Input: Maximum Marks -->
+                <div class="pct-input-group">
+                  <div class="pct-label-row">
+                    <label for="exam-input-total" class="pct-label">Maximum Marks (Total)</label>
+                  </div>
+                  <div class="pct-input-wrapper">
+                    <input type="number" id="exam-input-total" class="pct-input-text" value="500" min="1" step="any" inputmode="decimal" placeholder="e.g. 500" aria-label="Maximum Marks">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Exam Presets -->
+              <div class="quick-examples-box" style="margin-top: 1rem;">
+                <span class="quick-examples-title">Popular Exam Presets:</span>
+                <div class="example-chips-row">
+                  <button type="button" class="example-chip exam-preset-chip is-active" data-obtained="450" data-total="500">450 / 500 (90%)</button>
+                  <button type="button" class="example-chip exam-preset-chip" data-obtained="380" data-total="500">380 / 500 (76%)</button>
+                  <button type="button" class="example-chip exam-preset-chip" data-obtained="540" data-total="600">540 / 600 (90%)</button>
+                  <button type="button" class="example-chip exam-preset-chip" data-obtained="85" data-total="100">85 / 100 (85%)</button>
+                </div>
+              </div>
+
+              <!-- Validation Error Box -->
+              <div class="revdisc-error-box" id="exam-error-box" style="display: none; margin-top: 1rem;" role="alert"></div>
+
+              <!-- Informative Warning Box (When score > 100%) -->
+              <div class="exam-warning-box" id="exam-warning-box" style="display: none; margin-top: 1rem;" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <div id="exam-warning-text">Marks obtained exceed maximum marks. Result exceeds 100% and may indicate extra credit or incorrect input.</div>
+              </div>
+
+              <!-- Result Stats Box -->
+              <div class="shop-stats-list" id="exam-stats-box" style="margin-top: 1rem;">
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Percentage Scored:</span>
+                  <span class="shop-stat-val highlight" id="exam-result-pct" style="font-size: 1.35rem;">90%</span>
+                </div>
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Score Breakdown:</span>
+                  <span class="shop-stat-val" id="exam-result-breakdown">450 out of 500 marks</span>
+                </div>
+                <div class="shop-stat-row">
+                  <span class="shop-stat-label">Formula Applied:</span>
+                  <span class="shop-stat-val" id="exam-result-formula" style="font-family: var(--font-mono, monospace); font-size: 0.8125rem;">(450 ÷ 500) × 100</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons Row -->
+              <div class="pct-actions-row" style="margin-top: 1.25rem;">
+                <button type="button" class="btn-calc-reset" id="btn-exam-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+                <button type="button" class="btn-calc-copy" id="btn-exam-copy" style="flex: 2;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span>Copy Score Summary</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
          Formula & Calculation Methodology Section
          ========================================================================= -->
     <section class="content-section">
@@ -620,6 +749,16 @@
                 </div>
               </div>
             </div>
+
+            <div>
+              <h3 class="article-subheading">7. Exam Marks Percentage Formula</h3>
+              <div class="formula-box">
+                <div class="formula-display">Percentage (%) = (Marks Obtained ÷ Maximum Marks) × 100</div>
+                <div class="formula-vars-list">
+                  <div>Divide total marks obtained by the maximum marks possible and multiply by 100 to evaluate your academic test score or aggregate percentage.</div>
+                </div>
+              </div>
+            </div>
           </article>
 
           <!-- Right Column: Worked Examples -->
@@ -677,6 +816,15 @@
                   • Selling Price: ₹1,000 + ₹300 = <strong>₹1,300</strong>
                 </div>
               </div>
+
+              <div class="step-item">
+                <div class="step-number">6</div>
+                <div class="step-text">
+                  <strong>Scoring 450 marks out of 500 in exams</strong><br>
+                  • Step 1: Divide marks obtained by maximum marks: 450 ÷ 500 = 0.90<br>
+                  • Step 2: Multiply by 100: 0.90 × 100 = <strong>90%</strong>
+                </div>
+              </div>
             </div>
           </article>
 
@@ -704,7 +852,7 @@
             </div>
             <div>
               <h3 class="article-subheading">🎓 Academic Scores &amp; Exams</h3>
-              <p class="article-p">Converting total test marks into percentages or percentiles for university admissions and academic evaluations.</p>
+              <p class="article-p">Converting total test marks into percentages or aggregate scores for school report cards, board evaluations, and college admissions. Calculate your exam percentage using our <a href="#academic-tools" style="color: var(--primary); text-decoration: underline;">Academic &amp; Student Tools</a> above.</p>
             </div>
             <div>
               <h3 class="article-subheading">💼 Salary Appraisals &amp; Raises</h3>
@@ -889,6 +1037,36 @@
               <div class="faq-content">
                 <div class="faq-body">
                   Yes, 100% free and completely private. All calculations run locally in your web browser. No figures or personal data are stored, tracked, or sent to external servers.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 11 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate my exam marks percentage?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  To calculate your exam marks percentage, divide your total marks obtained by the maximum marks possible and multiply by 100: <code>Percentage = (Marks Obtained ÷ Maximum Marks) × 100</code>. For example, if you scored 450 marks out of 500: (450 ÷ 500) × 100 = 90%.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 12 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What if my marks obtained exceed the maximum marks?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  If marks obtained exceed maximum marks, the calculated percentage will be greater than 100%. This can happen if extra credit or bonus marks were awarded, or if the maximum marks were entered incorrectly. Verify the maximum marks on your exam paper or mark sheet.
                 </div>
               </div>
             </div>
