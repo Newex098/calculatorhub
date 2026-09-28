@@ -90,7 +90,7 @@
 
     return {
       baseAmount: this.round2(base),
-      rate: this.round2(r),
+      rate: parseFloat(r.toFixed(4)),
       gstAmount: this.round2(gstAmount),
       finalAmount: this.round2(finalAmount)
     };
@@ -123,7 +123,7 @@
 
     return {
       inclusiveAmount: this.round2(inclusive),
-      rate: this.round2(r),
+      rate: parseFloat(r.toFixed(4)),
       baseAmount: this.round2(baseAmount),
       gstAmount: this.round2(gstAmount)
     };
@@ -169,12 +169,12 @@
     let igstAmount = 0;
 
     if (splitTax) {
-      cgstRate = this.round2(rawRate / 2);
-      sgstRate = this.round2(rawRate / 2);
+      cgstRate = parseFloat((rawRate / 2).toFixed(4));
+      sgstRate = parseFloat((rawRate / 2).toFixed(4));
       cgstAmount = this.round2(gstAmount / 2);
       sgstAmount = this.round2(gstAmount / 2);
     } else {
-      igstRate = this.round2(rawRate);
+      igstRate = parseFloat(rawRate.toFixed(4));
       igstAmount = this.round2(gstAmount);
     }
 
@@ -187,7 +187,7 @@
       isValid: true,
       mode: calcMode,
       inputAmount: this.round2(rawAmount),
-      gstRate: this.round2(rawRate),
+      gstRate: parseFloat(rawRate.toFixed(4)),
       baseAmount: this.round2(baseAmount),
       gstAmount: this.round2(gstAmount),
       finalAmount: this.round2(finalAmount),
@@ -207,7 +207,7 @@
         cgstAmount: this.formatINR(cgstAmount),
         sgstAmount: this.formatINR(sgstAmount),
         igstAmount: this.formatINR(igstAmount),
-        rateLabel: `${this.round2(rawRate)}%`,
+        rateLabel: `${parseFloat(rawRate.toFixed(4))}%`,
         cgstRateLabel: `${cgstRate}%`,
         sgstRateLabel: `${sgstRate}%`,
         igstRateLabel: `${igstRate}%`

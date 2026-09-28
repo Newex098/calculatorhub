@@ -28,6 +28,7 @@ function initGstCalculatorUI() {
   const rateInput = document.getElementById('gst-input-rate');
   const ratePill = document.getElementById('gst-pill-rate');
   const rateChips = document.querySelectorAll('.rate-chip');
+  const chipRateCustom = document.getElementById('chip-rate-custom');
 
   // Tax Split radios/buttons
   const splitIntraBtn = document.getElementById('split-btn-intra');
@@ -145,22 +146,53 @@ function initGstCalculatorUI() {
    * Set rate from chip or input
    */
   function setRate(rateValue) {
+    if (rateValue === 'custom') {
+      rateChips.forEach(chip => {
+        if (chip.dataset.rate === 'custom') {
+          chip.classList.add('is-active');
+          chip.setAttribute('aria-pressed', 'true');
+        } else {
+          chip.classList.remove('is-active');
+          chip.setAttribute('aria-pressed', 'false');
+        }
+      });
+      if (rateInput) {
+        rateInput.focus();
+        rateInput.select();
+      }
+      return;
+    }
+
     const numericRate = parseFloat(rateValue);
     if (!isNaN(numericRate) && rateInput) {
       rateInput.value = numericRate;
     }
 
     // Sync chip active styles
+    let matchedPreset = false;
     rateChips.forEach(chip => {
-      const chipRate = parseFloat(chip.dataset.rate);
-      if (chipRate === numericRate) {
-        chip.classList.add('is-active');
-        chip.setAttribute('aria-pressed', 'true');
-      } else {
-        chip.classList.remove('is-active');
-        chip.setAttribute('aria-pressed', 'false');
+      if (chip.dataset.rate !== 'custom') {
+        const chipRate = parseFloat(chip.dataset.rate);
+        if (chipRate === numericRate) {
+          chip.classList.add('is-active');
+          chip.setAttribute('aria-pressed', 'true');
+          matchedPreset = true;
+        } else {
+          chip.classList.remove('is-active');
+          chip.setAttribute('aria-pressed', 'false');
+        }
       }
     });
+
+    if (chipRateCustom) {
+      if (!matchedPreset) {
+        chipRateCustom.classList.add('is-active');
+        chipRateCustom.setAttribute('aria-pressed', 'true');
+      } else {
+        chipRateCustom.classList.remove('is-active');
+        chipRateCustom.setAttribute('aria-pressed', 'false');
+      }
+    }
 
     recalculate();
   }
@@ -170,7 +202,10 @@ function initGstCalculatorUI() {
    */
   function recalculate() {
     const rawAmount = engine.parseInput(amountInput ? amountInput.value : DEFAULTS.amount);
-    const rawRate = engine.parseInput(rateInput ? rateInput.value : DEFAULTS.rate);
+    let rawRate = engine.parseInput(rateInput ? rateInput.value : DEFAULTS.rate);
+    if (rawRate > 100) {
+      rawRate = 100;
+    }
 
     const result = engine.calculate(rawAmount, rawRate, currentMode, isIntraState);
 
@@ -270,15 +305,38 @@ function initGstCalculatorUI() {
     rateInput.addEventListener('input', () => {
       const val = parseFloat(rateInput.value);
       // Sync chips
+      let matchedPreset = false;
       rateChips.forEach(chip => {
-        if (parseFloat(chip.dataset.rate) === val) {
-          chip.classList.add('is-active');
-          chip.setAttribute('aria-pressed', 'true');
-        } else {
-          chip.classList.remove('is-active');
-          chip.setAttribute('aria-pressed', 'false');
+        if (chip.dataset.rate !== 'custom') {
+          if (parseFloat(chip.dataset.rate) === val) {
+            chip.classList.add('is-active');
+            chip.setAttribute('aria-pressed', 'true');
+            matchedPreset = true;
+          } else {
+            chip.classList.remove('is-active');
+            chip.setAttribute('aria-pressed', 'false');
+          }
         }
       });
+      if (chipRateCustom) {
+        if (!matchedPreset) {
+          chipRateCustom.classList.add('is-active');
+          chipRateCustom.setAttribute('aria-pressed', 'true');
+        } else {
+          chipRateCustom.classList.remove('is-active');
+          chipRateCustom.setAttribute('aria-pressed', 'false');
+        }
+      }
+      recalculate();
+    });
+
+    rateInput.addEventListener('change', () => {
+      const val = parseFloat(rateInput.value);
+      if (val > 100) {
+        rateInput.value = 100;
+      } else if (val < 0) {
+        rateInput.value = 0;
+      }
       recalculate();
     });
   }
@@ -415,27 +473,27 @@ function createFallbackGstEngine() {
         gstAmount = finalAmount - baseAmount;
       }
 
-      const cgstRate = isIntraState ? (r / 2) : 0;
+      const cgstRate = isIntraState ? parseFloat((r / 2).toFixed(4)) : 0;
       const cgstAmount = isIntraState ? (gstAmount / 2) : 0;
-      const sgstRate = isIntraState ? (r / 2) : 0;
+      const sgstRate = isIntraState ? parseFloat((r / 2).toFixed(4)) : 0;
       const sgstAmount = isIntraState ? (gstAmount / 2) : 0;
-      const igstRate = !isIntraState ? r : 0;
+      const igstRate = !isIntraState ? parseFloat(r.toFixed(4)) : 0;
       const igstAmount = !isIntraState ? gstAmount : 0;
 
       return {
         isValid: true,
         mode: isAdd ? 'add' : 'remove',
         inputAmount: a,
-        gstRate: r,
+        gstRate: parseFloat(r.toFixed(4)),
         baseAmount: Number(baseAmount.toFixed(2)),
         gstAmount: Number(gstAmount.toFixed(2)),
         finalAmount: Number(finalAmount.toFixed(2)),
         isIntraState: Boolean(isIntraState),
-        cgstRate: Number(cgstRate.toFixed(2)),
+        cgstRate: cgstRate,
         cgstAmount: Number(cgstAmount.toFixed(2)),
-        sgstRate: Number(sgstRate.toFixed(2)),
+        sgstRate: sgstRate,
         sgstAmount: Number(sgstAmount.toFixed(2)),
-        igstRate: Number(igstRate.toFixed(2)),
+        igstRate: igstRate,
         igstAmount: Number(igstAmount.toFixed(2)),
         formatted: {
           inputAmount: this.formatINR(a),
@@ -444,7 +502,11 @@ function createFallbackGstEngine() {
           finalAmount: this.formatINR(finalAmount),
           cgstAmount: this.formatINR(cgstAmount),
           sgstAmount: this.formatINR(sgstAmount),
-          igstAmount: this.formatINR(igstAmount)
+          igstAmount: this.formatINR(igstAmount),
+          rateLabel: `${parseFloat(r.toFixed(4))}%`,
+          cgstRateLabel: `${cgstRate}%`,
+          sgstRateLabel: `${sgstRate}%`,
+          igstRateLabel: `${igstRate}%`
         }
       };
     }
