@@ -239,6 +239,58 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
+/* Duration Input + Unit Dropdown */
+.si-duration-wrapper {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  width: 100%;
+}
+
+.si-duration-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: none !important;
+}
+
+.si-duration-input:focus {
+  z-index: 2;
+}
+
+.si-unit-select {
+  flex: 0 0 110px;
+  height: 48px;
+  padding: 0.625rem 2rem 0.625rem 0.85rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--primary, #2563eb);
+  background-color: var(--bg-subtle, #f1f5f9);
+  border: 1.5px solid var(--border-color, #e2e8f0);
+  border-top-right-radius: var(--radius-lg, 0.75rem);
+  border-bottom-right-radius: var(--radius-lg, 0.75rem);
+  cursor: pointer;
+  transition: all var(--transition-fast, 150ms ease);
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+.si-unit-select:hover {
+  border-color: #cbd5e1;
+  background-color: #e2e8f0;
+}
+
+.si-unit-select:focus {
+  outline: none;
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  z-index: 2;
+}
+
 /* Range Sliders */
 .si-range-slider {
   -webkit-appearance: none;
@@ -544,6 +596,28 @@
 .btn-calc-copy:focus-visible {
   outline: 2px solid var(--primary, #2563eb);
   outline-offset: 2px;
+}
+
+/* Day Count Convention Note */
+.si-day-convention-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-md, 0.5rem);
+  font-size: 0.75rem;
+  color: var(--text-muted, #64748b);
+  line-height: 1.45;
+}
+
+.si-day-convention-note svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--primary, #2563eb);
+  margin-top: 2px;
 }
 
 /* --- Yearly Interest Growth Table --- */
@@ -956,4 +1030,20 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--primary, #2563eb);
+}
+
+/* --- Mobile Responsiveness (360px & 375px) --- */
+@media (max-width: 360px) {
+  .si-unit-select {
+    flex: 0 0 92px;
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .si-duration-input {
+    font-size: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.5rem;
+  }
 }
