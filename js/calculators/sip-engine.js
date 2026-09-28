@@ -335,5 +335,152 @@
     };
   };
 
+  /**
+   * Goal-Based / Reverse SIP Calculator
+   * Calculates the required monthly investment to achieve a target future value.
+   * Uses EXACTLY the same beginning-of-month annuity-due compounding convention.
+   *
+   * @param {number|string} targetFutureValue - Target corpus in ₹
+   * @param {number|string} annualRate - Expected annual return in % (e.g. 12)
+   * @param {number|string} years - Investment horizon in years (1 to 40)
+   * @param {boolean} [isStepUp=false] - Whether Step-Up is enabled
+   * @param {number|string} [stepUpPercent=10] - Annual step-up percentage
+   * @returns {Object} Complete calculation results with validation status
+   */
+  SipCalculatorEngine.prototype.calculateGoalSIP = function(targetFutureValue, annualRate, years, isStepUp, stepUpPercent) {
+    const rawTarget = typeof targetFutureValue === 'number' ? targetFutureValue : parseFloat(String(targetFutureValue).replace(/[^0-9.-]/g, ''));
+    const rawRate = typeof annualRate === 'number' ? annualRate : parseFloat(String(annualRate).replace(/[^0-9.-]/g, ''));
+
+    // Validation
+    if (isNaN(rawTarget) || rawTarget <= 0) {
+      return {
+        isValid: false,
+        error: 'Target wealth goal must be greater than zero.',
+        requiredMonthly: 0,
+        totalInvested: 0,
+        estimatedReturns: 0,
+        targetFutureValue: 0,
+        formatted: {
+          requiredMonthly: '₹0',
+          totalInvested: '₹0',
+          estimatedReturns: '₹0',
+          targetFutureValue: '₹0'
+        }
+      };
+    }
+
+    if (isNaN(rawRate) || rawRate < 0 || rawRate > 30) {
+      return {
+        isValid: false,
+        error: 'Expected annual return must be between 0% and 30%.',
+        requiredMonthly: 0,
+        totalInvested: 0,
+        estimatedReturns: 0,
+        targetFutureValue: rawTarget,
+        formatted: {
+          requiredMonthly: '₹0',
+          totalInvested: '₹0',
+          estimatedReturns: '₹0',
+          targetFutureValue: this.formatINR(rawTarget)
+        }
+      };
+    }
+
+    if (rawTarget > 1000000000) { // ₹100 Crore upper bound
+      return {
+        isValid: false,
+        error: 'Target wealth goal exceeds the maximum calculation limit (₹100 Crore).',
+        requiredMonthly: 0,
+        totalInvested: 0,
+        estimatedReturns: 0,
+        targetFutureValue: rawTarget,
+        formatted: {
+          requiredMonthly: '₹0',
+          totalInvested: '₹0',
+          estimatedReturns: '₹0',
+          targetFutureValue: this.formatINR(rawTarget)
+        }
+      };
+    }
+
+    const FV = rawTarget;
+    const R = rawRate;
+    const N = Math.max(1, Math.min(40, Math.round(this.parseInput(years))));
+    const stepUpActive = Boolean(isStepUp);
+    const S = this.parseInput(stepUpPercent);
+    const n = N * 12;
+    const r = (R / 100) / 12;
+    let requiredMonthly = 0;
+    let totalInvested = 0;
+
+    if (stepUpActive && S > 0) {
+      const s = S / 100;
+      // Exact month-by-month compounding accumulation factor for unit contribution (P = 1)
+      let unitFV = 0;
+      let unitInvested = 0;
+
+      for (let y = 1; y <= N; y++) {
+        const monthlyForYear = Math.pow(1 + s, y - 1);
+        unitInvested += monthlyForYear * 12;
+
+        for (let m = 0; m < 12; m++) {
+          if (r <= 0) {
+            unitFV += monthlyForYear;
+          } else {
+            unitFV = (unitFV + monthlyForYear) * (1 + r);
+          }
+        }
+      }
+
+      if (unitFV <= 0) {
+        return { isValid: false, error: 'Calculation error occurred.', requiredMonthly: 0, totalInvested: 0, estimatedReturns: 0 };
+      }
+
+      requiredMonthly = FV / unitFV;
+      totalInvested = requiredMonthly * unitInvested;
+    } else {
+      // Standard fixed monthly SIP annuity due accumulation factor
+      let unitFactor = 0;
+      if (r <= 0) {
+        unitFactor = n;
+      } else {
+        unitFactor = ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      }
+
+      if (unitFactor <= 0) {
+        return { isValid: false, error: 'Calculation error occurred.', requiredMonthly: 0, totalInvested: 0, estimatedReturns: 0 };
+      }
+
+      requiredMonthly = FV / unitFactor;
+      totalInvested = requiredMonthly * n;
+    }
+
+    const roundedMonthly = Math.round(requiredMonthly);
+    const roundedInvested = Math.round(totalInvested);
+    const estimatedReturns = Math.max(0, Math.round(FV - totalInvested));
+
+    return {
+      isValid: true,
+      error: '',
+      isStepUp: stepUpActive,
+      targetFutureValue: FV,
+      annualRate: R,
+      years: N,
+      stepUpPercent: S,
+      requiredMonthly: roundedMonthly,
+      exactMonthly: requiredMonthly,
+      totalInvested: roundedInvested,
+      estimatedReturns: estimatedReturns,
+      formatted: {
+        requiredMonthly: this.formatINR(roundedMonthly),
+        totalInvested: this.formatINR(roundedInvested),
+        estimatedReturns: this.formatINR(estimatedReturns),
+        targetFutureValue: this.formatINR(FV),
+        rateLabel: `${R}%`,
+        durationLabel: `${N} Year${N > 1 ? 's' : ''}`
+      }
+    };
+  };
+
   return SipCalculatorEngine;
 });

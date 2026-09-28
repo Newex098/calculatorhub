@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initSipCalculatorUI();
+  initGoalSipUI();
   initSipFaqAccordion();
   initSipMobileDrawer();
 });
@@ -437,12 +438,366 @@ function createFallbackSipEngine() {
           stepUpLabel: '10%'
         }
       };
+    },
+    calculateGoalSIP: function(targetFV, annualRate, years, isStepUp, stepUpPercent) {
+      const rawTarget = typeof targetFV === 'number' ? targetFV : parseFloat(String(targetFV).replace(/[^0-9.-]/g, ''));
+      const rawRate = typeof annualRate === 'number' ? annualRate : parseFloat(String(annualRate).replace(/[^0-9.-]/g, ''));
+
+      if (isNaN(rawTarget) || rawTarget <= 0) {
+        return {
+          isValid: false,
+          error: 'Target wealth goal must be greater than zero.',
+          formatted: {
+            requiredMonthly: '₹0',
+            totalInvested: '₹0',
+            estimatedReturns: '₹0',
+            targetFutureValue: '₹0'
+          }
+        };
+      }
+      if (isNaN(rawRate) || rawRate < 0 || rawRate > 30) {
+        return {
+          isValid: false,
+          error: 'Expected annual return must be between 0% and 30%.',
+          formatted: {
+            requiredMonthly: '₹0',
+            totalInvested: '₹0',
+            estimatedReturns: '₹0',
+            targetFutureValue: this.formatINR(rawTarget)
+          }
+        };
+      }
+      if (rawTarget > 1000000000) {
+        return {
+          isValid: false,
+          error: 'Target wealth goal exceeds the maximum calculation limit (₹100 Crore).',
+          formatted: {
+            requiredMonthly: '₹0',
+            totalInvested: '₹0',
+            estimatedReturns: '₹0',
+            targetFutureValue: this.formatINR(rawTarget)
+          }
+        };
+      }
+
+      const FV = rawTarget;
+      const R = rawRate;
+      const N = Math.max(1, Math.min(40, Math.round(this.parseInput(years))));
+      const stepUpActive = Boolean(isStepUp);
+      const S = this.parseInput(stepUpPercent);
+      const n = N * 12;
+      const r = (R / 100) / 12;
+
+      let requiredMonthly = 0;
+      let totalInvested = 0;
+
+      if (stepUpActive && S > 0) {
+        const s = S / 100;
+        let unitFV = 0;
+        let unitInvested = 0;
+
+        for (let y = 1; y <= N; y++) {
+          const monthlyForYear = Math.pow(1 + s, y - 1);
+          unitInvested += monthlyForYear * 12;
+
+          for (let m = 0; m < 12; m++) {
+            if (r <= 0) {
+              unitFV += monthlyForYear;
+            } else {
+              unitFV = (unitFV + monthlyForYear) * (1 + r);
+            }
+          }
+        }
+
+        if (unitFV <= 0) {
+          return { isValid: false, error: 'Calculation error occurred.', requiredMonthly: 0, totalInvested: 0, estimatedReturns: 0 };
+        }
+
+        requiredMonthly = FV / unitFV;
+        totalInvested = requiredMonthly * unitInvested;
+      } else {
+        let unitFactor = 0;
+        if (r <= 0) {
+          unitFactor = n;
+        } else {
+          unitFactor = ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+        }
+
+        if (unitFactor <= 0) {
+          return { isValid: false, error: 'Calculation error occurred.', requiredMonthly: 0, totalInvested: 0, estimatedReturns: 0 };
+        }
+
+        requiredMonthly = FV / unitFactor;
+        totalInvested = requiredMonthly * n;
+      }
+
+      const p = Math.round(requiredMonthly);
+      const tot = Math.round(totalInvested);
+      const ret = Math.max(0, Math.round(FV - totalInvested));
+
+      return {
+        isValid: true,
+        error: '',
+        isStepUp: stepUpActive,
+        targetFutureValue: FV,
+        annualRate: R,
+        years: N,
+        stepUpPercent: S,
+        requiredMonthly: p,
+        exactMonthly: requiredMonthly,
+        totalInvested: tot,
+        estimatedReturns: ret,
+        formatted: {
+          requiredMonthly: this.formatINR(p),
+          totalInvested: this.formatINR(tot),
+          estimatedReturns: this.formatINR(ret),
+          targetFutureValue: this.formatINR(FV),
+          rateLabel: `${R}%`,
+          durationLabel: `${N} Year${N > 1 ? 's' : ''}`,
+          stepUpLabel: `${S}%`
+        }
+      };
     }
   };
 }
 
 /* ==========================================================================
-   2. Expandable FAQ Accordion
+   2. Goal-Based / Reverse SIP Calculator UI
+   ========================================================================== */
+function initGoalSipUI() {
+  const engine = typeof SipCalculatorEngine !== 'undefined'
+    ? new SipCalculatorEngine()
+    : createFallbackSipEngine();
+
+  // Inputs & Sliders
+  const targetInput = document.getElementById('goal-input-target');
+  const targetSlider = document.getElementById('goal-slider-target');
+  const targetPill = document.getElementById('goal-pill-target');
+
+  const rateInput = document.getElementById('goal-input-rate');
+  const rateSlider = document.getElementById('goal-slider-rate');
+  const ratePill = document.getElementById('goal-pill-rate');
+
+  const yearsInput = document.getElementById('goal-input-years');
+  const yearsSlider = document.getElementById('goal-slider-years');
+  const yearsPill = document.getElementById('goal-pill-years');
+
+  // Step-Up Controls
+  const stepUpToggle = document.getElementById('goal-stepup-toggle-btn');
+  const stepUpGroup = document.getElementById('goal-stepup-controls-group');
+  const stepUpInput = document.getElementById('goal-input-stepup');
+  const stepUpSlider = document.getElementById('goal-slider-stepup');
+  const stepUpPill = document.getElementById('goal-pill-stepup');
+
+  // Action Buttons & Presets
+  const btnReset = document.getElementById('btn-goal-reset');
+  const btnCopy = document.getElementById('btn-goal-copy');
+  const presetChips = document.querySelectorAll('.goal-preset-chip');
+
+  // Results
+  const errorBox = document.getElementById('goal-error-box');
+  const resultMonthly = document.getElementById('goal-result-monthly');
+  const resultSubtitle = document.getElementById('goal-result-subtitle');
+  const resultInvested = document.getElementById('goal-result-invested');
+  const resultReturns = document.getElementById('goal-result-returns');
+  const resultTarget = document.getElementById('goal-result-target');
+
+  if (!targetInput || !rateInput || !yearsInput) return;
+
+  let isStepUpActive = false;
+
+  const DEFAULTS = {
+    target: 2500000,
+    rate: 12,
+    years: 10,
+    isStepUp: false,
+    stepUpPercent: 10
+  };
+
+  function syncPair(inputEl, sliderEl, pillEl, formatFn) {
+    if (!inputEl) return;
+    inputEl.addEventListener('input', () => {
+      const val = parseFloat(inputEl.value);
+      if (!isNaN(val) && sliderEl) {
+        sliderEl.value = val;
+      }
+      if (pillEl && formatFn) {
+        pillEl.textContent = formatFn(val);
+      }
+      recalculate();
+    });
+
+    if (sliderEl) {
+      sliderEl.addEventListener('input', () => {
+        const val = parseFloat(sliderEl.value);
+        if (!isNaN(val)) {
+          inputEl.value = val;
+        }
+        if (pillEl && formatFn) {
+          pillEl.textContent = formatFn(val);
+        }
+        recalculate();
+      });
+    }
+  }
+
+  syncPair(targetInput, targetSlider, targetPill, (v) => engine.formatINR(v));
+  syncPair(rateInput, rateSlider, ratePill, (v) => `${v}%`);
+  syncPair(yearsInput, yearsSlider, yearsPill, (v) => `${v} Yr${v > 1 ? 's' : ''}`);
+  syncPair(stepUpInput, stepUpSlider, stepUpPill, (v) => `${v}%`);
+
+  function setStepUp(active) {
+    isStepUpActive = Boolean(active);
+    if (stepUpToggle) {
+      stepUpToggle.setAttribute('aria-checked', String(isStepUpActive));
+      if (isStepUpActive) {
+        stepUpToggle.classList.add('is-active');
+      } else {
+        stepUpToggle.classList.remove('is-active');
+      }
+    }
+    if (stepUpGroup) {
+      stepUpGroup.style.display = isStepUpActive ? 'block' : 'none';
+    }
+    recalculate();
+  }
+
+  if (stepUpToggle) {
+    stepUpToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      setStepUp(!isStepUpActive);
+    });
+  }
+
+  presetChips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetVal = parseFloat(chip.dataset.target);
+      if (!isNaN(targetVal)) {
+        targetInput.value = targetVal;
+        if (targetSlider) targetSlider.value = targetVal;
+        if (targetPill) targetPill.textContent = engine.formatINR(targetVal);
+
+        presetChips.forEach(c => c.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        recalculate();
+      }
+    });
+  });
+
+  function recalculate() {
+    const rawTarget = engine.parseInput(targetInput.value);
+    const rawRate = engine.parseInput(rateInput.value);
+    const rawYears = Math.max(1, Math.min(40, Math.round(engine.parseInput(yearsInput.value))));
+    const rawStepUp = engine.parseInput(stepUpInput ? stepUpInput.value : DEFAULTS.stepUpPercent);
+
+    if (targetPill) targetPill.textContent = engine.formatINR(rawTarget);
+    if (ratePill) ratePill.textContent = `${rawRate}%`;
+    if (yearsPill) yearsPill.textContent = `${rawYears} Yr${rawYears > 1 ? 's' : ''}`;
+    if (stepUpPill) stepUpPill.textContent = `${rawStepUp}%`;
+
+    const data = engine.calculateGoalSIP(rawTarget, rawRate, rawYears, isStepUpActive, rawStepUp);
+
+    if (!data.isValid) {
+      if (errorBox) {
+        errorBox.textContent = data.error || 'Please enter valid inputs.';
+        errorBox.style.display = 'block';
+      }
+      if (resultMonthly) resultMonthly.textContent = '—';
+      if (resultSubtitle) resultSubtitle.textContent = 'Awaiting valid investment goal details';
+      if (resultInvested) resultInvested.textContent = '₹0';
+      if (resultReturns) resultReturns.textContent = '₹0';
+      if (resultTarget) resultTarget.textContent = engine.formatINR(rawTarget);
+    } else {
+      if (errorBox) {
+        errorBox.style.display = 'none';
+      }
+      if (resultMonthly) resultMonthly.textContent = `${data.formatted.requiredMonthly}/mo`;
+      if (resultSubtitle) {
+        if (isStepUpActive) {
+          resultSubtitle.textContent = `Initial Year-1 contribution needed to reach ${data.formatted.targetFutureValue} in ${data.formatted.durationLabel} with ${data.formatted.stepUpLabel} yearly step-up`;
+        } else {
+          resultSubtitle.textContent = `Monthly investment needed to reach ${data.formatted.targetFutureValue} in ${data.formatted.durationLabel} at ${data.formatted.rateLabel} assumed return`;
+        }
+      }
+      if (resultInvested) resultInvested.textContent = data.formatted.totalInvested;
+      if (resultReturns) resultReturns.textContent = data.formatted.estimatedReturns;
+      if (resultTarget) resultTarget.textContent = data.formatted.targetFutureValue;
+    }
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', (e) => {
+      e.preventDefault();
+      targetInput.value = DEFAULTS.target;
+      if (targetSlider) targetSlider.value = DEFAULTS.target;
+      rateInput.value = DEFAULTS.rate;
+      if (rateSlider) rateSlider.value = DEFAULTS.rate;
+      yearsInput.value = DEFAULTS.years;
+      if (yearsSlider) yearsSlider.value = DEFAULTS.years;
+      if (stepUpInput) stepUpInput.value = DEFAULTS.stepUpPercent;
+      if (stepUpSlider) stepUpSlider.value = DEFAULTS.stepUpPercent;
+
+      presetChips.forEach(c => {
+        if (parseFloat(c.dataset.target) === DEFAULTS.target) c.classList.add('is-active');
+        else c.classList.remove('is-active');
+      });
+
+      setStepUp(false);
+    });
+  }
+
+  if (btnCopy) {
+    btnCopy.addEventListener('click', (e) => {
+      e.preventDefault();
+      const rawTarget = engine.parseInput(targetInput.value);
+      const rawRate = engine.parseInput(rateInput.value);
+      const rawYears = Math.max(1, Math.min(40, Math.round(engine.parseInput(yearsInput.value))));
+      const rawStepUp = engine.parseInput(stepUpInput ? stepUpInput.value : DEFAULTS.stepUpPercent);
+      const data = engine.calculateGoalSIP(rawTarget, rawRate, rawYears, isStepUpActive, rawStepUp);
+
+      if (!data.isValid) {
+        alert('Please resolve input errors before copying.');
+        return;
+      }
+
+      const copyText = [
+        `CalculatorHub - Goal-Based SIP Projection:`,
+        `• Target Wealth Goal: ${data.formatted.targetFutureValue}`,
+        `• Assumed Annual Return: ${data.formatted.rateLabel}`,
+        `• Investment Horizon: ${data.formatted.durationLabel}`,
+        isStepUpActive ? `• Annual Step-Up: ${data.formatted.stepUpLabel}` : `• Annual Step-Up: None (Fixed)`,
+        `• Required Monthly SIP: ${data.formatted.requiredMonthly}`,
+        `• Estimated Total Invested: ${data.formatted.totalInvested}`,
+        `• Estimated Returns: ${data.formatted.estimatedReturns}`,
+        `Note: These are hypothetical mathematical illustrations based on the assumed rate entered by the user. Actual investment returns can vary and are not guaranteed.`,
+        `Calculated via CalculatorHub (https://calcuface.co.in/calculators/sip/#goal-sip-card)`
+      ].join('\n');
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(() => {
+          const orig = btnCopy.innerHTML;
+          btnCopy.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Copied!</span>
+          `;
+          setTimeout(() => { btnCopy.innerHTML = orig; }, 2000);
+        }).catch(() => {
+          prompt('Copy calculation summary:', copyText);
+        });
+      } else {
+        prompt('Copy calculation summary:', copyText);
+      }
+    });
+  }
+
+  setStepUp(false);
+}
+
+/* ==========================================================================
+   3. Expandable FAQ Accordion
    ========================================================================== */
 function initSipFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');

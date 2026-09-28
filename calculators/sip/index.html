@@ -118,6 +118,22 @@
               "@type": "Answer",
               "text": "No calculator can predict future stock market performance. This tool computes mathematical projections based strictly on the assumed annual return rate you enter."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate how much SIP I need for a specific financial goal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To find the monthly SIP required for a target corpus (such as ₹25 Lakh or ₹1 Crore), divide your target future value by the annuity-due accumulation factor for your tenure and assumed return rate. You can use the Goal-Based SIP Calculator on this page to calculate it instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I invest via SIP or Lump Sum?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Which approach fits depends on available capital, investment horizon, cash-flow pattern, and market conditions. Salaried investors typically prefer SIP to average entry costs across market cycles via rupee-cost averaging. Investors with existing idle capital and long horizons may consider lump-sum investments or Systematic Transfer Plans (STP)."
+            }
           }
         ]
       }
@@ -155,6 +171,8 @@
         <a href="/#popular" class="nav-link">Popular</a>
         <a href="/#categories" class="nav-link">Categories</a>
         <a href="#sip-calc-card" class="nav-link active">SIP Calculator</a>
+        <a href="#goal-sip-card" class="nav-link">Goal SIP</a>
+        <a href="#sip-vs-lumpsum" class="nav-link">SIP vs Lump Sum</a>
         <a href="/#why-us" class="nav-link">Why CalculatorHub</a>
         <a href="#faq" class="nav-link">FAQ</a>
       </nav>
@@ -186,6 +204,8 @@
         <li><a href="/#popular" class="mobile-nav-link">Popular Calculators</a></li>
         <li><a href="/#categories" class="mobile-nav-link">Browse Categories</a></li>
         <li><a href="#sip-calc-card" class="mobile-nav-link active">Featured: SIP Calculator</a></li>
+        <li><a href="#goal-sip-card" class="mobile-nav-link">Goal-Based SIP</a></li>
+        <li><a href="#sip-vs-lumpsum" class="mobile-nav-link">SIP vs Lump Sum</a></li>
         <li><a href="/#why-us" class="mobile-nav-link">Why CalculatorHub</a></li>
         <li><a href="#faq" class="mobile-nav-link">Frequently Asked Questions</a></li>
       </ul>
@@ -498,6 +518,303 @@
     </section>
 
     <!-- =========================================================================
+         Goal-Based / Reverse SIP Calculator Section
+         ========================================================================= -->
+    <section class="section goal-sip-section" id="goal-sip-card">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="section-badge">Target Wealth Planning</div>
+          <h2 class="section-title">Goal-Based SIP Calculator</h2>
+          <p class="section-desc">
+            Calculate the exact monthly investment required to reach your target financial corpus based on your assumed return and time horizon.
+          </p>
+        </div>
+
+        <div class="sip-calc-grid">
+          <!-- Left Column: Goal Inputs Card -->
+          <div class="sip-card">
+            <div class="sip-card-header">
+              <h3 class="sip-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                Goal Details
+              </h3>
+              <span class="sip-tag-badge">Reverse SIP</span>
+            </div>
+
+            <!-- Validation Error Box -->
+            <div id="goal-error-box" class="goal-error-box" style="display: none;" role="alert"></div>
+
+            <form class="sip-form" onsubmit="return false;" novalidate>
+              <!-- 1. Target Future Value -->
+              <div class="sip-input-group">
+                <div class="sip-label-row">
+                  <label for="goal-input-target" class="sip-label">Target Wealth Goal</label>
+                  <span class="sip-value-pill" id="goal-pill-target">₹25,00,000</span>
+                </div>
+                <div class="sip-input-wrapper">
+                  <span class="sip-affix sip-prefix">₹</span>
+                  <input type="number" id="goal-input-target" class="sip-input-text has-prefix" value="2500000" min="10000" max="1000000000" step="50000" inputmode="decimal" placeholder="e.g. 2500000" aria-label="Target wealth goal in rupees">
+                </div>
+                <input type="range" id="goal-slider-target" class="sip-range-slider" min="100000" max="20000000" step="100000" value="2500000" aria-label="Target wealth goal slider">
+                <div class="sip-range-legend">
+                  <span>₹1 Lakh</span>
+                  <span>₹1 Crore</span>
+                  <span>₹2 Crore</span>
+                </div>
+
+                <!-- Goal Preset Chips -->
+                <div class="goal-presets-row" style="margin-top: 0.75rem;">
+                  <button type="button" class="goal-preset-chip" data-target="1000000">₹10 Lakh</button>
+                  <button type="button" class="goal-preset-chip is-active" data-target="2500000">₹25 Lakh</button>
+                  <button type="button" class="goal-preset-chip" data-target="5000000">₹50 Lakh</button>
+                  <button type="button" class="goal-preset-chip" data-target="10000000">₹1 Crore</button>
+                </div>
+              </div>
+
+              <!-- 2. Expected Annual Return -->
+              <div class="sip-input-group">
+                <div class="sip-label-row">
+                  <label for="goal-input-rate" class="sip-label">Expected Annual Return</label>
+                  <span class="sip-value-pill" id="goal-pill-rate">12%</span>
+                </div>
+                <div class="sip-input-wrapper">
+                  <input type="number" id="goal-input-rate" class="sip-input-text has-suffix" value="12" min="0" max="30" step="0.5" inputmode="decimal" placeholder="e.g. 12" aria-label="Assumed annual return percentage">
+                  <span class="sip-affix sip-suffix">%</span>
+                </div>
+                <input type="range" id="goal-slider-rate" class="sip-range-slider" min="0" max="30" step="0.5" value="12" aria-label="Assumed annual return slider">
+                <div class="sip-range-legend">
+                  <span>0%</span>
+                  <span>15%</span>
+                  <span>30%</span>
+                </div>
+              </div>
+
+              <!-- 3. Investment Time Horizon -->
+              <div class="sip-input-group">
+                <div class="sip-label-row">
+                  <label for="goal-input-years" class="sip-label">Investment Duration</label>
+                  <span class="sip-value-pill" id="goal-pill-years">10 Yrs</span>
+                </div>
+                <div class="sip-input-wrapper">
+                  <input type="number" id="goal-input-years" class="sip-input-text has-suffix" value="10" min="1" max="40" step="1" inputmode="numeric" placeholder="e.g. 10" aria-label="Investment duration in years">
+                  <span class="sip-affix sip-suffix">Yrs</span>
+                </div>
+                <input type="range" id="goal-slider-years" class="sip-range-slider" min="1" max="40" step="1" value="10" aria-label="Investment duration slider">
+                <div class="sip-range-legend">
+                  <span>1 Yr</span>
+                  <span>20 Yrs</span>
+                  <span>40 Yrs</span>
+                </div>
+              </div>
+
+              <!-- 4. Optional Annual Step-Up -->
+              <div class="stepup-toggle-box">
+                <div class="stepup-header-row">
+                  <div class="stepup-title-wrap">
+                    <span class="stepup-title">
+                      Annual Step-Up
+                      <span class="stepup-badge-opt">Optional</span>
+                    </span>
+                    <span class="stepup-desc">Lower your initial contribution by increasing it yearly</span>
+                  </div>
+                  <button type="button" class="switch-toggle" id="goal-stepup-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle Annual Step-Up for Goal SIP">
+                    <span class="switch-thumb"></span>
+                  </button>
+                </div>
+
+                <div id="goal-stepup-controls-group" style="display: none;">
+                  <div class="sip-label-row" style="margin-bottom: 0.4rem;">
+                    <label for="goal-input-stepup" class="sip-label" style="font-size: 0.875rem;">Annual Step-Up Percentage</label>
+                    <span class="sip-value-pill" id="goal-pill-stepup">10%</span>
+                  </div>
+                  <div class="sip-input-wrapper">
+                    <input type="number" id="goal-input-stepup" class="sip-input-text has-suffix" value="10" min="1" max="30" step="1" inputmode="decimal" placeholder="e.g. 10" aria-label="Annual step up percentage">
+                    <span class="sip-affix sip-suffix">%</span>
+                  </div>
+                  <input type="range" id="goal-slider-stepup" class="sip-range-slider" min="1" max="30" step="1" value="10" aria-label="Annual step up percentage slider">
+                </div>
+              </div>
+
+              <!-- 5. Form Actions -->
+              <div class="sip-actions-row">
+                <button type="button" class="btn-calc-reset" id="btn-goal-reset">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Goal Results Card -->
+          <div class="sip-card sip-results-card" id="goal-results-card">
+            <div class="sip-card-header">
+              <h3 class="sip-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                Required Contribution
+              </h3>
+              <span class="sip-tag-badge">Monthly Target</span>
+            </div>
+
+            <!-- Primary Output Display -->
+            <div class="sip-main-result-box">
+              <div class="sip-result-label">Required Monthly SIP</div>
+              <div class="sip-result-amount" id="goal-result-monthly">₹10,760/mo</div>
+              <div class="sip-result-subtitle" id="goal-result-subtitle">Monthly investment needed to reach ₹25,00,000 in 10 Years at 12% assumed return</div>
+            </div>
+
+            <!-- Stats List -->
+            <div class="sip-stats-list">
+              <div class="sip-stat-row">
+                <span class="sip-stat-label">Target Wealth Goal</span>
+                <span class="sip-stat-val" id="goal-result-target">₹25,00,000</span>
+              </div>
+              <div class="sip-stat-row">
+                <span class="sip-stat-label">Estimated Total Invested</span>
+                <span class="sip-stat-val" id="goal-result-invested">₹12,91,200</span>
+              </div>
+              <div class="sip-stat-row">
+                <span class="sip-stat-label">Estimated Returns</span>
+                <span class="sip-stat-val returns" id="goal-result-returns">₹12,08,800</span>
+              </div>
+            </div>
+
+            <!-- Disclaimer note inside result card -->
+            <div class="goal-disclaimer-note">
+              These are hypothetical mathematical illustrations based on the assumed rate entered by the user. Actual investment returns can vary and are not guaranteed.
+            </div>
+
+            <!-- Copy Summary Button -->
+            <button type="button" class="btn-calc-copy" id="btn-goal-copy" style="margin-top: 1.25rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Goal Summary</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Educational Comparison: SIP vs. Lump Sum
+         ========================================================================= -->
+    <section class="section" id="sip-vs-lumpsum">
+      <div class="container">
+        <div class="article-card" style="max-width: 960px; margin: 0 auto;">
+          <div class="section-badge" style="margin-bottom: 0.75rem;">Educational Comparison</div>
+          <h2 class="article-heading">SIP vs. Lump Sum Investment: Understanding the Structural Differences</h2>
+          <p class="article-p">
+            When planning mutual fund or equity investments, two primary entry routes exist: investing a fixed sum on a regular monthly schedule (<strong>Systematic Investment Plan, or SIP</strong>) versus deploying the entire capital at once (<strong>Lump Sum</strong>). Neither method is universally superior; each operates on different compounding mechanics and suits distinct financial situations.
+          </p>
+
+          <!-- Core Mechanics Grid -->
+          <div class="comparison-features-grid">
+            <div class="comparison-feature-card">
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                Systematic Investment Plan (SIP)
+              </h3>
+              <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-body); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
+                <li><strong>Distributed Capital:</strong> Contributions are staggered across months or quarters from recurring cash flow.</li>
+                <li><strong>Varying Compounding Horizons:</strong> Each monthly installment stays invested for a different duration. Early installments compound over the entire tenure, whereas later installments compound for fewer months.</li>
+                <li><strong>Rupee-Cost Averaging:</strong> Automatically acquires more units during market dips and fewer units during market highs, reducing entry timing risk.</li>
+              </ul>
+            </div>
+
+            <div class="comparison-feature-card">
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                Lump Sum Investment
+              </h3>
+              <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-body); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
+                <li><strong>Upfront Capital Deployment:</strong> 100% of the investable capital is deployed immediately on Day 1.</li>
+                <li><strong>Uniform Compounding Horizon:</strong> The entire principal remains exposed to the assumed compound rate of return for the entire duration. (Calculate lump sum growth via our <a href="/calculators/compound-interest/" style="color: var(--primary); text-decoration: underline;">Compound Interest Calculator</a>.)</li>
+                <li><strong>Entry Timing Exposure:</strong> Returns are sensitive to the market valuation at the exact time of entry.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Structured Comparison Table -->
+          <div class="table-responsive" style="margin: 1.5rem 0;">
+            <table class="growth-table comparison-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Comparison Factor</th>
+                  <th style="text-align: left;">Systematic Investment Plan (SIP)</th>
+                  <th style="text-align: left;">Lump Sum Investment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600; color: var(--text-main);">Capital Inflow</td>
+                  <td>Gradual, periodic contributions from regular income</td>
+                  <td>Single upfront payment from existing savings or windfall</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600; color: var(--text-main);">Capital Exposure</td>
+                  <td>Capital enters incrementally; later installments have shorter exposure</td>
+                  <td>Entire capital is exposed to compounding from Day 1</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600; color: var(--text-main);">Market Timing Risk</td>
+                  <td>Low; rupee-cost averaging mitigates market volatility</td>
+                  <td>High; entry point valuation significantly impacts returns</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600; color: var(--text-main);">Behavioral Discipline</td>
+                  <td>Automated monthly deduction fosters disciplined habit</td>
+                  <td>Requires discipline to avoid timing market peaks and troughs</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600; color: var(--text-main);">Best Suited For</td>
+                  <td>Salaried professionals investing regular monthly savings</td>
+                  <td>Investors with idle lump sum capital and a long horizon</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Neutral Summary Guidance -->
+          <div style="background-color: var(--bg-page); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.25rem;">
+            <p class="article-p" style="margin: 0; font-size: 0.9375rem; line-height: 1.6;">
+              <strong>Key Takeaway:</strong> Which approach fits depends on available capital, investment horizon, cash-flow pattern, and market conditions. Investors receiving a monthly salary typically find SIP ideal to build wealth over time without worrying about daily market swings, while those with ready idle funds and long time horizons may combine lump sum investments or use Systematic Transfer Plans (STP) to transition funds gradually.
+            </p>
+          </div>
+
+          <!-- Prominent Financial Disclosure -->
+          <div class="disclaimer-card" style="margin-top: 1.25rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div>
+              <strong>Financial Disclosure:</strong> These are hypothetical mathematical illustrations based on the assumed rate entered by the user. Actual investment returns can vary and are not guaranteed. CalculatorHub does not offer financial advisory services or mutual fund recommendations.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
          Formula & Calculation Methodology
          ========================================================================= -->
     <section class="content-section">
@@ -544,6 +861,26 @@
                 <div class="formula-vars-list">
                   <div><strong>s:</strong> Annual step-up percentage divided by 100 (e.g. 10% = 0.10).</div>
                   <div><strong>Exact Compounding:</strong> Rather than approximating, the engine compounds each year's 12 deposits to the maturity date.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="article-subheading">Goal-Based (Reverse) SIP Formula</h3>
+              <p class="article-p" style="margin-bottom: 0.75rem;">
+                To determine the monthly investment (<strong>P</strong>) required to accumulate a predetermined target future value (<strong>FV</strong>), the engine applies the inverse of the beginning-of-month annuity-due compounding equation:
+              </p>
+              <div class="formula-box">
+                <div class="formula-display">
+                  P = FV ÷ ([((1 + r)<sup>n</sup> - 1) ÷ r] × (1 + r))
+                </div>
+                <div class="formula-vars-list">
+                  <div><strong>FV:</strong> Target maturity wealth goal (e.g. ₹25,00,000).</div>
+                  <div><strong>r:</strong> Monthly periodic interest rate <code>(Expected Annual Return ÷ 12 ÷ 100)</code>.</div>
+                  <div><strong>n:</strong> Total number of monthly installments <code>(Years × 12)</code>.</div>
+                  <div><strong>(1 + r):</strong> Annuity-due factor maintaining identical beginning-of-month contribution timing.</div>
+                  <div><strong>0% Assumed Return:</strong> If assumed return is 0%, <code>P = FV ÷ n</code>.</div>
+                  <div><strong>Annual Step-Up:</strong> When Step-Up is enabled, the engine calculates the exact initial Year-1 monthly installment using month-by-month compounding accumulation factors.</div>
                 </div>
               </div>
             </div>
@@ -803,6 +1140,36 @@
               <div class="faq-content">
                 <div class="faq-body">
                   No calculator can predict future stock market performance. This tool computes mathematical projections based strictly on the assumed annual return rate you enter.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 10 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>How do I calculate how much SIP I need for a specific financial goal?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  To find the monthly SIP required for a target corpus (such as ₹25 Lakh or ₹1 Crore), divide your target future value by the annuity-due accumulation factor for your tenure and assumed return rate. You can use the Goal-Based SIP Calculator on this page to calculate it instantly with or without annual step-up.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 11 -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Should I invest via SIP or Lump Sum?</span>
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="faq-body">
+                  Which approach fits depends on available capital, investment horizon, cash-flow pattern, and market conditions. Salaried investors typically prefer SIP to average entry costs across market cycles via rupee-cost averaging. Investors with existing idle capital and long horizons may consider lump-sum investments or Systematic Transfer Plans (STP), keeping in mind that upfront investments carry market-entry timing risk.
                 </div>
               </div>
             </div>

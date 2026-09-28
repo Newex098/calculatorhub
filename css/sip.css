@@ -1052,13 +1052,120 @@
   color: var(--accent-amber);
 }
 
+/* --- Goal-Based / Reverse SIP Section Styles --- */
+.goal-sip-section {
+  padding-top: 2.5rem;
+  padding-bottom: 3.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.goal-error-box {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 1.25rem;
+}
+
+.goal-presets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.goal-preset-chip {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-align: center;
+  transition: all var(--transition-fast);
+  min-height: 38px;
+  cursor: pointer;
+}
+
+.goal-preset-chip:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: #bfdbfe;
+}
+
+.goal-preset-chip.is-active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.goal-disclaimer-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  margin-top: 1rem;
+  border-left: 3px solid var(--border-color);
+}
+
+/* --- Educational Comparison (SIP vs Lump Sum) --- */
+.comparison-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.comparison-feature-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.comparison-table td:first-child {
+  white-space: nowrap;
+}
+
 /* Responsive adjustments for compact screens (320px - 480px) */
 @media (max-width: 480px) {
+  .comparison-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
   .formula-display {
     font-size: 0.9375rem;
   }
   .stepup-cmp-grid {
     grid-template-columns: 1fr;
+  }
+  .goal-presets-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .goal-preset-chip {
+    width: 100%;
+  }
+  .comparison-table td:first-child {
+    white-space: normal;
   }
 }
 
@@ -1089,5 +1196,13 @@
   }
   .formula-display {
     font-size: 0.8125rem;
+  }
+  .goal-preset-chip {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.5rem;
+  }
+  .goal-sip-section {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
   }
 }
